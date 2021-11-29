@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>潇雨轩然的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="潇雨轩然的博客">
+<meta property="og:url" content="https://xiaoyuxuanran.github.io/index.html">
+<meta property="og:site_name" content="潇雨轩然的博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="xiaoran">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="潇雨轩然的博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">潇雨轩然的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://xiaoyuxuanran.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-数据结构最小生成树" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/11/29/shu-ju-jie-gou-zui-xiao-sheng-cheng-shu/" class="article-date">
+  <time class="dt-published" datetime="2021-11-29T03:18:23.481Z" itemprop="datePublished">2021-11-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/11/29/shu-ju-jie-gou-zui-xiao-sheng-cheng-shu/">数据结构最小生成树</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include &lt;stdio.h&gt;</span></span><br><span class="line"><span class="comment">#define size 101</span></span><br><span class="line"><span class="comment">#define inf 32767</span></span><br><span class="line">typedef struct</span><br><span class="line">&#123;</span><br><span class="line">    int n,e;</span><br><span class="line">    int edge[size][size];</span><br><span class="line">&#125;mg;</span><br><span class="line"></span><br><span class="line">void init_mg(mg &amp;g)</span><br><span class="line">&#123;</span><br><span class="line">    g.n=g.e=0;</span><br><span class="line">    <span class="keyword">for</span> (int i = 1; i &lt; size; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (int j = 0; j &lt; size; j++) &#123;</span><br><span class="line">            g.edge[i][j]=inf;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">void input(mg &amp;g)</span><br><span class="line">&#123;</span><br><span class="line">    freopen(<span class="string">&quot;in.txt&quot;</span>,<span class="string">&quot;r&quot;</span>,stdin);</span><br><span class="line">    scanf(<span class="string">&quot;%d%d&quot;</span>,&amp;g.n,g.e);</span><br><span class="line">    <span class="keyword">for</span> (int i = 1; i &lt;= g.e ; i++) &#123;</span><br><span class="line">        int v1,v2,w;</span><br><span class="line">        scanf(<span class="string">&quot;%d%d%d&quot;</span>,&amp;v1,&amp;v2,w);</span><br><span class="line">        g.edge[v1][v2]=g.edge[v2][v1]=w;</span><br><span class="line">    &#125;</span><br><span class="line">    fclose(stdin);</span><br><span class="line">&#125;</span><br><span class="line">typedef struct &#123;</span><br><span class="line">    int vs,ve,w;</span><br><span class="line">&#125;eg;</span><br><span class="line">void sort(eg g[],int e)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span> (int i = 1; i &lt; e; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (int j = i+1; j &lt;= e; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(g[i].w&gt;g[j].w)</span><br><span class="line">            &#123;</span><br><span class="line">                eg t=g[i];</span><br><span class="line">                g[i]=g[j];</span><br><span class="line">                g[j]=t;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">void kruskal(mg g)</span><br><span class="line">&#123;</span><br><span class="line">    eg eg[size];</span><br><span class="line">    int ei=0;</span><br><span class="line">    <span class="keyword">for</span>(int i=1;i&lt;=g.n;i++)</span><br><span class="line">        <span class="keyword">for</span>(int j=1;j&lt;i;j++)</span><br><span class="line">            <span class="keyword">if</span>(g.edge[i][j]&lt;inf)</span><br><span class="line">            &#123;</span><br><span class="line">                ei++;</span><br><span class="line">                eg[ei].vs=i;</span><br><span class="line">                eg[ei].ve=j;</span><br><span class="line">                eg[ei].w=g.edge[i][j];</span><br><span class="line">            &#125;</span><br><span class="line">            sort(eg,ei);</span><br><span class="line">    int sn[size]=&#123;0&#125;;</span><br><span class="line">    <span class="keyword">for</span>(int i=1;i&lt;g.n;i++)</span><br><span class="line">        sn[i]=i;</span><br><span class="line">    int k=0;</span><br><span class="line">    ei=1;</span><br><span class="line">    <span class="keyword">while</span>(1)</span><br><span class="line">    &#123;</span><br><span class="line">        int vs,ve,w,sn1,sn2;</span><br><span class="line">        vs=eg[ei].vs;</span><br><span class="line">        ve=eg[ei].ve;</span><br><span class="line">        w=eg[ei].w;</span><br><span class="line">        sn1=sn[vs];</span><br><span class="line">        sn2=sn[ve];</span><br><span class="line">        <span class="keyword">if</span>(sn1!=sn2)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;(%d,%d)(%d),&quot;</span>,vs,ve,w);</span><br><span class="line">            k++;</span><br><span class="line">            <span class="keyword">if</span>(k==g.n-1) <span class="built_in">break</span>;</span><br><span class="line">            <span class="keyword">for</span>(int i=1;i&lt;=g.n;i++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(sn[i]==sn2) sn[i]=sn1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        ei++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int <span class="function"><span class="title">main</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">    mg g;</span><br><span class="line">    init_mg(g);</span><br><span class="line">    input(g);</span><br><span class="line">    kruskal(g);</span><br><span class="line">    <span class="built_in">return</span> 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xiaoyuxuanran.github.io/2021/11/29/shu-ju-jie-gou-zui-xiao-sheng-cheng-shu/" data-id="ckwkpt5u90001jgruh1iigh8j" data-title="数据结构最小生成树" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/06/hello-world/" class="article-date">
+  <time class="dt-published" datetime="2021-08-06T02:01:27.047Z" itemprop="datePublished">2021-08-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>#个人编程的一些小技巧</p>
+<table><tr><td bgcolor="FF0000">红色背景</td></tr></table>
+<font color="#FF0000">字体颜色、大小、字体类型</font>
+<head>
+    <!--<meta charset="gb2312">-->
+    <meta charset="UTF-8">
+    <title>欢迎来到潇然的博客</title>
+    <!--<meta name="keywords" content="蓝色模板,个人网站模板,个人博客模板,博客模板,css3,html5,网站模板" />-->
+    <!--<meta name="description" content="这是一个有关看雪时间轴的css3 html5 网站模板" />-->
+    <!--<link href="css/styles.css" rel="stylesheet">-->
+
+<pre><code>&lt;!--&lt;link href=&quot;css/animation.css&quot; rel=&quot;stylesheet&quot;&gt;--&gt;
+&lt;style&gt;
+    /*@charset &quot;gb2312&quot;;*/
+    /*!* Animation *!*/
+
+    @-webkit-keyframes pageTop &#123; 0% &#123;
+        opacity: 0;
+        -webkit-transform: perspective(400px) rotateX(90deg);
+    &#125;
+        100% &#123;
+            opacity: 1;
+            -webkit-transform: perspective(400px) rotateX(0deg);
+        &#125;
+    &#125;
+    @-moz-keyframes pageTop &#123; 0% &#123;
+        opacity: 0;
+        -moz-transform: perspective(400px) rotateX(90deg);
+    &#125;
+        100% &#123;
+            opacity: 1;
+            -moz-transform: perspective(400px) rotateX(0deg);
+        &#125;
+    &#125;
+    @-o-keyframes pageTop &#123; 0% &#123;
+        opacity: 0;
+        -o-transform: perspective(400px) rotateX(90deg);
+    &#125;
+        100% &#123;
+            opacity: 1;
+            -o-transform: perspective(400px) rotateX(0deg);
+        &#125;
+    &#125;
+    @keyframes pageTop &#123; 0% &#123;
+        opacity: 0;
+        transform: perspective(400px) rotateX(90deg);
+    &#125;
+        100% &#123;
+            opacity: 1;
+            transform: perspective(400px) rotateX(0deg);
+        &#125;
+    &#125;
+    @keyframes starwars &#123; 0% &#123;
+        opacity: 0;
+        transform: perspective(200px) scale(3) translateY(180px) rotateX(80deg);
+    &#125;
+        80% &#123;
+            opacity: 1;
+            transform: perspective(200px) scale(1) rotateX(60deg)
+        &#125;
+        100% &#123;
+            opacity: 1;
+            transform: perspective(200px) scale(1) rotateX(0deg)
+        &#125;
+    &#125;
+
+    @-webkit-keyframes animations2 &#123;  0% &#123;
+        opacity:0;
+    &#125;
+        40% &#123;
+            opacity:.8;
+        &#125;
+        45% &#123;
+            opacity:.3;
+        &#125;
+        50% &#123;
+            opacity:.8;
+        &#125;
+        55% &#123;
+            opacity:.3;
+        &#125;
+        60% &#123;
+            opacity:.8;
+        &#125;
+        100% &#123;
+            opacity:0;
+        &#125;
+    &#125;
+    @-moz-keyframes animations2 &#123;  0% &#123;
+        opacity:0;
+    &#125;
+        40% &#123;
+            opacity:.8;
+        &#125;
+        45% &#123;
+            opacity:.3;
+        &#125;
+        50% &#123;
+            opacity:.8;
+        &#125;
+        55% &#123;
+            opacity:.3;
+        &#125;
+        60% &#123;
+            opacity:.8;
+        &#125;
+        100% &#123;
+            opacity:0;
+        &#125;
+    &#125;
+    @-o-keyframes animations2 &#123;  0% &#123;
+        opacity:0;
+    &#125;
+        40% &#123;
+            opacity:.8;
+        &#125;
+        45% &#123;
+            opacity:.3;
+        &#125;
+        50% &#123;
+            opacity:.8;
+        &#125;
+        55% &#123;
+            opacity:.3;
+        &#125;
+        60% &#123;
+            opacity:.8;
+        &#125;
+        100% &#123;
+            opacity:0;
+        &#125;
+    &#125;
+    @-ms-keyframes animations2 &#123;  0% &#123;
+        opacity:0;
+    &#125;
+        40% &#123;
+            opacity:.8;
+        &#125;
+        45% &#123;
+            opacity:.3;
+        &#125;
+        50% &#123;
+            opacity:.8;
+        &#125;
+        55% &#123;
+            opacity:.3;
+        &#125;
+        60% &#123;
+            opacity:.8;
+        &#125;
+        100% &#123;
+            opacity:0;
+        &#125;
+    &#125;
+    @keyframes animations2 &#123;  0% &#123;
+        opacity:0;
+    &#125;
+        40% &#123;
+            opacity:.8;
+        &#125;
+        45% &#123;
+            opacity:.3;
+        &#125;
+        50% &#123;
+            opacity:.8;
+        &#125;
+        55% &#123;
+            opacity:.3;
+        &#125;
+        60% &#123;
+            opacity:.8;
+        &#125;
+        100% &#123;
+            opacity:0;
+        &#125;
+    &#125;
+
+&lt;/style&gt;
+&lt;style&gt;
+    *html &#123; background-image: url(about:blank); background-attachment: fixed; &#125;/*½â¾öIE6ÏÂ¹ö¶¯¶¶¶¯µÄÎÊÌâ*/
+    #tbox &#123; width: 54px; float: right; position: fixed; right: 50px; bottom: 15px; _position: absolute; _bottom: auto; _top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop, 10)||0)-(parseInt(this.currentStyle.marginBottom, 10)||0)));
+        _margin-bottom: 15px; &#125;/*½â¾öIE6ÏÂ²»¼æÈÝ position:fixed µÄÎÊÌâ*/
+    #togbook, #gotop &#123; width: 54px; height: 56px; display: block; background:url(./images/icons.png) no-repeat  #222 ;box-shadow: 0px 1px 0px rgba(255,255,255,.1), inset 0px 1px 1px rgba(0,0,0,.7); border-radius: 6px;&#125;
+    #togbook &#123; margin: 5px 0 ;background-position:10px -407px;&#125;
+    #gotop &#123;background-position:12px -365px;&#125;
+    #togbook:hover, #gotop:hover &#123; opacity: 0.5 &#125;
+
+&lt;/style&gt;
+&lt;style&gt;
+    /*@charset &quot;gb2312&quot;;*/
+    /*!* CSS Document *!*/
+    * &#123; margin: 0; padding: 0 &#125;
+    body &#123; font: 14px &quot;宋体&quot;, &quot;Arial Narrow&quot;, HELVETICA; color: #3F3E3C; line-height: 1.5; background:url(./images/bg1.jpg)&#125;
+    img &#123; border: 0; vertical-align: middle &#125;
+    h1, h2, h3, h4, h5, h6 &#123; font-weight: normal; &#125;
+    h1 &#123; font: 24px &quot;微软雅黑&quot;, &quot;Microsoft YaHei&quot;, Arial, Helvetica, sans-serif &#125;
+    p &#123; word-wrap: break-word &#125;
+    ul, ol &#123; list-style: none; &#125;
+    a &#123; color: #111; text-decoration: none; transition: All 1s ease; -webkit-transition: All 1s ease; -moz-transition: All 1s ease; -ms-transition: All 1s ease; -o-transition: All 1s ease; &#125;
+    a:hover &#123; color: #111; &#125;
+    /* -----------------------nav 一级导航----------------- */
+    header &#123;
+        padding:133px 0 0 0;
+        width:100%;
+        height:380px;
+        margin:auto;
+        background:url(./images/top.jpg) center 0 scroll no-repeat;&#125;
+    header img &#123;
+        float:left;
+        margin:0 20px 0 66px;
+        -webkit-animation:&#39;flipInX&#39; 1s ease 1s backwards;
+        -moz-animation:&#39;flipInX&#39; 1s ease 1s backwards;
+        -ms-animation:&#39;flipInX&#39; 1s ease 1s backwards;
+        -o-animation:&#39;flipInX&#39; 1s ease 1s backwards;
+        animation:&#39;flipInX&#39; 1s ease 1s backwards;
+    &#125;
+    header h1 &#123;
+        font-size:16px;
+        font-weight:normal;
+        text-shadow:#fff 1px 1px 1px;
+    &#125;
+    .b_nav&#123;background:url(./images/menu_bg.png) 50% 0%;width:100%; margin-top:-160px;height:50px;&#125;
+    header h1 a &#123;
+        color:#000
+    &#125;
+    header h1 a:hover &#123;
+        text-decoration:underline
+    &#125;
+    header p &#123;
+        margin:17px 0 0 0;
+        text-shadow:#000 1px 1px 1px;
+        color:#fff
+    &#125;
+    #nav &#123;
+        width:100%;
+        line-height:40px;
+        height:40px;
+        margin-top:-86px;
+    &#125;
+    #nav ul &#123;
+        list-style:none;
+        margin:auto;
+        width:1030px
+    &#125;
+    #nav ul li &#123;
+        float:left;
+        width:100px;
+        text-align:center;
+        text-shadow:#333 1px 1px 1px;
+    &#125;
+    #nav ul li a &#123;
+        display:block;
+        color:#FFF;
+        cursor:pointer;
+        font-weight:bold;
+    &#125;
+    #nav ul li a:hover &#123;
+        background:#6983d7;
+        color:#FFF;
+        font-weight:bold;
+        border-radius:50px 0
+    &#125;
+    #nav ul li a#nav_current &#123;
+        background:#6983d7;
+        color:#FFF;
+        font-weight:bold;
+        border-radius:50px 0
+    &#125;
+    #mainbody &#123; width: 100%;clear: both; overflow: hidden; &#125;
+    /* ---------------------info------------------------- */
+    .info &#123; width: 1000px; margin:50px auto; overflow: hidden; clear: both &#125;
+    /* 图片向上翻转的动画效果 */
+    .info figure &#123; display: inline-block; width: 630px; height: 250px; position: relative; float: left; &#125;
+    .info figcaption &#123; padding: 20px; position: absolute; top: 20%; left: 0; background: rgba(153,153,153,.8); color: white; opacity: 0; -webkit-transition: opacity .75s ease-out; -moz-transition: opacity .75s ease-out; -o-transition: opacity .75s ease-out; transition: opacity .75s ease-out; &#125;
+    .info figure:hover figcaption &#123; opacity: 1; &#125; /* 用opacity 设置鼠标放上去显示文字的效果 */
+    .info figcaption strong &#123; display: block; line-height: 40px &#125;
+    /* card */
+    .card &#123; box-shadow: 0px 1px 0px rgba(255,255,255,.1), inset 0px 1px 1px rgba(0,0,0,.7); border-radius: 6px; background:#fff url(./images/quote-bg.png) no-repeat top right; width: 350px; float: right; height: 250px; overflow: hidden &#125;
+    .card h1 &#123; padding: 10px &#125;
+    .card p:first-child &#123; padding: 40px 0 0 40px &#125; /* 结构性伪类选择符 选择第一个p标签，并且设置上、左距离是40px*/
+    .card p &#123; padding: 0 0 0 40px; line-height: 28px; color: #111;&#125;
+    .linkmore &#123; margin: 15px 0 0 15px &#125;
+    .linkmore li a &#123; height: 50px; width: 50px; display: block; overflow: hidden; box-shadow: 0px 1px 0px rgba(255,255,255,.1), inset 0px 1px 1px rgba(0,0,0,.7); border-radius: 50%; float: left; margin: 0 6px; &#125;
+    .linkmore li a:hover &#123; opacity: 0.5; -webkit-transform: rotate(30deg); -ms-transform: rotate(30deg); -moz-transform: rotate(30deg); -o-transform: rotate(30deg); transform: rotate(30deg); &#125;
+    .talk, .address, .email, .photos, .heart &#123; background: url(./images/icons.png) no-repeat; &#125;
+    .talk &#123; background-position: 13px 18px &#125;
+    .address &#123; background-position: 12px -22px &#125;
+    .email &#123; background-position: 12px -60px &#125;
+    .photos &#123; background-position: 12px -137px &#125;
+    .heart &#123; background-position: 13px -99px &#125;
+    /* --------------------博客列表-------------------- */
+    .blogs &#123; width: 1000px; margin: 0 auto 20px; &#125;
+    .bloglist &#123;margin-top:-33px; width: 666px; float: left; &#125;
+    .bloglist&gt;li &#123; border-right: #fff 2px solid; padding: 20px 0; &#125;
+    .arrow_box &#123; background: #fff; box-shadow: 0px 1px 0px rgba(255,255,255,.1), inset 0px 1px 1px rgba(0,0,0,.7); width: 630px; color: #b9b9b9; border-radius: 6px; position: relative &#125;
+    .ti &#123; width: 0px; height: 0px; border-style: solid; border-width: 0px 0 20px 22px; border-color: transparent transparent transparent #fff; position: absolute; left: 630px; top: 20px; &#125;/* 三角形 */
+    .ci &#123; width: 10px; height: 10px; border-radius: 50%; position: absolute; left: 658px; top: 16px; background: #fff; border: 2px solid #fff; &#125; /* 圆形定义边框色与背景一致 */
+    .ci:hover &#123; border: 2px solid #B9B9B9; &#125;
+    .arrow_box h2.title &#123; padding: 0 0 0 20px; font: 16px/50px &quot;微软雅黑&quot;, &quot;Microsoft YaHei&quot;, Arial, Helvetica, sans-serif &#125;
+    .arrow_box h2 a:hover &#123; padding-left: 20px &#125;
+    .textinfo &#123; overflow: hidden; &#125;
+    .arrow_box img &#123; width:200px; padding: 4px; float: left; -webkit-transition: All 1s ease; -moz-transition: All 1s ease; -ms-transition: All 1s ease; -o-transition: All 1s ease; border-radius: 4px; margin: 0 20px 20px; &#125;
+    .arrow_box img:hover &#123; opacity: 0.6; &#125;
+    .arrow_box p &#123;color:#111; line-height: 24px; padding: 0 20px 20px &#125;
+    .details &#123; background:#fafafa; border-radius: 0 0 6px 6px; padding: 0 10px &#125;
+    .details li &#123; line-height: 26px; display: inline; font-size:14px; margin-right: 10px; &#125;
+    .details li a &#123; color: #3F3E3C &#125;
+    .details li a:hover &#123; color: #933 &#125;
+    .icon-time, .likes, .comments &#123; background: url(./images/icons.png) no-repeat &#125;
+    .icon-time &#123; background-position: 0 -208px; padding: 0 0 0 18px; &#125;
+    .likes, .comments &#123; float: right; padding: 0 0 0 14px; &#125;
+    .likes &#123; background-position: 0 -240px; &#125;
+    .comments &#123; background-position: 0 -220px; &#125;
+    .post-nav-right&#123;height:68px&#125;
+    .post-nav-right p&#123;text-align:center;line-height:60px;font-size:16px;&#125;
+    .post-nav-right a&#123;
+        padding: 10px 10px;
+        color: #222;
+        background: #fff;
+        border-radius: 3px;&#125;
+    /*-------------------aside侧边栏--------------------------*/
+    aside &#123; width: 310px; float: right; margin:-12px 0; &#125;
+    aside h2&#123; font-weight:bold;font-size: 16px; margin-bottom: 10px;color: #222 &#125;
+    aside div &#123; box-shadow: 0px 1px 0px rgba(255,255,255,.1), inset 0px 1px 1px rgba(0,0,0,.7); border-radius: 6px; padding: 15px; background: #fff; margin-bottom: 20px; overflow: hidden; &#125;
+    .tuijian li, .clicks li &#123; white-space: nowrap; text-overflow: ellipsis; overflow: hidden &#125;
+    .tuijian li a:hover &#123; padding-left: 10px &#125;
+    .tuijian li span:before &#123; content: &quot;0&quot;; &#125;/* 数字列表前面统一加0  */
+    .tuijian li span &#123; margin-right: 10px; font-size: 14px; font-family: &quot;微软雅黑&quot;; &#125;
+    .tuijian li:nth-child(-n+3) span &#123; width: 39px; color: #999 &#125; /* 选择从第3个开始倒数也就是第三个前面的 */
+    .tuijian li:nth-child(-n+3) strong &#123; font-size: 24px; font-weight: normal; &#125;
+    .tuijian li:first-child span &#123; color: #f8490b; &#125; /* 选择第一个 */
+    .tuijian li:nth-child(n+3) &#123; line-height: 24px &#125; /* 选择从第3个开始往后数 */
+    .tuijian li:nth-child(4) &#123; margin: 5px 0 0 0 &#125; /* 选择第四个 */
+    /* 图文推荐 */
+    .toppic li&#123;margin:10px 0;&#125;
+    .toppic li img &#123; width:100px; float: left; margin-right: 10px; &#125;
+    .toppic ul li:nth-child(2) &#123; margin: 15px 0; &#125;
+    .toppic ul li a &#123; display: block; width: 100%; clear: both; overflow: hidden &#125;
+    .toppic li p &#123; color: #B5783E; padding-left: 110px; margin-top: 5px; &#125;
+    .toppic li:first-child p &#123; background-position: 90px -263px; &#125;
+    .toppic li:nth-child(2) p &#123; background-position: 90px -283px; &#125;
+    .toppic li:last-child p &#123; background-position: 90px -301px; &#125;
+    /* 热门点击 */
+    .clicks li &#123; line-height: 24px; &#125;
+    .clicks li span:before &#123; content: &quot;【&quot;; &#125;
+    .clicks li span:after &#123; content: &quot;】&quot;; &#125;
+    .clicks li span a &#123; padding: 0 5px; color: #366 &#125;
+    .clicks li a:hover &#123; text-decoration: underline &#125;
+    /* search */
+    .searchform &#123; overflow: hidden; padding: 10px; &#125;
+    .searchform input &#123; background:#fdfdfd url(./images/icons.png) no-repeat 3px -318px; border: 1px solid #111; width: 220px; line-height: 30px; color: #b9b9b9; padding-left: 30px; &#125;
+    /* music */
+    .viny dl dd &#123; color: #b9b9b9; line-height: 24px; &#125;
+    .art &#123; background: url(./images/vinyl.png) no-repeat left; width: 130px; float: left; background-size: 120px; &#125;
+    .viny .art img &#123; width: 90px; height: 90px; margin-left: 11px &#125;
+    .viny dd span &#123; width: 12px; height: 24px; margin-right: 7px; float: left; display: block; &#125;
+    .icon-song span, .icon-artist span, .icon-album span, .icon-like span &#123; background: url(./images/icons.png) no-repeat &#125;
+    .icon-song span &#123; background-position: -33px -344px &#125;
+    .icon-artist span &#123; background-position: -16px -344px &#125;
+    .icon-album span &#123; background-position: 0 -344px &#125;
+    .icon-like span &#123; background-position: -1px -299px; &#125;
+    .icon-like a &#123; color: #B5783E &#125;
+    .icon-like a:hover &#123; color: #FFF; text-decoration: underline &#125;
+    .music audio &#123; width: 100%; padding-top: 10px &#125;
+    /* 最新评论 */
+    .visitors dl &#123; display: block; overflow: hidden; margin-bottom: 12px &#125;
+    .visitors dd &#123; line-height: 22px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden &#125;
+    .visitors dd:last-child &#123; color: #6A9150; &#125;
+    .visitors time &#123; color: #066; margin-left: 10px &#125;
+    .visitors dt &#123; float: left; &#125;
+    .visitors dt img &#123; width: 67px; height: 67px; margin-right: 10px; &#125;
+    /* 最近访客 */
+    .flickr ul li &#123; margin: 0 11px 11px 0; float: left; background: #000; &#125;
+    .flickr ul li img &#123; width: 67px; height: 67px; border: #111 solid 1px; &#125;
+    .flickr ul li img:hover &#123; opacity: 0.6 &#125;
+    /* --------------------------footer----------------------- */
+    .footer-bottom &#123;margin-top:38px;overflow: hidden; &#125;
+    .footer-bottom p &#123; font-size:14px;text-align:center;color:#fff; width: 1000px; margin: 0 auto; padding: 10px 0; &#125;
+    &lt;img src=&quot;./images/top.jpg&quot; height=&quot;400&quot; width=&quot;1600&quot;/&gt;
+&lt;/style&gt;
+&lt;!-- 返回顶部调用 begin --&gt;
+&lt;!--&lt;link href=&quot;css/lrtk.css&quot; rel=&quot;stylesheet&quot; /&gt;--&gt;
+&lt;!--&lt;script type=&quot;text/javascript&quot; src=&quot;js/jquery.js&quot;&gt;&lt;/script&gt;--&gt;
+&lt;!--&lt;script type=&quot;text/javascript&quot; src=&quot;js/js.js&quot;&gt;&lt;/script&gt;--&gt;
+&lt;!--&amp;lt;!&amp;ndash; 返回顶部调用 end&amp;ndash;&amp;gt;--&gt;
+&lt;!--&amp;lt;!&amp;ndash;[if lt IE 9]&gt;--&gt;
+&lt;!--&lt;script src=&quot;js/modernizr.js&quot;&gt;&lt;/script&gt;--&gt;
+&lt;script&gt;
+    /*!
+</code></pre>
+<ul>
+<li><p>jQuery JavaScript Library v1.4.2</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://jquery.com/">http://jquery.com/</a></p>
+</li>
+<li></li>
+<li><p>Copyright 2010, John Resig</p>
+</li>
+<li><p>Dual licensed under the MIT or GPL Version 2 licenses.</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://jquery.org/license">http://jquery.org/license</a></p>
+</li>
+<li></li>
+<li><p>Includes Sizzle.js</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://sizzlejs.com/">http://sizzlejs.com/</a></p>
+</li>
+<li><p>Copyright 2010, The Dojo Foundation</p>
+</li>
+<li><p>Released under the MIT, BSD, and GPL Licenses.</p>
+</li>
+<li></li>
+<li><p>Date: Sat Feb 13 22:33:48 2010 -0500</p>
+</li>
+<li><p>/</p>
+<pre><code>  (function(A,w)&#123;function ma()&#123;if(!c.isReady)&#123;try&#123;s.documentElement.doScroll(&quot;left&quot;)&#125;catch(a)&#123;setTimeout(ma,1);return&#125;c.ready()&#125;&#125;function Qa(a,b)&#123;b.src?c.ajax(&#123;url:b.src,async:false,dataType:&quot;script&quot;&#125;):c.globalEval(b.text||b.textContent||b.innerHTML||&quot;&quot;);b.parentNode&amp;&amp;b.parentNode.removeChild(b)&#125;function X(a,b,d,f,e,j)&#123;var i=a.length;if(typeof b===&quot;object&quot;)&#123;for(var o in b)X(a,o,b[o],f,e,d);return a&#125;if(d!==w)&#123;f=!j&amp;&amp;f&amp;&amp;c.isFunction(d);for(o=0;o&lt;i;o++)e(a[o],b,f?d.call(a[o],o,e(a[o],b)):d,j);return a&#125;return i?
+      e(a[0],b):w&#125;function J()&#123;return(new Date).getTime()&#125;function Y()&#123;return false&#125;function Z()&#123;return true&#125;function na(a,b,d)&#123;d[0].type=a;return c.event.handle.apply(b,d)&#125;function oa(a)&#123;var b,d=[],f=[],e=arguments,j,i,o,k,n,r;i=c.data(this,&quot;events&quot;);if(!(a.liveFired===this||!i||!i.live||a.button&amp;&amp;a.type===&quot;click&quot;))&#123;a.liveFired=this;var u=i.live.slice(0);for(k=0;k&lt;u.length;k++)&#123;i=u[k];i.origType.replace(O,&quot;&quot;)===a.type?f.push(i.selector):u.splice(k--,1)&#125;j=c(a.target).closest(f,a.currentTarget);n=0;for(r=
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               j.length;n&lt;r;n++)for(k=0;k&lt;u.length;k++)&#123;i=u[k];if(j[n].selector===i.selector)&#123;o=j[n].elem;f=null;if(i.preType===&quot;mouseenter&quot;||i.preType===&quot;mouseleave&quot;)f=c(a.relatedTarget).closest(i.selector)[0];if(!f||f!==o)d.push(&#123;elem:o,handleObj:i&#125;)&#125;&#125;n=0;for(r=d.length;n&lt;r;n++)&#123;j=d[n];a.currentTarget=j.elem;a.data=j.handleObj.data;a.handleObj=j.handleObj;if(j.handleObj.origHandler.apply(j.elem,e)===false)&#123;b=false;break&#125;&#125;return b&#125;&#125;function pa(a,b)&#123;return&quot;live.&quot;+(a&amp;&amp;a!==&quot;*&quot;?a+&quot;.&quot;:&quot;&quot;)+b.replace(/\./g,&quot;`&quot;).replace(/ /g,
+      &quot;&amp;&quot;)&#125;function qa(a)&#123;return!a||!a.parentNode||a.parentNode.nodeType===11&#125;function ra(a,b)&#123;var d=0;b.each(function()&#123;if(this.nodeName===(a[d]&amp;&amp;a[d].nodeName))&#123;var f=c.data(a[d++]),e=c.data(this,f);if(f=f&amp;&amp;f.events)&#123;delete e.handle;e.events=&#123;&#125;;for(var j in f)for(var i in f[j])c.event.add(this,j,f[j][i],f[j][i].data)&#125;&#125;&#125;)&#125;function sa(a,b,d)&#123;var f,e,j;b=b&amp;&amp;b[0]?b[0].ownerDocument||b[0]:s;if(a.length===1&amp;&amp;typeof a[0]===&quot;string&quot;&amp;&amp;a[0].length&lt;512&amp;&amp;b===s&amp;&amp;!ta.test(a[0])&amp;&amp;(c.support.checkClone||!ua.test(a[0])))&#123;e=
+      true;if(j=c.fragments[a[0]])if(j!==1)f=j&#125;if(!f)&#123;f=b.createDocumentFragment();c.clean(a,b,f,d)&#125;if(e)c.fragments[a[0]]=j?f:1;return&#123;fragment:f,cacheable:e&#125;&#125;function K(a,b)&#123;var d=&#123;&#125;;c.each(va.concat.apply([],va.slice(0,b)),function()&#123;d[this]=a&#125;);return d&#125;function wa(a)&#123;return&quot;scrollTo&quot;in a&amp;&amp;a.document?a:a.nodeType===9?a.defaultView||a.parentWindow:false&#125;var c=function(a,b)&#123;return new c.fn.init(a,b)&#125;,Ra=A.jQuery,Sa=A.$,s=A.document,T,Ta=/^[^&lt;]*(&lt;[\w\W]+&gt;)[^&gt;]*$|^#([\w-]+)$/,Ua=/^.[^:#\[\.,]*$/,Va=/\S/,
+      Wa=/^(\s|\u00A0)+|(\s|\u00A0)+$/g,Xa=/^&lt;(\w+)\s*\/?&gt;(?:&lt;\/\1&gt;)?$/,P=navigator.userAgent,xa=false,Q=[],L,$=Object.prototype.toString,aa=Object.prototype.hasOwnProperty,ba=Array.prototype.push,R=Array.prototype.slice,ya=Array.prototype.indexOf;c.fn=c.prototype=&#123;init:function(a,b)&#123;var d,f;if(!a)return this;if(a.nodeType)&#123;this.context=this[0]=a;this.length=1;return this&#125;if(a===&quot;body&quot;&amp;&amp;!b)&#123;this.context=s;this[0]=s.body;this.selector=&quot;body&quot;;this.length=1;return this&#125;if(typeof a===&quot;string&quot;)if((d=Ta.exec(a))&amp;&amp;
+          (d[1]||!b))if(d[1])&#123;f=b?b.ownerDocument||b:s;if(a=Xa.exec(a))if(c.isPlainObject(b))&#123;a=[s.createElement(a[1])];c.fn.attr.call(a,b,true)&#125;else a=[f.createElement(a[1])];else&#123;a=sa([d[1]],[f]);a=(a.cacheable?a.fragment.cloneNode(true):a.fragment).childNodes&#125;return c.merge(this,a)&#125;else&#123;if(b=s.getElementById(d[2]))&#123;if(b.id!==d[2])return T.find(a);this.length=1;this[0]=b&#125;this.context=s;this.selector=a;return this&#125;else if(!b&amp;&amp;/^\w+$/.test(a))&#123;this.selector=a;this.context=s;a=s.getElementsByTagName(a);return c.merge(this,
+          a)&#125;else return!b||b.jquery?(b||T).find(a):c(b).find(a);else if(c.isFunction(a))return T.ready(a);if(a.selector!==w)&#123;this.selector=a.selector;this.context=a.context&#125;return c.makeArray(a,this)&#125;,selector:&quot;&quot;,jquery:&quot;1.4.2&quot;,length:0,size:function()&#123;return this.length&#125;,toArray:function()&#123;return R.call(this,0)&#125;,get:function(a)&#123;return a==null?this.toArray():a&lt;0?this.slice(a)[0]:this[a]&#125;,pushStack:function(a,b,d)&#123;var f=c();c.isArray(a)?ba.apply(f,a):c.merge(f,a);f.prevObject=this;f.context=this.context;if(b===
+          &quot;find&quot;)f.selector=this.selector+(this.selector?&quot; &quot;:&quot;&quot;)+d;else if(b)f.selector=this.selector+&quot;.&quot;+b+&quot;(&quot;+d+&quot;)&quot;;return f&#125;,each:function(a,b)&#123;return c.each(this,a,b)&#125;,ready:function(a)&#123;c.bindReady();if(c.isReady)a.call(s,c);else Q&amp;&amp;Q.push(a);return this&#125;,eq:function(a)&#123;return a===-1?this.slice(a):this.slice(a,+a+1)&#125;,first:function()&#123;return this.eq(0)&#125;,last:function()&#123;return this.eq(-1)&#125;,slice:function()&#123;return this.pushStack(R.apply(this,arguments),&quot;slice&quot;,R.call(arguments).join(&quot;,&quot;))&#125;,map:function(a)&#123;return this.pushStack(c.map(this,
+          function(b,d)&#123;return a.call(b,d,b)&#125;))&#125;,end:function()&#123;return this.prevObject||c(null)&#125;,push:ba,sort:[].sort,splice:[].splice&#125;;c.fn.init.prototype=c.fn;c.extend=c.fn.extend=function()&#123;var a=arguments[0]||&#123;&#125;,b=1,d=arguments.length,f=false,e,j,i,o;if(typeof a===&quot;boolean&quot;)&#123;f=a;a=arguments[1]||&#123;&#125;;b=2&#125;if(typeof a!==&quot;object&quot;&amp;&amp;!c.isFunction(a))a=&#123;&#125;;if(d===b)&#123;a=this;--b&#125;for(;b&lt;d;b++)if((e=arguments[b])!=null)for(j in e)&#123;i=a[j];o=e[j];if(a!==o)if(f&amp;&amp;o&amp;&amp;(c.isPlainObject(o)||c.isArray(o)))&#123;i=i&amp;&amp;(c.isPlainObject(i)||
+      c.isArray(i))?i:c.isArray(o)?[]:&#123;&#125;;a[j]=c.extend(f,i,o)&#125;else if(o!==w)a[j]=o&#125;return a&#125;;c.extend(&#123;noConflict:function(a)&#123;A.$=Sa;if(a)A.jQuery=Ra;return c&#125;,isReady:false,ready:function()&#123;if(!c.isReady)&#123;if(!s.body)return setTimeout(c.ready,13);c.isReady=true;if(Q)&#123;for(var a,b=0;a=Q[b++];)a.call(s,c);Q=null&#125;c.fn.triggerHandler&amp;&amp;c(s).triggerHandler(&quot;ready&quot;)&#125;&#125;,bindReady:function()&#123;if(!xa)&#123;xa=true;if(s.readyState===&quot;complete&quot;)return c.ready();if(s.addEventListener)&#123;s.addEventListener(&quot;DOMContentLoaded&quot;,
+          L,false);A.addEventListener(&quot;load&quot;,c.ready,false)&#125;else if(s.attachEvent)&#123;s.attachEvent(&quot;onreadystatechange&quot;,L);A.attachEvent(&quot;onload&quot;,c.ready);var a=false;try&#123;a=A.frameElement==null&#125;catch(b)&#123;&#125;s.documentElement.doScroll&amp;&amp;a&amp;&amp;ma()&#125;&#125;&#125;,isFunction:function(a)&#123;return $.call(a)===&quot;[object Function]&quot;&#125;,isArray:function(a)&#123;return $.call(a)===&quot;[object Array]&quot;&#125;,isPlainObject:function(a)&#123;if(!a||$.call(a)!==&quot;[object Object]&quot;||a.nodeType||a.setInterval)return false;if(a.constructor&amp;&amp;!aa.call(a,&quot;constructor&quot;)&amp;&amp;!aa.call(a.constructor.prototype,
+          &quot;isPrototypeOf&quot;))return false;var b;for(b in a);return b===w||aa.call(a,b)&#125;,isEmptyObject:function(a)&#123;for(var b in a)return false;return true&#125;,error:function(a)&#123;throw a;&#125;,parseJSON:function(a)&#123;if(typeof a!==&quot;string&quot;||!a)return null;a=c.trim(a);if(/^[\],:&#123;&#125;\s]*$/.test(a.replace(/\\(?:[&quot;\\\/bfnrt]|u[0-9a-fA-F]&#123;4&#125;)/g,&quot;@&quot;).replace(/&quot;[^&quot;\\\n\r]*&quot;|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g,&quot;]&quot;).replace(/(?:^|:|,)(?:\s*\[)+/g,&quot;&quot;)))return A.JSON&amp;&amp;A.JSON.parse?A.JSON.parse(a):(new Function(&quot;return &quot;+
+          a))();else c.error(&quot;Invalid JSON: &quot;+a)&#125;,noop:function()&#123;&#125;,globalEval:function(a)&#123;if(a&amp;&amp;Va.test(a))&#123;var b=s.getElementsByTagName(&quot;head&quot;)[0]||s.documentElement,d=s.createElement(&quot;script&quot;);d.type=&quot;text/javascript&quot;;if(c.support.scriptEval)d.appendChild(s.createTextNode(a));else d.text=a;b.insertBefore(d,b.firstChild);b.removeChild(d)&#125;&#125;,nodeName:function(a,b)&#123;return a.nodeName&amp;&amp;a.nodeName.toUpperCase()===b.toUpperCase()&#125;,each:function(a,b,d)&#123;var f,e=0,j=a.length,i=j===w||c.isFunction(a);if(d)if(i)for(f in a)&#123;if(b.apply(a[f],
+          d)===false)break&#125;else for(;e&lt;j;)&#123;if(b.apply(a[e++],d)===false)break&#125;else if(i)for(f in a)&#123;if(b.call(a[f],f,a[f])===false)break&#125;else for(d=a[0];e&lt;j&amp;&amp;b.call(d,e,d)!==false;d=a[++e]);return a&#125;,trim:function(a)&#123;return(a||&quot;&quot;).replace(Wa,&quot;&quot;)&#125;,makeArray:function(a,b)&#123;b=b||[];if(a!=null)a.length==null||typeof a===&quot;string&quot;||c.isFunction(a)||typeof a!==&quot;function&quot;&amp;&amp;a.setInterval?ba.call(b,a):c.merge(b,a);return b&#125;,inArray:function(a,b)&#123;if(b.indexOf)return b.indexOf(a);for(var d=0,f=b.length;d&lt;f;d++)if(b[d]===
+          a)return d;return-1&#125;,merge:function(a,b)&#123;var d=a.length,f=0;if(typeof b.length===&quot;number&quot;)for(var e=b.length;f&lt;e;f++)a[d++]=b[f];else for(;b[f]!==w;)a[d++]=b[f++];a.length=d;return a&#125;,grep:function(a,b,d)&#123;for(var f=[],e=0,j=a.length;e&lt;j;e++)!d!==!b(a[e],e)&amp;&amp;f.push(a[e]);return f&#125;,map:function(a,b,d)&#123;for(var f=[],e,j=0,i=a.length;j&lt;i;j++)&#123;e=b(a[j],j,d);if(e!=null)f[f.length]=e&#125;return f.concat.apply([],f)&#125;,guid:1,proxy:function(a,b,d)&#123;if(arguments.length===2)if(typeof b===&quot;string&quot;)&#123;d=a;a=d[b];b=w&#125;else if(b&amp;&amp;
+          !c.isFunction(b))&#123;d=b;b=w&#125;if(!b&amp;&amp;a)b=function()&#123;return a.apply(d||this,arguments)&#125;;if(a)b.guid=a.guid=a.guid||b.guid||c.guid++;return b&#125;,uaMatch:function(a)&#123;a=a.toLowerCase();a=/(webkit)[ \/]([\w.]+)/.exec(a)||/(opera)(?:.*version)?[ \/]([\w.]+)/.exec(a)||/(msie) ([\w.]+)/.exec(a)||!/compatible/.test(a)&amp;&amp;/(mozilla)(?:.*? rv:([\w.]+))?/.exec(a)||[];return&#123;browser:a[1]||&quot;&quot;,version:a[2]||&quot;0&quot;&#125;&#125;,browser:&#123;&#125;&#125;);P=c.uaMatch(P);if(P.browser)&#123;c.browser[P.browser]=true;c.browser.version=P.version&#125;if(c.browser.webkit)c.browser.safari=
+      true;if(ya)c.inArray=function(a,b)&#123;return ya.call(b,a)&#125;;T=c(s);if(s.addEventListener)L=function()&#123;s.removeEventListener(&quot;DOMContentLoaded&quot;,L,false);c.ready()&#125;;else if(s.attachEvent)L=function()&#123;if(s.readyState===&quot;complete&quot;)&#123;s.detachEvent(&quot;onreadystatechange&quot;,L);c.ready()&#125;&#125;;(function()&#123;c.support=&#123;&#125;;var a=s.documentElement,b=s.createElement(&quot;script&quot;),d=s.createElement(&quot;div&quot;),f=&quot;script&quot;+J();d.style.display=&quot;none&quot;;d.innerHTML=&quot;   &lt;link/&gt;&lt;table&gt;&lt;/table&gt;&lt;a href=&#39;/a&#39; style=&#39;color:red;float:left;opacity:.55;&#39;&gt;a&lt;/a&gt;&lt;input type=&#39;checkbox&#39;/&gt;&quot;;
+      var e=d.getElementsByTagName(&quot;*&quot;),j=d.getElementsByTagName(&quot;a&quot;)[0];if(!(!e||!e.length||!j))&#123;c.support=&#123;leadingWhitespace:d.firstChild.nodeType===3,tbody:!d.getElementsByTagName(&quot;tbody&quot;).length,htmlSerialize:!!d.getElementsByTagName(&quot;link&quot;).length,style:/red/.test(j.getAttribute(&quot;style&quot;)),hrefNormalized:j.getAttribute(&quot;href&quot;)===&quot;/a&quot;,opacity:/^0.55$/.test(j.style.opacity),cssFloat:!!j.style.cssFloat,checkOn:d.getElementsByTagName(&quot;input&quot;)[0].value===&quot;on&quot;,optSelected:s.createElement(&quot;select&quot;).appendChild(s.createElement(&quot;option&quot;)).selected,
+          parentNode:d.removeChild(d.appendChild(s.createElement(&quot;div&quot;))).parentNode===null,deleteExpando:true,checkClone:false,scriptEval:false,noCloneEvent:true,boxModel:null&#125;;b.type=&quot;text/javascript&quot;;try&#123;b.appendChild(s.createTextNode(&quot;window.&quot;+f+&quot;=1;&quot;))&#125;catch(i)&#123;&#125;a.insertBefore(b,a.firstChild);if(A[f])&#123;c.support.scriptEval=true;delete A[f]&#125;try&#123;delete b.test&#125;catch(o)&#123;c.support.deleteExpando=false&#125;a.removeChild(b);if(d.attachEvent&amp;&amp;d.fireEvent)&#123;d.attachEvent(&quot;onclick&quot;,function k()&#123;c.support.noCloneEvent=
+          false;d.detachEvent(&quot;onclick&quot;,k)&#125;);d.cloneNode(true).fireEvent(&quot;onclick&quot;)&#125;d=s.createElement(&quot;div&quot;);d.innerHTML=&quot;&lt;input type=&#39;radio&#39; name=&#39;radiotest&#39; checked=&#39;checked&#39;/&gt;&quot;;a=s.createDocumentFragment();a.appendChild(d.firstChild);c.support.checkClone=a.cloneNode(true).cloneNode(true).lastChild.checked;c(function()&#123;var k=s.createElement(&quot;div&quot;);k.style.width=k.style.paddingLeft=&quot;1px&quot;;s.body.appendChild(k);c.boxModel=c.support.boxModel=k.offsetWidth===2;s.body.removeChild(k).style.display=&quot;none&quot;&#125;);a=function(k)&#123;var n=
+          s.createElement(&quot;div&quot;);k=&quot;on&quot;+k;var r=k in n;if(!r)&#123;n.setAttribute(k,&quot;return;&quot;);r=typeof n[k]===&quot;function&quot;&#125;return r&#125;;c.support.submitBubbles=a(&quot;submit&quot;);c.support.changeBubbles=a(&quot;change&quot;);a=b=d=e=j=null&#125;&#125;)();c.props=&#123;&quot;for&quot;:&quot;htmlFor&quot;,&quot;class&quot;:&quot;className&quot;,readonly:&quot;readOnly&quot;,maxlength:&quot;maxLength&quot;,cellspacing:&quot;cellSpacing&quot;,rowspan:&quot;rowSpan&quot;,colspan:&quot;colSpan&quot;,tabindex:&quot;tabIndex&quot;,usemap:&quot;useMap&quot;,frameborder:&quot;frameBorder&quot;&#125;;var G=&quot;jQuery&quot;+J(),Ya=0,za=&#123;&#125;;c.extend(&#123;cache:&#123;&#125;,expando:G,noData:&#123;embed:true,object:true,
+          applet:true&#125;,data:function(a,b,d)&#123;if(!(a.nodeName&amp;&amp;c.noData[a.nodeName.toLowerCase()]))&#123;a=a==A?za:a;var f=a[G],e=c.cache;if(!f&amp;&amp;typeof b===&quot;string&quot;&amp;&amp;d===w)return null;f||(f=++Ya);if(typeof b===&quot;object&quot;)&#123;a[G]=f;e[f]=c.extend(true,&#123;&#125;,b)&#125;else if(!e[f])&#123;a[G]=f;e[f]=&#123;&#125;&#125;a=e[f];if(d!==w)a[b]=d;return typeof b===&quot;string&quot;?a[b]:a&#125;&#125;,removeData:function(a,b)&#123;if(!(a.nodeName&amp;&amp;c.noData[a.nodeName.toLowerCase()]))&#123;a=a==A?za:a;var d=a[G],f=c.cache,e=f[d];if(b)&#123;if(e)&#123;delete e[b];c.isEmptyObject(e)&amp;&amp;c.removeData(a)&#125;&#125;else&#123;if(c.support.deleteExpando)delete a[c.expando];
+      else a.removeAttribute&amp;&amp;a.removeAttribute(c.expando);delete f[d]&#125;&#125;&#125;&#125;);c.fn.extend(&#123;data:function(a,b)&#123;if(typeof a===&quot;undefined&quot;&amp;&amp;this.length)return c.data(this[0]);else if(typeof a===&quot;object&quot;)return this.each(function()&#123;c.data(this,a)&#125;);var d=a.split(&quot;.&quot;);d[1]=d[1]?&quot;.&quot;+d[1]:&quot;&quot;;if(b===w)&#123;var f=this.triggerHandler(&quot;getData&quot;+d[1]+&quot;!&quot;,[d[0]]);if(f===w&amp;&amp;this.length)f=c.data(this[0],a);return f===w&amp;&amp;d[1]?this.data(d[0]):f&#125;else return this.trigger(&quot;setData&quot;+d[1]+&quot;!&quot;,[d[0],b]).each(function()&#123;c.data(this,
+          a,b)&#125;)&#125;,removeData:function(a)&#123;return this.each(function()&#123;c.removeData(this,a)&#125;)&#125;&#125;);c.extend(&#123;queue:function(a,b,d)&#123;if(a)&#123;b=(b||&quot;fx&quot;)+&quot;queue&quot;;var f=c.data(a,b);if(!d)return f||[];if(!f||c.isArray(d))f=c.data(a,b,c.makeArray(d));else f.push(d);return f&#125;&#125;,dequeue:function(a,b)&#123;b=b||&quot;fx&quot;;var d=c.queue(a,b),f=d.shift();if(f===&quot;inprogress&quot;)f=d.shift();if(f)&#123;b===&quot;fx&quot;&amp;&amp;d.unshift(&quot;inprogress&quot;);f.call(a,function()&#123;c.dequeue(a,b)&#125;)&#125;&#125;&#125;);c.fn.extend(&#123;queue:function(a,b)&#123;if(typeof a!==&quot;string&quot;)&#123;b=a;a=&quot;fx&quot;&#125;if(b===
+          w)return c.queue(this[0],a);return this.each(function()&#123;var d=c.queue(this,a,b);a===&quot;fx&quot;&amp;&amp;d[0]!==&quot;inprogress&quot;&amp;&amp;c.dequeue(this,a)&#125;)&#125;,dequeue:function(a)&#123;return this.each(function()&#123;c.dequeue(this,a)&#125;)&#125;,delay:function(a,b)&#123;a=c.fx?c.fx.speeds[a]||a:a;b=b||&quot;fx&quot;;return this.queue(b,function()&#123;var d=this;setTimeout(function()&#123;c.dequeue(d,b)&#125;,a)&#125;)&#125;,clearQueue:function(a)&#123;return this.queue(a||&quot;fx&quot;,[])&#125;&#125;);var Aa=/[\n\t]/g,ca=/\s+/,Za=/\r/g,$a=/href|src|style/,ab=/(button|input)/i,bb=/(button|input|object|select|textarea)/i,
+      cb=/^(a|area)$/i,Ba=/radio|checkbox/;c.fn.extend(&#123;attr:function(a,b)&#123;return X(this,a,b,true,c.attr)&#125;,removeAttr:function(a)&#123;return this.each(function()&#123;c.attr(this,a,&quot;&quot;);this.nodeType===1&amp;&amp;this.removeAttribute(a)&#125;)&#125;,addClass:function(a)&#123;if(c.isFunction(a))return this.each(function(n)&#123;var r=c(this);r.addClass(a.call(this,n,r.attr(&quot;class&quot;)))&#125;);if(a&amp;&amp;typeof a===&quot;string&quot;)for(var b=(a||&quot;&quot;).split(ca),d=0,f=this.length;d&lt;f;d++)&#123;var e=this[d];if(e.nodeType===1)if(e.className)&#123;for(var j=&quot; &quot;+e.className+&quot; &quot;,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       i=e.className,o=0,k=b.length;o&lt;k;o++)if(j.indexOf(&quot; &quot;+b[o]+&quot; &quot;)&lt;0)i+=&quot; &quot;+b[o];e.className=c.trim(i)&#125;else e.className=a&#125;return this&#125;,removeClass:function(a)&#123;if(c.isFunction(a))return this.each(function(k)&#123;var n=c(this);n.removeClass(a.call(this,k,n.attr(&quot;class&quot;)))&#125;);if(a&amp;&amp;typeof a===&quot;string&quot;||a===w)for(var b=(a||&quot;&quot;).split(ca),d=0,f=this.length;d&lt;f;d++)&#123;var e=this[d];if(e.nodeType===1&amp;&amp;e.className)if(a)&#123;for(var j=(&quot; &quot;+e.className+&quot; &quot;).replace(Aa,&quot; &quot;),i=0,o=b.length;i&lt;o;i++)j=j.replace(&quot; &quot;+b[i]+&quot; &quot;,
+          &quot; &quot;);e.className=c.trim(j)&#125;else e.className=&quot;&quot;&#125;return this&#125;,toggleClass:function(a,b)&#123;var d=typeof a,f=typeof b===&quot;boolean&quot;;if(c.isFunction(a))return this.each(function(e)&#123;var j=c(this);j.toggleClass(a.call(this,e,j.attr(&quot;class&quot;),b),b)&#125;);return this.each(function()&#123;if(d===&quot;string&quot;)for(var e,j=0,i=c(this),o=b,k=a.split(ca);e=k[j++];)&#123;o=f?o:!i.hasClass(e);i[o?&quot;addClass&quot;:&quot;removeClass&quot;](e)&#125;else if(d===&quot;undefined&quot;||d===&quot;boolean&quot;)&#123;this.className&amp;&amp;c.data(this,&quot;__className__&quot;,this.className);this.className=
+          this.className||a===false?&quot;&quot;:c.data(this,&quot;__className__&quot;)||&quot;&quot;&#125;&#125;)&#125;,hasClass:function(a)&#123;a=&quot; &quot;+a+&quot; &quot;;for(var b=0,d=this.length;b&lt;d;b++)if((&quot; &quot;+this[b].className+&quot; &quot;).replace(Aa,&quot; &quot;).indexOf(a)&gt;-1)return true;return false&#125;,val:function(a)&#123;if(a===w)&#123;var b=this[0];if(b)&#123;if(c.nodeName(b,&quot;option&quot;))return(b.attributes.value||&#123;&#125;).specified?b.value:b.text;if(c.nodeName(b,&quot;select&quot;))&#123;var d=b.selectedIndex,f=[],e=b.options;b=b.type===&quot;select-one&quot;;if(d&lt;0)return null;var j=b?d:0;for(d=b?d+1:e.length;j&lt;d;j++)&#123;var i=
+          e[j];if(i.selected)&#123;a=c(i).val();if(b)return a;f.push(a)&#125;&#125;return f&#125;if(Ba.test(b.type)&amp;&amp;!c.support.checkOn)return b.getAttribute(&quot;value&quot;)===null?&quot;on&quot;:b.value;return(b.value||&quot;&quot;).replace(Za,&quot;&quot;)&#125;return w&#125;var o=c.isFunction(a);return this.each(function(k)&#123;var n=c(this),r=a;if(this.nodeType===1)&#123;if(o)r=a.call(this,k,n.val());if(typeof r===&quot;number&quot;)r+=&quot;&quot;;if(c.isArray(r)&amp;&amp;Ba.test(this.type))this.checked=c.inArray(n.val(),r)&gt;=0;else if(c.nodeName(this,&quot;select&quot;))&#123;var u=c.makeArray(r);c(&quot;option&quot;,this).each(function()&#123;this.selected=
+          c.inArray(c(this).val(),u)&gt;=0&#125;);if(!u.length)this.selectedIndex=-1&#125;else this.value=r&#125;&#125;)&#125;&#125;);c.extend(&#123;attrFn:&#123;val:true,css:true,html:true,text:true,data:true,width:true,height:true,offset:true&#125;,attr:function(a,b,d,f)&#123;if(!a||a.nodeType===3||a.nodeType===8)return w;if(f&amp;&amp;b in c.attrFn)return c(a)[b](d);f=a.nodeType!==1||!c.isXMLDoc(a);var e=d!==w;b=f&amp;&amp;c.props[b]||b;if(a.nodeType===1)&#123;var j=$a.test(b);if(b in a&amp;&amp;f&amp;&amp;!j)&#123;if(e)&#123;b===&quot;type&quot;&amp;&amp;ab.test(a.nodeName)&amp;&amp;a.parentNode&amp;&amp;c.error(&quot;type property can&#39;t be changed&quot;);
+          a[b]=d&#125;if(c.nodeName(a,&quot;form&quot;)&amp;&amp;a.getAttributeNode(b))return a.getAttributeNode(b).nodeValue;if(b===&quot;tabIndex&quot;)return(b=a.getAttributeNode(&quot;tabIndex&quot;))&amp;&amp;b.specified?b.value:bb.test(a.nodeName)||cb.test(a.nodeName)&amp;&amp;a.href?0:w;return a[b]&#125;if(!c.support.style&amp;&amp;f&amp;&amp;b===&quot;style&quot;)&#123;if(e)a.style.cssText=&quot;&quot;+d;return a.style.cssText&#125;e&amp;&amp;a.setAttribute(b,&quot;&quot;+d);a=!c.support.hrefNormalized&amp;&amp;f&amp;&amp;j?a.getAttribute(b,2):a.getAttribute(b);return a===null?w:a&#125;return c.style(a,b,d)&#125;&#125;);var O=/\.(.*)$/,db=function(a)&#123;return a.replace(/[^\w\s\.\|`]/g,
+      function(b)&#123;return&quot;\\&quot;+b&#125;)&#125;;c.event=&#123;add:function(a,b,d,f)&#123;if(!(a.nodeType===3||a.nodeType===8))&#123;if(a.setInterval&amp;&amp;a!==A&amp;&amp;!a.frameElement)a=A;var e,j;if(d.handler)&#123;e=d;d=e.handler&#125;if(!d.guid)d.guid=c.guid++;if(j=c.data(a))&#123;var i=j.events=j.events||&#123;&#125;,o=j.handle;if(!o)j.handle=o=function()&#123;return typeof c!==&quot;undefined&quot;&amp;&amp;!c.event.triggered?c.event.handle.apply(o.elem,arguments):w&#125;;o.elem=a;b=b.split(&quot; &quot;);for(var k,n=0,r;k=b[n++];)&#123;j=e?c.extend(&#123;&#125;,e):&#123;handler:d,data:f&#125;;if(k.indexOf(&quot;.&quot;)&gt;-1)&#123;r=k.split(&quot;.&quot;);
+          k=r.shift();j.namespace=r.slice(0).sort().join(&quot;.&quot;)&#125;else&#123;r=[];j.namespace=&quot;&quot;&#125;j.type=k;j.guid=d.guid;var u=i[k],z=c.event.special[k]||&#123;&#125;;if(!u)&#123;u=i[k]=[];if(!z.setup||z.setup.call(a,f,r,o)===false)if(a.addEventListener)a.addEventListener(k,o,false);else a.attachEvent&amp;&amp;a.attachEvent(&quot;on&quot;+k,o)&#125;if(z.add)&#123;z.add.call(a,j);if(!j.handler.guid)j.handler.guid=d.guid&#125;u.push(j);c.event.global[k]=true&#125;a=null&#125;&#125;&#125;,global:&#123;&#125;,remove:function(a,b,d,f)&#123;if(!(a.nodeType===3||a.nodeType===8))&#123;var e,j=0,i,o,k,n,r,u,z=c.data(a),
+          C=z&amp;&amp;z.events;if(z&amp;&amp;C)&#123;if(b&amp;&amp;b.type)&#123;d=b.handler;b=b.type&#125;if(!b||typeof b===&quot;string&quot;&amp;&amp;b.charAt(0)===&quot;.&quot;)&#123;b=b||&quot;&quot;;for(e in C)c.event.remove(a,e+b)&#125;else&#123;for(b=b.split(&quot; &quot;);e=b[j++];)&#123;n=e;i=e.indexOf(&quot;.&quot;)&lt;0;o=[];if(!i)&#123;o=e.split(&quot;.&quot;);e=o.shift();k=new RegExp(&quot;(^|\\.)&quot;+c.map(o.slice(0).sort(),db).join(&quot;\\.(?:.*\\.)?&quot;)+&quot;(\\.|$)&quot;)&#125;if(r=C[e])if(d)&#123;n=c.event.special[e]||&#123;&#125;;for(B=f||0;B&lt;r.length;B++)&#123;u=r[B];if(d.guid===u.guid)&#123;if(i||k.test(u.namespace))&#123;f==null&amp;&amp;r.splice(B--,1);n.remove&amp;&amp;n.remove.call(a,u)&#125;if(f!=
+          null)break&#125;&#125;if(r.length===0||f!=null&amp;&amp;r.length===1)&#123;if(!n.teardown||n.teardown.call(a,o)===false)Ca(a,e,z.handle);delete C[e]&#125;&#125;else for(var B=0;B&lt;r.length;B++)&#123;u=r[B];if(i||k.test(u.namespace))&#123;c.event.remove(a,n,u.handler,B);r.splice(B--,1)&#125;&#125;&#125;if(c.isEmptyObject(C))&#123;if(b=z.handle)b.elem=null;delete z.events;delete z.handle;c.isEmptyObject(z)&amp;&amp;c.removeData(a)&#125;&#125;&#125;&#125;&#125;,trigger:function(a,b,d,f)&#123;var e=a.type||a;if(!f)&#123;a=typeof a===&quot;object&quot;?a[G]?a:c.extend(c.Event(e),a):c.Event(e);if(e.indexOf(&quot;!&quot;)&gt;=0)&#123;a.type=
+          e=e.slice(0,-1);a.exclusive=true&#125;if(!d)&#123;a.stopPropagation();c.event.global[e]&amp;&amp;c.each(c.cache,function()&#123;this.events&amp;&amp;this.events[e]&amp;&amp;c.event.trigger(a,b,this.handle.elem)&#125;)&#125;if(!d||d.nodeType===3||d.nodeType===8)return w;a.result=w;a.target=d;b=c.makeArray(b);b.unshift(a)&#125;a.currentTarget=d;(f=c.data(d,&quot;handle&quot;))&amp;&amp;f.apply(d,b);f=d.parentNode||d.ownerDocument;try&#123;if(!(d&amp;&amp;d.nodeName&amp;&amp;c.noData[d.nodeName.toLowerCase()]))if(d[&quot;on&quot;+e]&amp;&amp;d[&quot;on&quot;+e].apply(d,b)===false)a.result=false&#125;catch(j)&#123;&#125;if(!a.isPropagationStopped()&amp;&amp;
+          f)c.event.trigger(a,b,f,true);else if(!a.isDefaultPrevented())&#123;f=a.target;var i,o=c.nodeName(f,&quot;a&quot;)&amp;&amp;e===&quot;click&quot;,k=c.event.special[e]||&#123;&#125;;if((!k._default||k._default.call(d,a)===false)&amp;&amp;!o&amp;&amp;!(f&amp;&amp;f.nodeName&amp;&amp;c.noData[f.nodeName.toLowerCase()]))&#123;try&#123;if(f[e])&#123;if(i=f[&quot;on&quot;+e])f[&quot;on&quot;+e]=null;c.event.triggered=true;f[e]()&#125;&#125;catch(n)&#123;&#125;if(i)f[&quot;on&quot;+e]=i;c.event.triggered=false&#125;&#125;&#125;,handle:function(a)&#123;var b,d,f,e;a=arguments[0]=c.event.fix(a||A.event);a.currentTarget=this;b=a.type.indexOf(&quot;.&quot;)&lt;0&amp;&amp;!a.exclusive;
+          if(!b)&#123;d=a.type.split(&quot;.&quot;);a.type=d.shift();f=new RegExp(&quot;(^|\\.)&quot;+d.slice(0).sort().join(&quot;\\.(?:.*\\.)?&quot;)+&quot;(\\.|$)&quot;)&#125;e=c.data(this,&quot;events&quot;);d=e[a.type];if(e&amp;&amp;d)&#123;d=d.slice(0);e=0;for(var j=d.length;e&lt;j;e++)&#123;var i=d[e];if(b||f.test(i.namespace))&#123;a.handler=i.handler;a.data=i.data;a.handleObj=i;i=i.handler.apply(this,arguments);if(i!==w)&#123;a.result=i;if(i===false)&#123;a.preventDefault();a.stopPropagation()&#125;&#125;if(a.isImmediatePropagationStopped())break&#125;&#125;&#125;return a.result&#125;,props:&quot;altKey attrChange attrName bubbles button cancelable charCode clientX clientY ctrlKey currentTarget data detail eventPhase fromElement handler keyCode layerX layerY metaKey newValue offsetX offsetY originalTarget pageX pageY prevValue relatedNode relatedTarget screenX screenY shiftKey srcElement target toElement view wheelDelta which&quot;.split(&quot; &quot;),
+      fix:function(a)&#123;if(a[G])return a;var b=a;a=c.Event(b);for(var d=this.props.length,f;d;)&#123;f=this.props[--d];a[f]=b[f]&#125;if(!a.target)a.target=a.srcElement||s;if(a.target.nodeType===3)a.target=a.target.parentNode;if(!a.relatedTarget&amp;&amp;a.fromElement)a.relatedTarget=a.fromElement===a.target?a.toElement:a.fromElement;if(a.pageX==null&amp;&amp;a.clientX!=null)&#123;b=s.documentElement;d=s.body;a.pageX=a.clientX+(b&amp;&amp;b.scrollLeft||d&amp;&amp;d.scrollLeft||0)-(b&amp;&amp;b.clientLeft||d&amp;&amp;d.clientLeft||0);a.pageY=a.clientY+(b&amp;&amp;b.scrollTop||
+          d&amp;&amp;d.scrollTop||0)-(b&amp;&amp;b.clientTop||d&amp;&amp;d.clientTop||0)&#125;if(!a.which&amp;&amp;(a.charCode||a.charCode===0?a.charCode:a.keyCode))a.which=a.charCode||a.keyCode;if(!a.metaKey&amp;&amp;a.ctrlKey)a.metaKey=a.ctrlKey;if(!a.which&amp;&amp;a.button!==w)a.which=a.button&amp;1?1:a.button&amp;2?3:a.button&amp;4?2:0;return a&#125;,guid:1E8,proxy:c.proxy,special:&#123;ready:&#123;setup:c.bindReady,teardown:c.noop&#125;,live:&#123;add:function(a)&#123;c.event.add(this,a.origType,c.extend(&#123;&#125;,a,&#123;handler:oa&#125;))&#125;,remove:function(a)&#123;var b=true,d=a.origType.replace(O,&quot;&quot;);c.each(c.data(this,
+                  &quot;events&quot;).live||[],function()&#123;if(d===this.origType.replace(O,&quot;&quot;))return b=false&#125;);b&amp;&amp;c.event.remove(this,a.origType,oa)&#125;&#125;,beforeunload:&#123;setup:function(a,b,d)&#123;if(this.setInterval)this.onbeforeunload=d;return false&#125;,teardown:function(a,b)&#123;if(this.onbeforeunload===b)this.onbeforeunload=null&#125;&#125;&#125;&#125;;var Ca=s.removeEventListener?function(a,b,d)&#123;a.removeEventListener(b,d,false)&#125;:function(a,b,d)&#123;a.detachEvent(&quot;on&quot;+b,d)&#125;;c.Event=function(a)&#123;if(!this.preventDefault)return new c.Event(a);if(a&amp;&amp;a.type)&#123;this.originalEvent=
+      a;this.type=a.type&#125;else this.type=a;this.timeStamp=J();this[G]=true&#125;;c.Event.prototype=&#123;preventDefault:function()&#123;this.isDefaultPrevented=Z;var a=this.originalEvent;if(a)&#123;a.preventDefault&amp;&amp;a.preventDefault();a.returnValue=false&#125;&#125;,stopPropagation:function()&#123;this.isPropagationStopped=Z;var a=this.originalEvent;if(a)&#123;a.stopPropagation&amp;&amp;a.stopPropagation();a.cancelBubble=true&#125;&#125;,stopImmediatePropagation:function()&#123;this.isImmediatePropagationStopped=Z;this.stopPropagation()&#125;,isDefaultPrevented:Y,isPropagationStopped:Y,
+      isImmediatePropagationStopped:Y&#125;;var Da=function(a)&#123;var b=a.relatedTarget;try&#123;for(;b&amp;&amp;b!==this;)b=b.parentNode;if(b!==this)&#123;a.type=a.data;c.event.handle.apply(this,arguments)&#125;&#125;catch(d)&#123;&#125;&#125;,Ea=function(a)&#123;a.type=a.data;c.event.handle.apply(this,arguments)&#125;;c.each(&#123;mouseenter:&quot;mouseover&quot;,mouseleave:&quot;mouseout&quot;&#125;,function(a,b)&#123;c.event.special[a]=&#123;setup:function(d)&#123;c.event.add(this,b,d&amp;&amp;d.selector?Ea:Da,a)&#125;,teardown:function(d)&#123;c.event.remove(this,b,d&amp;&amp;d.selector?Ea:Da)&#125;&#125;&#125;);if(!c.support.submitBubbles)c.event.special.submit=
+      &#123;setup:function()&#123;if(this.nodeName.toLowerCase()!==&quot;form&quot;)&#123;c.event.add(this,&quot;click.specialSubmit&quot;,function(a)&#123;var b=a.target,d=b.type;if((d===&quot;submit&quot;||d===&quot;image&quot;)&amp;&amp;c(b).closest(&quot;form&quot;).length)return na(&quot;submit&quot;,this,arguments)&#125;);c.event.add(this,&quot;keypress.specialSubmit&quot;,function(a)&#123;var b=a.target,d=b.type;if((d===&quot;text&quot;||d===&quot;password&quot;)&amp;&amp;c(b).closest(&quot;form&quot;).length&amp;&amp;a.keyCode===13)return na(&quot;submit&quot;,this,arguments)&#125;)&#125;else return false&#125;,teardown:function()&#123;c.event.remove(this,&quot;.specialSubmit&quot;)&#125;&#125;;
+      if(!c.support.changeBubbles)&#123;var da=/textarea|input|select/i,ea,Fa=function(a)&#123;var b=a.type,d=a.value;if(b===&quot;radio&quot;||b===&quot;checkbox&quot;)d=a.checked;else if(b===&quot;select-multiple&quot;)d=a.selectedIndex&gt;-1?c.map(a.options,function(f)&#123;return f.selected&#125;).join(&quot;-&quot;):&quot;&quot;;else if(a.nodeName.toLowerCase()===&quot;select&quot;)d=a.selectedIndex;return d&#125;,fa=function(a,b)&#123;var d=a.target,f,e;if(!(!da.test(d.nodeName)||d.readOnly))&#123;f=c.data(d,&quot;_change_data&quot;);e=Fa(d);if(a.type!==&quot;focusout&quot;||d.type!==&quot;radio&quot;)c.data(d,&quot;_change_data&quot;,
+          e);if(!(f===w||e===f))if(f!=null||e)&#123;a.type=&quot;change&quot;;return c.event.trigger(a,b,d)&#125;&#125;&#125;;c.event.special.change=&#123;filters:&#123;focusout:fa,click:function(a)&#123;var b=a.target,d=b.type;if(d===&quot;radio&quot;||d===&quot;checkbox&quot;||b.nodeName.toLowerCase()===&quot;select&quot;)return fa.call(this,a)&#125;,keydown:function(a)&#123;var b=a.target,d=b.type;if(a.keyCode===13&amp;&amp;b.nodeName.toLowerCase()!==&quot;textarea&quot;||a.keyCode===32&amp;&amp;(d===&quot;checkbox&quot;||d===&quot;radio&quot;)||d===&quot;select-multiple&quot;)return fa.call(this,a)&#125;,beforeactivate:function(a)&#123;a=a.target;c.data(a,
+                  &quot;_change_data&quot;,Fa(a))&#125;&#125;,setup:function()&#123;if(this.type===&quot;file&quot;)return false;for(var a in ea)c.event.add(this,a+&quot;.specialChange&quot;,ea[a]);return da.test(this.nodeName)&#125;,teardown:function()&#123;c.event.remove(this,&quot;.specialChange&quot;);return da.test(this.nodeName)&#125;&#125;;ea=c.event.special.change.filters&#125;s.addEventListener&amp;&amp;c.each(&#123;focus:&quot;focusin&quot;,blur:&quot;focusout&quot;&#125;,function(a,b)&#123;function d(f)&#123;f=c.event.fix(f);f.type=b;return c.event.handle.call(this,f)&#125;c.event.special[b]=&#123;setup:function()&#123;this.addEventListener(a,
+              d,true)&#125;,teardown:function()&#123;this.removeEventListener(a,d,true)&#125;&#125;&#125;);c.each([&quot;bind&quot;,&quot;one&quot;],function(a,b)&#123;c.fn[b]=function(d,f,e)&#123;if(typeof d===&quot;object&quot;)&#123;for(var j in d)this[b](j,f,d[j],e);return this&#125;if(c.isFunction(f))&#123;e=f;f=w&#125;var i=b===&quot;one&quot;?c.proxy(e,function(k)&#123;c(this).unbind(k,i);return e.apply(this,arguments)&#125;):e;if(d===&quot;unload&quot;&amp;&amp;b!==&quot;one&quot;)this.one(d,f,e);else&#123;j=0;for(var o=this.length;j&lt;o;j++)c.event.add(this[j],d,i,f)&#125;return this&#125;&#125;);c.fn.extend(&#123;unbind:function(a,b)&#123;if(typeof a===&quot;object&quot;&amp;&amp;
+              !a.preventDefault)for(var d in a)this.unbind(d,a[d]);else&#123;d=0;for(var f=this.length;d&lt;f;d++)c.event.remove(this[d],a,b)&#125;return this&#125;,delegate:function(a,b,d,f)&#123;return this.live(b,d,f,a)&#125;,undelegate:function(a,b,d)&#123;return arguments.length===0?this.unbind(&quot;live&quot;):this.die(b,null,d,a)&#125;,trigger:function(a,b)&#123;return this.each(function()&#123;c.event.trigger(a,b,this)&#125;)&#125;,triggerHandler:function(a,b)&#123;if(this[0])&#123;a=c.Event(a);a.preventDefault();a.stopPropagation();c.event.trigger(a,b,this[0]);return a.result&#125;&#125;,
+          toggle:function(a)&#123;for(var b=arguments,d=1;d&lt;b.length;)c.proxy(a,b[d++]);return this.click(c.proxy(a,function(f)&#123;var e=(c.data(this,&quot;lastToggle&quot;+a.guid)||0)%d;c.data(this,&quot;lastToggle&quot;+a.guid,e+1);f.preventDefault();return b[e].apply(this,arguments)||false&#125;))&#125;,hover:function(a,b)&#123;return this.mouseenter(a).mouseleave(b||a)&#125;&#125;);var Ga=&#123;focus:&quot;focusin&quot;,blur:&quot;focusout&quot;,mouseenter:&quot;mouseover&quot;,mouseleave:&quot;mouseout&quot;&#125;;c.each([&quot;live&quot;,&quot;die&quot;],function(a,b)&#123;c.fn[b]=function(d,f,e,j)&#123;var i,o=0,k,n,r=j||this.selector,
+          u=j?this:c(this.context);if(c.isFunction(f))&#123;e=f;f=w&#125;for(d=(d||&quot;&quot;).split(&quot; &quot;);(i=d[o++])!=null;)&#123;j=O.exec(i);k=&quot;&quot;;if(j)&#123;k=j[0];i=i.replace(O,&quot;&quot;)&#125;if(i===&quot;hover&quot;)d.push(&quot;mouseenter&quot;+k,&quot;mouseleave&quot;+k);else&#123;n=i;if(i===&quot;focus&quot;||i===&quot;blur&quot;)&#123;d.push(Ga[i]+k);i+=k&#125;else i=(Ga[i]||i)+k;b===&quot;live&quot;?u.each(function()&#123;c.event.add(this,pa(i,r),&#123;data:f,selector:r,handler:e,origType:i,origHandler:e,preType:n&#125;)&#125;):u.unbind(pa(i,r),e)&#125;&#125;return this&#125;&#125;);c.each(&quot;blur focus focusin focusout load resize scroll unload click dblclick mousedown mouseup mousemove mouseover mouseout mouseenter mouseleave change select submit keydown keypress keyup error&quot;.split(&quot; &quot;),
+          function(a,b)&#123;c.fn[b]=function(d)&#123;return d?this.bind(b,d):this.trigger(b)&#125;;if(c.attrFn)c.attrFn[b]=true&#125;);A.attachEvent&amp;&amp;!A.addEventListener&amp;&amp;A.attachEvent(&quot;onunload&quot;,function()&#123;for(var a in c.cache)if(c.cache[a].handle)try&#123;c.event.remove(c.cache[a].handle.elem)&#125;catch(b)&#123;&#125;&#125;);(function()&#123;function a(g)&#123;for(var h=&quot;&quot;,l,m=0;g[m];m++)&#123;l=g[m];if(l.nodeType===3||l.nodeType===4)h+=l.nodeValue;else if(l.nodeType!==8)h+=a(l.childNodes)&#125;return h&#125;function b(g,h,l,m,q,p)&#123;q=0;for(var v=m.length;q&lt;v;q++)&#123;var t=m[q];
+          if(t)&#123;t=t[g];for(var y=false;t;)&#123;if(t.sizcache===l)&#123;y=m[t.sizset];break&#125;if(t.nodeType===1&amp;&amp;!p)&#123;t.sizcache=l;t.sizset=q&#125;if(t.nodeName.toLowerCase()===h)&#123;y=t;break&#125;t=t[g]&#125;m[q]=y&#125;&#125;&#125;function d(g,h,l,m,q,p)&#123;q=0;for(var v=m.length;q&lt;v;q++)&#123;var t=m[q];if(t)&#123;t=t[g];for(var y=false;t;)&#123;if(t.sizcache===l)&#123;y=m[t.sizset];break&#125;if(t.nodeType===1)&#123;if(!p)&#123;t.sizcache=l;t.sizset=q&#125;if(typeof h!==&quot;string&quot;)&#123;if(t===h)&#123;y=true;break&#125;&#125;else if(k.filter(h,[t]).length&gt;0)&#123;y=t;break&#125;&#125;t=t[g]&#125;m[q]=y&#125;&#125;&#125;var f=/((?:\((?:\([^()]+\)|[^()]+)+\)|\[(?:\[[^[\]]*\]|[&#39;&quot;][^&#39;&quot;]*[&#39;&quot;]|[^[\]&#39;&quot;]+)+\]|\\.|[^ &gt;+~,(\[\\]+)+|[&gt;+~])(\s*,\s*)?((?:.|\r|\n)*)/g,
+          e=0,j=Object.prototype.toString,i=false,o=true;[0,0].sort(function()&#123;o=false;return 0&#125;);var k=function(g,h,l,m)&#123;l=l||[];var q=h=h||s;if(h.nodeType!==1&amp;&amp;h.nodeType!==9)return[];if(!g||typeof g!==&quot;string&quot;)return l;for(var p=[],v,t,y,S,H=true,M=x(h),I=g;(f.exec(&quot;&quot;),v=f.exec(I))!==null;)&#123;I=v[3];p.push(v[1]);if(v[2])&#123;S=v[3];break&#125;&#125;if(p.length&gt;1&amp;&amp;r.exec(g))if(p.length===2&amp;&amp;n.relative[p[0]])t=ga(p[0]+p[1],h);else for(t=n.relative[p[0]]?[h]:k(p.shift(),h);p.length;)&#123;g=p.shift();if(n.relative[g])g+=p.shift();
+          t=ga(g,t)&#125;else&#123;if(!m&amp;&amp;p.length&gt;1&amp;&amp;h.nodeType===9&amp;&amp;!M&amp;&amp;n.match.ID.test(p[0])&amp;&amp;!n.match.ID.test(p[p.length-1]))&#123;v=k.find(p.shift(),h,M);h=v.expr?k.filter(v.expr,v.set)[0]:v.set[0]&#125;if(h)&#123;v=m?&#123;expr:p.pop(),set:z(m)&#125;:k.find(p.pop(),p.length===1&amp;&amp;(p[0]===&quot;~&quot;||p[0]===&quot;+&quot;)&amp;&amp;h.parentNode?h.parentNode:h,M);t=v.expr?k.filter(v.expr,v.set):v.set;if(p.length&gt;0)y=z(t);else H=false;for(;p.length;)&#123;var D=p.pop();v=D;if(n.relative[D])v=p.pop();else D=&quot;&quot;;if(v==null)v=h;n.relative[D](y,v,M)&#125;&#125;else y=[]&#125;y||(y=t);y||k.error(D||
+          g);if(j.call(y)===&quot;[object Array]&quot;)if(H)if(h&amp;&amp;h.nodeType===1)for(g=0;y[g]!=null;g++)&#123;if(y[g]&amp;&amp;(y[g]===true||y[g].nodeType===1&amp;&amp;E(h,y[g])))l.push(t[g])&#125;else for(g=0;y[g]!=null;g++)y[g]&amp;&amp;y[g].nodeType===1&amp;&amp;l.push(t[g]);else l.push.apply(l,y);else z(y,l);if(S)&#123;k(S,q,l,m);k.uniqueSort(l)&#125;return l&#125;;k.uniqueSort=function(g)&#123;if(B)&#123;i=o;g.sort(B);if(i)for(var h=1;h&lt;g.length;h++)g[h]===g[h-1]&amp;&amp;g.splice(h--,1)&#125;return g&#125;;k.matches=function(g,h)&#123;return k(g,null,null,h)&#125;;k.find=function(g,h,l)&#123;var m,q;if(!g)return[];
+          for(var p=0,v=n.order.length;p&lt;v;p++)&#123;var t=n.order[p];if(q=n.leftMatch[t].exec(g))&#123;var y=q[1];q.splice(1,1);if(y.substr(y.length-1)!==&quot;\\&quot;)&#123;q[1]=(q[1]||&quot;&quot;).replace(/\\/g,&quot;&quot;);m=n.find[t](q,h,l);if(m!=null)&#123;g=g.replace(n.match[t],&quot;&quot;);break&#125;&#125;&#125;&#125;m||(m=h.getElementsByTagName(&quot;*&quot;));return&#123;set:m,expr:g&#125;&#125;;k.filter=function(g,h,l,m)&#123;for(var q=g,p=[],v=h,t,y,S=h&amp;&amp;h[0]&amp;&amp;x(h[0]);g&amp;&amp;h.length;)&#123;for(var H in n.filter)if((t=n.leftMatch[H].exec(g))!=null&amp;&amp;t[2])&#123;var M=n.filter[H],I,D;D=t[1];y=false;t.splice(1,1);if(D.substr(D.length-
+          1)!==&quot;\\&quot;)&#123;if(v===p)p=[];if(n.preFilter[H])if(t=n.preFilter[H](t,v,l,p,m,S))&#123;if(t===true)continue&#125;else y=I=true;if(t)for(var U=0;(D=v[U])!=null;U++)if(D)&#123;I=M(D,t,U,v);var Ha=m^!!I;if(l&amp;&amp;I!=null)if(Ha)y=true;else v[U]=false;else if(Ha)&#123;p.push(D);y=true&#125;&#125;if(I!==w)&#123;l||(v=p);g=g.replace(n.match[H],&quot;&quot;);if(!y)return[];break&#125;&#125;&#125;if(g===q)if(y==null)k.error(g);else break;q=g&#125;return v&#125;;k.error=function(g)&#123;throw&quot;Syntax error, unrecognized expression: &quot;+g;&#125;;var n=k.selectors=&#123;order:[&quot;ID&quot;,&quot;NAME&quot;,&quot;TAG&quot;],match:&#123;ID:/#((?:[\w\u00c0-\uFFFF-]|\\.)+)/,
+              CLASS:/\.((?:[\w\u00c0-\uFFFF-]|\\.)+)/,NAME:/\[name=[&#39;&quot;]*((?:[\w\u00c0-\uFFFF-]|\\.)+)[&#39;&quot;]*\]/,ATTR:/\[\s*((?:[\w\u00c0-\uFFFF-]|\\.)+)\s*(?:(\S?=)\s*([&#39;&quot;]*)(.*?)\3|)\s*\]/,TAG:/^((?:[\w\u00c0-\uFFFF\*-]|\\.)+)/,CHILD:/:(only|nth|last|first)-child(?:\((even|odd|[\dn+-]*)\))?/,POS:/:(nth|eq|gt|lt|first|last|even|odd)(?:\((\d*)\))?(?=[^-]|$)/,PSEUDO:/:((?:[\w\u00c0-\uFFFF-]|\\.)+)(?:\(([&#39;&quot;]?)((?:\([^\)]+\)|[^\(\)]*)+)\2\))?/&#125;,leftMatch:&#123;&#125;,attrMap:&#123;&quot;class&quot;:&quot;className&quot;,&quot;for&quot;:&quot;htmlFor&quot;&#125;,attrHandle:&#123;href:function(g)&#123;return g.getAttribute(&quot;href&quot;)&#125;&#125;,
+          relative:&#123;&quot;+&quot;:function(g,h)&#123;var l=typeof h===&quot;string&quot;,m=l&amp;&amp;!/\W/.test(h);l=l&amp;&amp;!m;if(m)h=h.toLowerCase();m=0;for(var q=g.length,p;m&lt;q;m++)if(p=g[m])&#123;for(;(p=p.previousSibling)&amp;&amp;p.nodeType!==1;);g[m]=l||p&amp;&amp;p.nodeName.toLowerCase()===h?p||false:p===h&#125;l&amp;&amp;k.filter(h,g,true)&#125;,&quot;&gt;&quot;:function(g,h)&#123;var l=typeof h===&quot;string&quot;;if(l&amp;&amp;!/\W/.test(h))&#123;h=h.toLowerCase();for(var m=0,q=g.length;m&lt;q;m++)&#123;var p=g[m];if(p)&#123;l=p.parentNode;g[m]=l.nodeName.toLowerCase()===h?l:false&#125;&#125;&#125;else&#123;m=0;for(q=g.length;m&lt;q;m++)if(p=g[m])g[m]=
+                  l?p.parentNode:p.parentNode===h;l&amp;&amp;k.filter(h,g,true)&#125;&#125;,&quot;&quot;:function(g,h,l)&#123;var m=e++,q=d;if(typeof h===&quot;string&quot;&amp;&amp;!/\W/.test(h))&#123;var p=h=h.toLowerCase();q=b&#125;q(&quot;parentNode&quot;,h,m,g,p,l)&#125;,&quot;~&quot;:function(g,h,l)&#123;var m=e++,q=d;if(typeof h===&quot;string&quot;&amp;&amp;!/\W/.test(h))&#123;var p=h=h.toLowerCase();q=b&#125;q(&quot;previousSibling&quot;,h,m,g,p,l)&#125;&#125;,find:&#123;ID:function(g,h,l)&#123;if(typeof h.getElementById!==&quot;undefined&quot;&amp;&amp;!l)return(g=h.getElementById(g[1]))?[g]:[]&#125;,NAME:function(g,h)&#123;if(typeof h.getElementsByName!==&quot;undefined&quot;)&#123;var l=[];
+                  h=h.getElementsByName(g[1]);for(var m=0,q=h.length;m&lt;q;m++)h[m].getAttribute(&quot;name&quot;)===g[1]&amp;&amp;l.push(h[m]);return l.length===0?null:l&#125;&#125;,TAG:function(g,h)&#123;return h.getElementsByTagName(g[1])&#125;&#125;,preFilter:&#123;CLASS:function(g,h,l,m,q,p)&#123;g=&quot; &quot;+g[1].replace(/\\/g,&quot;&quot;)+&quot; &quot;;if(p)return g;p=0;for(var v;(v=h[p])!=null;p++)if(v)if(q^(v.className&amp;&amp;(&quot; &quot;+v.className+&quot; &quot;).replace(/[\t\n]/g,&quot; &quot;).indexOf(g)&gt;=0))l||m.push(v);else if(l)h[p]=false;return false&#125;,ID:function(g)&#123;return g[1].replace(/\\/g,&quot;&quot;)&#125;,TAG:function(g)&#123;return g[1].toLowerCase()&#125;,
+              CHILD:function(g)&#123;if(g[1]===&quot;nth&quot;)&#123;var h=/(-?)(\d*)n((?:\+|-)?\d*)/.exec(g[2]===&quot;even&quot;&amp;&amp;&quot;2n&quot;||g[2]===&quot;odd&quot;&amp;&amp;&quot;2n+1&quot;||!/\D/.test(g[2])&amp;&amp;&quot;0n+&quot;+g[2]||g[2]);g[2]=h[1]+(h[2]||1)-0;g[3]=h[3]-0&#125;g[0]=e++;return g&#125;,ATTR:function(g,h,l,m,q,p)&#123;h=g[1].replace(/\\/g,&quot;&quot;);if(!p&amp;&amp;n.attrMap[h])g[1]=n.attrMap[h];if(g[2]===&quot;~=&quot;)g[4]=&quot; &quot;+g[4]+&quot; &quot;;return g&#125;,PSEUDO:function(g,h,l,m,q)&#123;if(g[1]===&quot;not&quot;)if((f.exec(g[3])||&quot;&quot;).length&gt;1||/^\w/.test(g[3]))g[3]=k(g[3],null,null,h);else&#123;g=k.filter(g[3],h,l,true^q);l||m.push.apply(m,
+                  g);return false&#125;else if(n.match.POS.test(g[0])||n.match.CHILD.test(g[0]))return true;return g&#125;,POS:function(g)&#123;g.unshift(true);return g&#125;&#125;,filters:&#123;enabled:function(g)&#123;return g.disabled===false&amp;&amp;g.type!==&quot;hidden&quot;&#125;,disabled:function(g)&#123;return g.disabled===true&#125;,checked:function(g)&#123;return g.checked===true&#125;,selected:function(g)&#123;return g.selected===true&#125;,parent:function(g)&#123;return!!g.firstChild&#125;,empty:function(g)&#123;return!g.firstChild&#125;,has:function(g,h,l)&#123;return!!k(l[3],g).length&#125;,header:function(g)&#123;return/h\d/i.test(g.nodeName)&#125;,
+              text:function(g)&#123;return&quot;text&quot;===g.type&#125;,radio:function(g)&#123;return&quot;radio&quot;===g.type&#125;,checkbox:function(g)&#123;return&quot;checkbox&quot;===g.type&#125;,file:function(g)&#123;return&quot;file&quot;===g.type&#125;,password:function(g)&#123;return&quot;password&quot;===g.type&#125;,submit:function(g)&#123;return&quot;submit&quot;===g.type&#125;,image:function(g)&#123;return&quot;image&quot;===g.type&#125;,reset:function(g)&#123;return&quot;reset&quot;===g.type&#125;,button:function(g)&#123;return&quot;button&quot;===g.type||g.nodeName.toLowerCase()===&quot;button&quot;&#125;,input:function(g)&#123;return/input|select|textarea|button/i.test(g.nodeName)&#125;&#125;,
+          setFilters:&#123;first:function(g,h)&#123;return h===0&#125;,last:function(g,h,l,m)&#123;return h===m.length-1&#125;,even:function(g,h)&#123;return h%2===0&#125;,odd:function(g,h)&#123;return h%2===1&#125;,lt:function(g,h,l)&#123;return h&lt;l[3]-0&#125;,gt:function(g,h,l)&#123;return h&gt;l[3]-0&#125;,nth:function(g,h,l)&#123;return l[3]-0===h&#125;,eq:function(g,h,l)&#123;return l[3]-0===h&#125;&#125;,filter:&#123;PSEUDO:function(g,h,l,m)&#123;var q=h[1],p=n.filters[q];if(p)return p(g,l,h,m);else if(q===&quot;contains&quot;)return(g.textContent||g.innerText||a([g])||&quot;&quot;).indexOf(h[3])&gt;=0;else if(q===&quot;not&quot;)&#123;h=
+                  h[3];l=0;for(m=h.length;l&lt;m;l++)if(h[l]===g)return false;return true&#125;else k.error(&quot;Syntax error, unrecognized expression: &quot;+q)&#125;,CHILD:function(g,h)&#123;var l=h[1],m=g;switch(l)&#123;case &quot;only&quot;:case &quot;first&quot;:for(;m=m.previousSibling;)if(m.nodeType===1)return false;if(l===&quot;first&quot;)return true;m=g;case &quot;last&quot;:for(;m=m.nextSibling;)if(m.nodeType===1)return false;return true;case &quot;nth&quot;:l=h[2];var q=h[3];if(l===1&amp;&amp;q===0)return true;h=h[0];var p=g.parentNode;if(p&amp;&amp;(p.sizcache!==h||!g.nodeIndex))&#123;var v=0;for(m=p.firstChild;m;m=
+                  m.nextSibling)if(m.nodeType===1)m.nodeIndex=++v;p.sizcache=h&#125;g=g.nodeIndex-q;return l===0?g===0:g%l===0&amp;&amp;g/l&gt;=0&#125;&#125;,ID:function(g,h)&#123;return g.nodeType===1&amp;&amp;g.getAttribute(&quot;id&quot;)===h&#125;,TAG:function(g,h)&#123;return h===&quot;*&quot;&amp;&amp;g.nodeType===1||g.nodeName.toLowerCase()===h&#125;,CLASS:function(g,h)&#123;return(&quot; &quot;+(g.className||g.getAttribute(&quot;class&quot;))+&quot; &quot;).indexOf(h)&gt;-1&#125;,ATTR:function(g,h)&#123;var l=h[1];g=n.attrHandle[l]?n.attrHandle[l](g):g[l]!=null?g[l]:g.getAttribute(l);l=g+&quot;&quot;;var m=h[2];h=h[4];return g==null?m===&quot;!=&quot;:m===
+              &quot;=&quot;?l===h:m===&quot;*=&quot;?l.indexOf(h)&gt;=0:m===&quot;~=&quot;?(&quot; &quot;+l+&quot; &quot;).indexOf(h)&gt;=0:!h?l&amp;&amp;g!==false:m===&quot;!=&quot;?l!==h:m===&quot;^=&quot;?l.indexOf(h)===0:m===&quot;$=&quot;?l.substr(l.length-h.length)===h:m===&quot;|=&quot;?l===h||l.substr(0,h.length+1)===h+&quot;-&quot;:false&#125;,POS:function(g,h,l,m)&#123;var q=n.setFilters[h[2]];if(q)return q(g,l,h,m)&#125;&#125;&#125;,r=n.match.POS;for(var u in n.match)&#123;n.match[u]=new RegExp(n.match[u].source+/(?![^\[]*\])(?![^\(]*\))/.source);n.leftMatch[u]=new RegExp(/(^(?:.|\r|\n)*?)/.source+n.match[u].source.replace(/\\(\d+)/g,function(g,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      h)&#123;return&quot;\\&quot;+(h-0+1)&#125;))&#125;var z=function(g,h)&#123;g=Array.prototype.slice.call(g,0);if(h)&#123;h.push.apply(h,g);return h&#125;return g&#125;;try&#123;Array.prototype.slice.call(s.documentElement.childNodes,0)&#125;catch(C)&#123;z=function(g,h)&#123;h=h||[];if(j.call(g)===&quot;[object Array]&quot;)Array.prototype.push.apply(h,g);else if(typeof g.length===&quot;number&quot;)for(var l=0,m=g.length;l&lt;m;l++)h.push(g[l]);else for(l=0;g[l];l++)h.push(g[l]);return h&#125;&#125;var B;if(s.documentElement.compareDocumentPosition)B=function(g,h)&#123;if(!g.compareDocumentPosition||
+          !h.compareDocumentPosition)&#123;if(g==h)i=true;return g.compareDocumentPosition?-1:1&#125;g=g.compareDocumentPosition(h)&amp;4?-1:g===h?0:1;if(g===0)i=true;return g&#125;;else if(&quot;sourceIndex&quot;in s.documentElement)B=function(g,h)&#123;if(!g.sourceIndex||!h.sourceIndex)&#123;if(g==h)i=true;return g.sourceIndex?-1:1&#125;g=g.sourceIndex-h.sourceIndex;if(g===0)i=true;return g&#125;;else if(s.createRange)B=function(g,h)&#123;if(!g.ownerDocument||!h.ownerDocument)&#123;if(g==h)i=true;return g.ownerDocument?-1:1&#125;var l=g.ownerDocument.createRange(),m=
+          h.ownerDocument.createRange();l.setStart(g,0);l.setEnd(g,0);m.setStart(h,0);m.setEnd(h,0);g=l.compareBoundaryPoints(Range.START_TO_END,m);if(g===0)i=true;return g&#125;;(function()&#123;var g=s.createElement(&quot;div&quot;),h=&quot;script&quot;+(new Date).getTime();g.innerHTML=&quot;&lt;a name=&#39;&quot;+h+&quot;&#39;/&gt;&quot;;var l=s.documentElement;l.insertBefore(g,l.firstChild);if(s.getElementById(h))&#123;n.find.ID=function(m,q,p)&#123;if(typeof q.getElementById!==&quot;undefined&quot;&amp;&amp;!p)return(q=q.getElementById(m[1]))?q.id===m[1]||typeof q.getAttributeNode!==&quot;undefined&quot;&amp;&amp;
+      q.getAttributeNode(&quot;id&quot;).nodeValue===m[1]?[q]:w:[]&#125;;n.filter.ID=function(m,q)&#123;var p=typeof m.getAttributeNode!==&quot;undefined&quot;&amp;&amp;m.getAttributeNode(&quot;id&quot;);return m.nodeType===1&amp;&amp;p&amp;&amp;p.nodeValue===q&#125;&#125;l.removeChild(g);l=g=null&#125;)();(function()&#123;var g=s.createElement(&quot;div&quot;);g.appendChild(s.createComment(&quot;&quot;));if(g.getElementsByTagName(&quot;*&quot;).length&gt;0)n.find.TAG=function(h,l)&#123;l=l.getElementsByTagName(h[1]);if(h[1]===&quot;*&quot;)&#123;h=[];for(var m=0;l[m];m++)l[m].nodeType===1&amp;&amp;h.push(l[m]);l=h&#125;return l&#125;;g.innerHTML=&quot;&lt;a href=&#39;#&#39;&gt;&lt;/a&gt;&quot;;
+          if(g.firstChild&amp;&amp;typeof g.firstChild.getAttribute!==&quot;undefined&quot;&amp;&amp;g.firstChild.getAttribute(&quot;href&quot;)!==&quot;#&quot;)n.attrHandle.href=function(h)&#123;return h.getAttribute(&quot;href&quot;,2)&#125;;g=null&#125;)();s.querySelectorAll&amp;&amp;function()&#123;var g=k,h=s.createElement(&quot;div&quot;);h.innerHTML=&quot;&lt;p class=&#39;TEST&#39;&gt;&lt;/p&gt;&quot;;if(!(h.querySelectorAll&amp;&amp;h.querySelectorAll(&quot;.TEST&quot;).length===0))&#123;k=function(m,q,p,v)&#123;q=q||s;if(!v&amp;&amp;q.nodeType===9&amp;&amp;!x(q))try&#123;return z(q.querySelectorAll(m),p)&#125;catch(t)&#123;&#125;return g(m,q,p,v)&#125;;for(var l in g)k[l]=g[l];h=null&#125;&#125;();
+          (function()&#123;var g=s.createElement(&quot;div&quot;);g.innerHTML=&quot;&lt;div class=&#39;test e&#39;&gt;&lt;/div&gt;&lt;div class=&#39;test&#39;&gt;&lt;/div&gt;&quot;;if(!(!g.getElementsByClassName||g.getElementsByClassName(&quot;e&quot;).length===0))&#123;g.lastChild.className=&quot;e&quot;;if(g.getElementsByClassName(&quot;e&quot;).length!==1)&#123;n.order.splice(1,0,&quot;CLASS&quot;);n.find.CLASS=function(h,l,m)&#123;if(typeof l.getElementsByClassName!==&quot;undefined&quot;&amp;&amp;!m)return l.getElementsByClassName(h[1])&#125;;g=null&#125;&#125;&#125;)();var E=s.compareDocumentPosition?function(g,h)&#123;return!!(g.compareDocumentPosition(h)&amp;16)&#125;:
+              function(g,h)&#123;return g!==h&amp;&amp;(g.contains?g.contains(h):true)&#125;,x=function(g)&#123;return(g=(g?g.ownerDocument||g:0).documentElement)?g.nodeName!==&quot;HTML&quot;:false&#125;,ga=function(g,h)&#123;var l=[],m=&quot;&quot;,q;for(h=h.nodeType?[h]:h;q=n.match.PSEUDO.exec(g);)&#123;m+=q[0];g=g.replace(n.match.PSEUDO,&quot;&quot;)&#125;g=n.relative[g]?g+&quot;*&quot;:g;q=0;for(var p=h.length;q&lt;p;q++)k(g,h[q],l);return k.filter(m,l)&#125;;c.find=k;c.expr=k.selectors;c.expr[&quot;:&quot;]=c.expr.filters;c.unique=k.uniqueSort;c.text=a;c.isXMLDoc=x;c.contains=E&#125;)();var eb=/Until$/,fb=/^(?:parents|prevUntil|prevAll)/,
+          gb=/,/;R=Array.prototype.slice;var Ia=function(a,b,d)&#123;if(c.isFunction(b))return c.grep(a,function(e,j)&#123;return!!b.call(e,j,e)===d&#125;);else if(b.nodeType)return c.grep(a,function(e)&#123;return e===b===d&#125;);else if(typeof b===&quot;string&quot;)&#123;var f=c.grep(a,function(e)&#123;return e.nodeType===1&#125;);if(Ua.test(b))return c.filter(b,f,!d);else b=c.filter(b,f)&#125;return c.grep(a,function(e)&#123;return c.inArray(e,b)&gt;=0===d&#125;)&#125;;c.fn.extend(&#123;find:function(a)&#123;for(var b=this.pushStack(&quot;&quot;,&quot;find&quot;,a),d=0,f=0,e=this.length;f&lt;e;f++)&#123;d=b.length;
+              c.find(a,this[f],b);if(f&gt;0)for(var j=d;j&lt;b.length;j++)for(var i=0;i&lt;d;i++)if(b[i]===b[j])&#123;b.splice(j--,1);break&#125;&#125;return b&#125;,has:function(a)&#123;var b=c(a);return this.filter(function()&#123;for(var d=0,f=b.length;d&lt;f;d++)if(c.contains(this,b[d]))return true&#125;)&#125;,not:function(a)&#123;return this.pushStack(Ia(this,a,false),&quot;not&quot;,a)&#125;,filter:function(a)&#123;return this.pushStack(Ia(this,a,true),&quot;filter&quot;,a)&#125;,is:function(a)&#123;return!!a&amp;&amp;c.filter(a,this).length&gt;0&#125;,closest:function(a,b)&#123;if(c.isArray(a))&#123;var d=[],f=this[0],e,j=
+              &#123;&#125;,i;if(f&amp;&amp;a.length)&#123;e=0;for(var o=a.length;e&lt;o;e++)&#123;i=a[e];j[i]||(j[i]=c.expr.match.POS.test(i)?c(i,b||this.context):i)&#125;for(;f&amp;&amp;f.ownerDocument&amp;&amp;f!==b;)&#123;for(i in j)&#123;e=j[i];if(e.jquery?e.index(f)&gt;-1:c(f).is(e))&#123;d.push(&#123;selector:i,elem:f&#125;);delete j[i]&#125;&#125;f=f.parentNode&#125;&#125;return d&#125;var k=c.expr.match.POS.test(a)?c(a,b||this.context):null;return this.map(function(n,r)&#123;for(;r&amp;&amp;r.ownerDocument&amp;&amp;r!==b;)&#123;if(k?k.index(r)&gt;-1:c(r).is(a))return r;r=r.parentNode&#125;return null&#125;)&#125;,index:function(a)&#123;if(!a||typeof a===
+              &quot;string&quot;)return c.inArray(this[0],a?c(a):this.parent().children());return c.inArray(a.jquery?a[0]:a,this)&#125;,add:function(a,b)&#123;a=typeof a===&quot;string&quot;?c(a,b||this.context):c.makeArray(a);b=c.merge(this.get(),a);return this.pushStack(qa(a[0])||qa(b[0])?b:c.unique(b))&#125;,andSelf:function()&#123;return this.add(this.prevObject)&#125;&#125;);c.each(&#123;parent:function(a)&#123;return(a=a.parentNode)&amp;&amp;a.nodeType!==11?a:null&#125;,parents:function(a)&#123;return c.dir(a,&quot;parentNode&quot;)&#125;,parentsUntil:function(a,b,d)&#123;return c.dir(a,&quot;parentNode&quot;,
+              d)&#125;,next:function(a)&#123;return c.nth(a,2,&quot;nextSibling&quot;)&#125;,prev:function(a)&#123;return c.nth(a,2,&quot;previousSibling&quot;)&#125;,nextAll:function(a)&#123;return c.dir(a,&quot;nextSibling&quot;)&#125;,prevAll:function(a)&#123;return c.dir(a,&quot;previousSibling&quot;)&#125;,nextUntil:function(a,b,d)&#123;return c.dir(a,&quot;nextSibling&quot;,d)&#125;,prevUntil:function(a,b,d)&#123;return c.dir(a,&quot;previousSibling&quot;,d)&#125;,siblings:function(a)&#123;return c.sibling(a.parentNode.firstChild,a)&#125;,children:function(a)&#123;return c.sibling(a.firstChild)&#125;,contents:function(a)&#123;return c.nodeName(a,&quot;iframe&quot;)?
+              a.contentDocument||a.contentWindow.document:c.makeArray(a.childNodes)&#125;&#125;,function(a,b)&#123;c.fn[a]=function(d,f)&#123;var e=c.map(this,b,d);eb.test(a)||(f=d);if(f&amp;&amp;typeof f===&quot;string&quot;)e=c.filter(f,e);e=this.length&gt;1?c.unique(e):e;if((this.length&gt;1||gb.test(f))&amp;&amp;fb.test(a))e=e.reverse();return this.pushStack(e,a,R.call(arguments).join(&quot;,&quot;))&#125;&#125;);c.extend(&#123;filter:function(a,b,d)&#123;if(d)a=&quot;:not(&quot;+a+&quot;)&quot;;return c.find.matches(a,b)&#125;,dir:function(a,b,d)&#123;var f=[];for(a=a[b];a&amp;&amp;a.nodeType!==9&amp;&amp;(d===w||a.nodeType!==1||!c(a).is(d));)&#123;a.nodeType===
+          1&amp;&amp;f.push(a);a=a[b]&#125;return f&#125;,nth:function(a,b,d)&#123;b=b||1;for(var f=0;a;a=a[d])if(a.nodeType===1&amp;&amp;++f===b)break;return a&#125;,sibling:function(a,b)&#123;for(var d=[];a;a=a.nextSibling)a.nodeType===1&amp;&amp;a!==b&amp;&amp;d.push(a);return d&#125;&#125;);var Ja=/ jQuery\d+=&quot;(?:\d+|null)&quot;/g,V=/^\s+/,Ka=/(&lt;([\w:]+)[^&gt;]*?)\/&gt;/g,hb=/^(?:area|br|col|embed|hr|img|input|link|meta|param)$/i,La=/&lt;([\w:]+)/,ib=/&lt;tbody/i,jb=/&lt;|&amp;#?\w+;/,ta=/&lt;script|&lt;object|&lt;embed|&lt;option|&lt;style/i,ua=/checked\s*(?:[^=]|=\s*.checked.)/i,Ma=function(a,b,d)&#123;return hb.test(d)?
+          a:b+&quot;&gt;&lt;/&quot;+d+&quot;&gt;&quot;&#125;,F=&#123;option:[1,&quot;&lt;select multiple=&#39;multiple&#39;&gt;&quot;,&quot;&lt;/select&gt;&quot;],legend:[1,&quot;&lt;fieldset&gt;&quot;,&quot;&lt;/fieldset&gt;&quot;],thead:[1,&quot;&lt;table&gt;&quot;,&quot;&lt;/table&gt;&quot;],tr:[2,&quot;&lt;table&gt;&lt;tbody&gt;&quot;,&quot;&lt;/tbody&gt;&lt;/table&gt;&quot;],td:[3,&quot;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&quot;,&quot;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&quot;],col:[2,&quot;&lt;table&gt;&lt;tbody&gt;&lt;/tbody&gt;&lt;colgroup&gt;&quot;,&quot;&lt;/colgroup&gt;&lt;/table&gt;&quot;],area:[1,&quot;&lt;map&gt;&quot;,&quot;&lt;/map&gt;&quot;],_default:[0,&quot;&quot;,&quot;&quot;]&#125;;F.optgroup=F.option;F.tbody=F.tfoot=F.colgroup=F.caption=F.thead;F.th=F.td;if(!c.support.htmlSerialize)F._default=[1,&quot;div&lt;div&gt;&quot;,&quot;&lt;/div&gt;&quot;];c.fn.extend(&#123;text:function(a)&#123;if(c.isFunction(a))return this.each(function(b)&#123;var d=
+              c(this);d.text(a.call(this,b,d.text()))&#125;);if(typeof a!==&quot;object&quot;&amp;&amp;a!==w)return this.empty().append((this[0]&amp;&amp;this[0].ownerDocument||s).createTextNode(a));return c.text(this)&#125;,wrapAll:function(a)&#123;if(c.isFunction(a))return this.each(function(d)&#123;c(this).wrapAll(a.call(this,d))&#125;);if(this[0])&#123;var b=c(a,this[0].ownerDocument).eq(0).clone(true);this[0].parentNode&amp;&amp;b.insertBefore(this[0]);b.map(function()&#123;for(var d=this;d.firstChild&amp;&amp;d.firstChild.nodeType===1;)d=d.firstChild;return d&#125;).append(this)&#125;return this&#125;,
+          wrapInner:function(a)&#123;if(c.isFunction(a))return this.each(function(b)&#123;c(this).wrapInner(a.call(this,b))&#125;);return this.each(function()&#123;var b=c(this),d=b.contents();d.length?d.wrapAll(a):b.append(a)&#125;)&#125;,wrap:function(a)&#123;return this.each(function()&#123;c(this).wrapAll(a)&#125;)&#125;,unwrap:function()&#123;return this.parent().each(function()&#123;c.nodeName(this,&quot;body&quot;)||c(this).replaceWith(this.childNodes)&#125;).end()&#125;,append:function()&#123;return this.domManip(arguments,true,function(a)&#123;this.nodeType===1&amp;&amp;this.appendChild(a)&#125;)&#125;,
+          prepend:function()&#123;return this.domManip(arguments,true,function(a)&#123;this.nodeType===1&amp;&amp;this.insertBefore(a,this.firstChild)&#125;)&#125;,before:function()&#123;if(this[0]&amp;&amp;this[0].parentNode)return this.domManip(arguments,false,function(b)&#123;this.parentNode.insertBefore(b,this)&#125;);else if(arguments.length)&#123;var a=c(arguments[0]);a.push.apply(a,this.toArray());return this.pushStack(a,&quot;before&quot;,arguments)&#125;&#125;,after:function()&#123;if(this[0]&amp;&amp;this[0].parentNode)return this.domManip(arguments,false,function(b)&#123;this.parentNode.insertBefore(b,
+              this.nextSibling)&#125;);else if(arguments.length)&#123;var a=this.pushStack(this,&quot;after&quot;,arguments);a.push.apply(a,c(arguments[0]).toArray());return a&#125;&#125;,remove:function(a,b)&#123;for(var d=0,f;(f=this[d])!=null;d++)if(!a||c.filter(a,[f]).length)&#123;if(!b&amp;&amp;f.nodeType===1)&#123;c.cleanData(f.getElementsByTagName(&quot;*&quot;));c.cleanData([f])&#125;f.parentNode&amp;&amp;f.parentNode.removeChild(f)&#125;return this&#125;,empty:function()&#123;for(var a=0,b;(b=this[a])!=null;a++)for(b.nodeType===1&amp;&amp;c.cleanData(b.getElementsByTagName(&quot;*&quot;));b.firstChild;)b.removeChild(b.firstChild);
+              return this&#125;,clone:function(a)&#123;var b=this.map(function()&#123;if(!c.support.noCloneEvent&amp;&amp;!c.isXMLDoc(this))&#123;var d=this.outerHTML,f=this.ownerDocument;if(!d)&#123;d=f.createElement(&quot;div&quot;);d.appendChild(this.cloneNode(true));d=d.innerHTML&#125;return c.clean([d.replace(Ja,&quot;&quot;).replace(/=([^=&quot;&#39;&gt;\s]+\/)&gt;/g,&#39;=&quot;$1&quot;&gt;&#39;).replace(V,&quot;&quot;)],f)[0]&#125;else return this.cloneNode(true)&#125;);if(a===true)&#123;ra(this,b);ra(this.find(&quot;*&quot;),b.find(&quot;*&quot;))&#125;return b&#125;,html:function(a)&#123;if(a===w)return this[0]&amp;&amp;this[0].nodeType===1?this[0].innerHTML.replace(Ja,
+              &quot;&quot;):null;else if(typeof a===&quot;string&quot;&amp;&amp;!ta.test(a)&amp;&amp;(c.support.leadingWhitespace||!V.test(a))&amp;&amp;!F[(La.exec(a)||[&quot;&quot;,&quot;&quot;])[1].toLowerCase()])&#123;a=a.replace(Ka,Ma);try&#123;for(var b=0,d=this.length;b&lt;d;b++)if(this[b].nodeType===1)&#123;c.cleanData(this[b].getElementsByTagName(&quot;*&quot;));this[b].innerHTML=a&#125;&#125;catch(f)&#123;this.empty().append(a)&#125;&#125;else c.isFunction(a)?this.each(function(e)&#123;var j=c(this),i=j.html();j.empty().append(function()&#123;return a.call(this,e,i)&#125;)&#125;):this.empty().append(a);return this&#125;,replaceWith:function(a)&#123;if(this[0]&amp;&amp;
+              this[0].parentNode)&#123;if(c.isFunction(a))return this.each(function(b)&#123;var d=c(this),f=d.html();d.replaceWith(a.call(this,b,f))&#125;);if(typeof a!==&quot;string&quot;)a=c(a).detach();return this.each(function()&#123;var b=this.nextSibling,d=this.parentNode;c(this).remove();b?c(b).before(a):c(d).append(a)&#125;)&#125;else return this.pushStack(c(c.isFunction(a)?a():a),&quot;replaceWith&quot;,a)&#125;,detach:function(a)&#123;return this.remove(a,true)&#125;,domManip:function(a,b,d)&#123;function f(u)&#123;return c.nodeName(u,&quot;table&quot;)?u.getElementsByTagName(&quot;tbody&quot;)[0]||
+              u.appendChild(u.ownerDocument.createElement(&quot;tbody&quot;)):u&#125;var e,j,i=a[0],o=[],k;if(!c.support.checkClone&amp;&amp;arguments.length===3&amp;&amp;typeof i===&quot;string&quot;&amp;&amp;ua.test(i))return this.each(function()&#123;c(this).domManip(a,b,d,true)&#125;);if(c.isFunction(i))return this.each(function(u)&#123;var z=c(this);a[0]=i.call(this,u,b?z.html():w);z.domManip(a,b,d)&#125;);if(this[0])&#123;e=i&amp;&amp;i.parentNode;e=c.support.parentNode&amp;&amp;e&amp;&amp;e.nodeType===11&amp;&amp;e.childNodes.length===this.length?&#123;fragment:e&#125;:sa(a,this,o);k=e.fragment;if(j=k.childNodes.length===
+          1?(k=k.firstChild):k.firstChild)&#123;b=b&amp;&amp;c.nodeName(j,&quot;tr&quot;);for(var n=0,r=this.length;n&lt;r;n++)d.call(b?f(this[n],j):this[n],n&gt;0||e.cacheable||this.length&gt;1?k.cloneNode(true):k)&#125;o.length&amp;&amp;c.each(o,Qa)&#125;return this&#125;&#125;);c.fragments=&#123;&#125;;c.each(&#123;appendTo:&quot;append&quot;,prependTo:&quot;prepend&quot;,insertBefore:&quot;before&quot;,insertAfter:&quot;after&quot;,replaceAll:&quot;replaceWith&quot;&#125;,function(a,b)&#123;c.fn[a]=function(d)&#123;var f=[];d=c(d);var e=this.length===1&amp;&amp;this[0].parentNode;if(e&amp;&amp;e.nodeType===11&amp;&amp;e.childNodes.length===1&amp;&amp;d.length===1)&#123;d[b](this[0]);
+          return this&#125;else&#123;e=0;for(var j=d.length;e&lt;j;e++)&#123;var i=(e&gt;0?this.clone(true):this).get();c.fn[b].apply(c(d[e]),i);f=f.concat(i)&#125;return this.pushStack(f,a,d.selector)&#125;&#125;&#125;);c.extend(&#123;clean:function(a,b,d,f)&#123;b=b||s;if(typeof b.createElement===&quot;undefined&quot;)b=b.ownerDocument||b[0]&amp;&amp;b[0].ownerDocument||s;for(var e=[],j=0,i;(i=a[j])!=null;j++)&#123;if(typeof i===&quot;number&quot;)i+=&quot;&quot;;if(i)&#123;if(typeof i===&quot;string&quot;&amp;&amp;!jb.test(i))i=b.createTextNode(i);else if(typeof i===&quot;string&quot;)&#123;i=i.replace(Ka,Ma);var o=(La.exec(i)||[&quot;&quot;,
+              &quot;&quot;])[1].toLowerCase(),k=F[o]||F._default,n=k[0],r=b.createElement(&quot;div&quot;);for(r.innerHTML=k[1]+i+k[2];n--;)r=r.lastChild;if(!c.support.tbody)&#123;n=ib.test(i);o=o===&quot;table&quot;&amp;&amp;!n?r.firstChild&amp;&amp;r.firstChild.childNodes:k[1]===&quot;&lt;table&gt;&quot;&amp;&amp;!n?r.childNodes:[];for(k=o.length-1;k&gt;=0;--k)c.nodeName(o[k],&quot;tbody&quot;)&amp;&amp;!o[k].childNodes.length&amp;&amp;o[k].parentNode.removeChild(o[k])&#125;!c.support.leadingWhitespace&amp;&amp;V.test(i)&amp;&amp;r.insertBefore(b.createTextNode(V.exec(i)[0]),r.firstChild);i=r.childNodes&#125;if(i.nodeType)e.push(i);else e=
+              c.merge(e,i)&#125;&#125;if(d)for(j=0;e[j];j++)if(f&amp;&amp;c.nodeName(e[j],&quot;script&quot;)&amp;&amp;(!e[j].type||e[j].type.toLowerCase()===&quot;text/javascript&quot;))f.push(e[j].parentNode?e[j].parentNode.removeChild(e[j]):e[j]);else&#123;e[j].nodeType===1&amp;&amp;e.splice.apply(e,[j+1,0].concat(c.makeArray(e[j].getElementsByTagName(&quot;script&quot;))));d.appendChild(e[j])&#125;return e&#125;,cleanData:function(a)&#123;for(var b,d,f=c.cache,e=c.event.special,j=c.support.deleteExpando,i=0,o;(o=a[i])!=null;i++)if(d=o[c.expando])&#123;b=f[d];if(b.events)for(var k in b.events)e[k]?
+              c.event.remove(o,k):Ca(o,k,b.handle);if(j)delete o[c.expando];else o.removeAttribute&amp;&amp;o.removeAttribute(c.expando);delete f[d]&#125;&#125;&#125;);var kb=/z-?index|font-?weight|opacity|zoom|line-?height/i,Na=/alpha\([^)]*\)/,Oa=/opacity=([^)]*)/,ha=/float/i,ia=/-([a-z])/ig,lb=/([A-Z])/g,mb=/^-?\d+(?:px)?$/i,nb=/^-?\d/,ob=&#123;position:&quot;absolute&quot;,visibility:&quot;hidden&quot;,display:&quot;block&quot;&#125;,pb=[&quot;Left&quot;,&quot;Right&quot;],qb=[&quot;Top&quot;,&quot;Bottom&quot;],rb=s.defaultView&amp;&amp;s.defaultView.getComputedStyle,Pa=c.support.cssFloat?&quot;cssFloat&quot;:&quot;styleFloat&quot;,ja=
+          function(a,b)&#123;return b.toUpperCase()&#125;;c.fn.css=function(a,b)&#123;return X(this,a,b,true,function(d,f,e)&#123;if(e===w)return c.curCSS(d,f);if(typeof e===&quot;number&quot;&amp;&amp;!kb.test(f))e+=&quot;px&quot;;c.style(d,f,e)&#125;)&#125;;c.extend(&#123;style:function(a,b,d)&#123;if(!a||a.nodeType===3||a.nodeType===8)return w;if((b===&quot;width&quot;||b===&quot;height&quot;)&amp;&amp;parseFloat(d)&lt;0)d=w;var f=a.style||a,e=d!==w;if(!c.support.opacity&amp;&amp;b===&quot;opacity&quot;)&#123;if(e)&#123;f.zoom=1;b=parseInt(d,10)+&quot;&quot;===&quot;NaN&quot;?&quot;&quot;:&quot;alpha(opacity=&quot;+d*100+&quot;)&quot;;a=f.filter||c.curCSS(a,&quot;filter&quot;)||&quot;&quot;;f.filter=
+              Na.test(a)?a.replace(Na,b):b&#125;return f.filter&amp;&amp;f.filter.indexOf(&quot;opacity=&quot;)&gt;=0?parseFloat(Oa.exec(f.filter)[1])/100+&quot;&quot;:&quot;&quot;&#125;if(ha.test(b))b=Pa;b=b.replace(ia,ja);if(e)f[b]=d;return f[b]&#125;,css:function(a,b,d,f)&#123;if(b===&quot;width&quot;||b===&quot;height&quot;)&#123;var e,j=b===&quot;width&quot;?pb:qb;function i()&#123;e=b===&quot;width&quot;?a.offsetWidth:a.offsetHeight;f!==&quot;border&quot;&amp;&amp;c.each(j,function()&#123;f||(e-=parseFloat(c.curCSS(a,&quot;padding&quot;+this,true))||0);if(f===&quot;margin&quot;)e+=parseFloat(c.curCSS(a,&quot;margin&quot;+this,true))||0;else e-=parseFloat(c.curCSS(a,
+              &quot;border&quot;+this+&quot;Width&quot;,true))||0&#125;)&#125;a.offsetWidth!==0?i():c.swap(a,ob,i);return Math.max(0,Math.round(e))&#125;return c.curCSS(a,b,d)&#125;,curCSS:function(a,b,d)&#123;var f,e=a.style;if(!c.support.opacity&amp;&amp;b===&quot;opacity&quot;&amp;&amp;a.currentStyle)&#123;f=Oa.test(a.currentStyle.filter||&quot;&quot;)?parseFloat(RegExp.$1)/100+&quot;&quot;:&quot;&quot;;return f===&quot;&quot;?&quot;1&quot;:f&#125;if(ha.test(b))b=Pa;if(!d&amp;&amp;e&amp;&amp;e[b])f=e[b];else if(rb)&#123;if(ha.test(b))b=&quot;float&quot;;b=b.replace(lb,&quot;-$1&quot;).toLowerCase();e=a.ownerDocument.defaultView;if(!e)return null;if(a=e.getComputedStyle(a,null))f=
+              a.getPropertyValue(b);if(b===&quot;opacity&quot;&amp;&amp;f===&quot;&quot;)f=&quot;1&quot;&#125;else if(a.currentStyle)&#123;d=b.replace(ia,ja);f=a.currentStyle[b]||a.currentStyle[d];if(!mb.test(f)&amp;&amp;nb.test(f))&#123;b=e.left;var j=a.runtimeStyle.left;a.runtimeStyle.left=a.currentStyle.left;e.left=d===&quot;fontSize&quot;?&quot;1em&quot;:f||0;f=e.pixelLeft+&quot;px&quot;;e.left=b;a.runtimeStyle.left=j&#125;&#125;return f&#125;,swap:function(a,b,d)&#123;var f=&#123;&#125;;for(var e in b)&#123;f[e]=a.style[e];a.style[e]=b[e]&#125;d.call(a);for(e in b)a.style[e]=f[e]&#125;&#125;);if(c.expr&amp;&amp;c.expr.filters)&#123;c.expr.filters.hidden=function(a)&#123;var b=
+          a.offsetWidth,d=a.offsetHeight,f=a.nodeName.toLowerCase()===&quot;tr&quot;;return b===0&amp;&amp;d===0&amp;&amp;!f?true:b&gt;0&amp;&amp;d&gt;0&amp;&amp;!f?false:c.curCSS(a,&quot;display&quot;)===&quot;none&quot;&#125;;c.expr.filters.visible=function(a)&#123;return!c.expr.filters.hidden(a)&#125;&#125;var sb=J(),tb=/&lt;script(.|\s)*?\/script&gt;/gi,ub=/select|textarea/i,vb=/color|date|datetime|email|hidden|month|number|password|range|search|tel|text|time|url|week/i,N=/=\?(&amp;|$)/,ka=/\?/,wb=/(\?|&amp;)_=.*?(&amp;|$)/,xb=/^(\w+:)?\/\/([^\/?#]+)/,yb=/%20/g,zb=c.fn.load;c.fn.extend(&#123;load:function(a,b,d)&#123;if(typeof a!==
+              &quot;string&quot;)return zb.call(this,a);else if(!this.length)return this;var f=a.indexOf(&quot; &quot;);if(f&gt;=0)&#123;var e=a.slice(f,a.length);a=a.slice(0,f)&#125;f=&quot;GET&quot;;if(b)if(c.isFunction(b))&#123;d=b;b=null&#125;else if(typeof b===&quot;object&quot;)&#123;b=c.param(b,c.ajaxSettings.traditional);f=&quot;POST&quot;&#125;var j=this;c.ajax(&#123;url:a,type:f,dataType:&quot;html&quot;,data:b,complete:function(i,o)&#123;if(o===&quot;success&quot;||o===&quot;notmodified&quot;)j.html(e?c(&quot;&lt;div /&gt;&quot;).append(i.responseText.replace(tb,&quot;&quot;)).find(e):i.responseText);d&amp;&amp;j.each(d,[i.responseText,o,i])&#125;&#125;);return this&#125;,
+          serialize:function()&#123;return c.param(this.serializeArray())&#125;,serializeArray:function()&#123;return this.map(function()&#123;return this.elements?c.makeArray(this.elements):this&#125;).filter(function()&#123;return this.name&amp;&amp;!this.disabled&amp;&amp;(this.checked||ub.test(this.nodeName)||vb.test(this.type))&#125;).map(function(a,b)&#123;a=c(this).val();return a==null?null:c.isArray(a)?c.map(a,function(d)&#123;return&#123;name:b.name,value:d&#125;&#125;):&#123;name:b.name,value:a&#125;&#125;).get()&#125;&#125;);c.each(&quot;ajaxStart ajaxStop ajaxComplete ajaxError ajaxSuccess ajaxSend&quot;.split(&quot; &quot;),
+          function(a,b)&#123;c.fn[b]=function(d)&#123;return this.bind(b,d)&#125;&#125;);c.extend(&#123;get:function(a,b,d,f)&#123;if(c.isFunction(b))&#123;f=f||d;d=b;b=null&#125;return c.ajax(&#123;type:&quot;GET&quot;,url:a,data:b,success:d,dataType:f&#125;)&#125;,getScript:function(a,b)&#123;return c.get(a,null,b,&quot;script&quot;)&#125;,getJSON:function(a,b,d)&#123;return c.get(a,b,d,&quot;json&quot;)&#125;,post:function(a,b,d,f)&#123;if(c.isFunction(b))&#123;f=f||d;d=b;b=&#123;&#125;&#125;return c.ajax(&#123;type:&quot;POST&quot;,url:a,data:b,success:d,dataType:f&#125;)&#125;,ajaxSetup:function(a)&#123;c.extend(c.ajaxSettings,a)&#125;,ajaxSettings:&#123;url:location.href,
+              global:true,type:&quot;GET&quot;,contentType:&quot;application/x-www-form-urlencoded&quot;,processData:true,async:true,xhr:A.XMLHttpRequest&amp;&amp;(A.location.protocol!==&quot;file:&quot;||!A.ActiveXObject)?function()&#123;return new A.XMLHttpRequest&#125;:function()&#123;try&#123;return new A.ActiveXObject(&quot;Microsoft.XMLHTTP&quot;)&#125;catch(a)&#123;&#125;&#125;,accepts:&#123;xml:&quot;application/xml, text/xml&quot;,html:&quot;text/html&quot;,script:&quot;text/javascript, application/javascript&quot;,json:&quot;application/json, text/javascript&quot;,text:&quot;text/plain&quot;,_default:&quot;*/*&quot;&#125;&#125;,lastModified:&#123;&#125;,etag:&#123;&#125;,ajax:function(a)&#123;function b()&#123;e.success&amp;&amp;
+          e.success.call(k,o,i,x);e.global&amp;&amp;f(&quot;ajaxSuccess&quot;,[x,e])&#125;function d()&#123;e.complete&amp;&amp;e.complete.call(k,x,i);e.global&amp;&amp;f(&quot;ajaxComplete&quot;,[x,e]);e.global&amp;&amp;!--c.active&amp;&amp;c.event.trigger(&quot;ajaxStop&quot;)&#125;function f(q,p)&#123;(e.context?c(e.context):c.event).trigger(q,p)&#125;var e=c.extend(true,&#123;&#125;,c.ajaxSettings,a),j,i,o,k=a&amp;&amp;a.context||e,n=e.type.toUpperCase();if(e.data&amp;&amp;e.processData&amp;&amp;typeof e.data!==&quot;string&quot;)e.data=c.param(e.data,e.traditional);if(e.dataType===&quot;jsonp&quot;)&#123;if(n===&quot;GET&quot;)N.test(e.url)||(e.url+=(ka.test(e.url)?
+              &quot;&amp;&quot;:&quot;?&quot;)+(e.jsonp||&quot;callback&quot;)+&quot;=?&quot;);else if(!e.data||!N.test(e.data))e.data=(e.data?e.data+&quot;&amp;&quot;:&quot;&quot;)+(e.jsonp||&quot;callback&quot;)+&quot;=?&quot;;e.dataType=&quot;json&quot;&#125;if(e.dataType===&quot;json&quot;&amp;&amp;(e.data&amp;&amp;N.test(e.data)||N.test(e.url)))&#123;j=e.jsonpCallback||&quot;jsonp&quot;+sb++;if(e.data)e.data=(e.data+&quot;&quot;).replace(N,&quot;=&quot;+j+&quot;$1&quot;);e.url=e.url.replace(N,&quot;=&quot;+j+&quot;$1&quot;);e.dataType=&quot;script&quot;;A[j]=A[j]||function(q)&#123;o=q;b();d();A[j]=w;try&#123;delete A[j]&#125;catch(p)&#123;&#125;z&amp;&amp;z.removeChild(C)&#125;&#125;if(e.dataType===&quot;script&quot;&amp;&amp;e.cache===null)e.cache=false;if(e.cache===
+              false&amp;&amp;n===&quot;GET&quot;)&#123;var r=J(),u=e.url.replace(wb,&quot;$1_=&quot;+r+&quot;$2&quot;);e.url=u+(u===e.url?(ka.test(e.url)?&quot;&amp;&quot;:&quot;?&quot;)+&quot;_=&quot;+r:&quot;&quot;)&#125;if(e.data&amp;&amp;n===&quot;GET&quot;)e.url+=(ka.test(e.url)?&quot;&amp;&quot;:&quot;?&quot;)+e.data;e.global&amp;&amp;!c.active++&amp;&amp;c.event.trigger(&quot;ajaxStart&quot;);r=(r=xb.exec(e.url))&amp;&amp;(r[1]&amp;&amp;r[1]!==location.protocol||r[2]!==location.host);if(e.dataType===&quot;script&quot;&amp;&amp;n===&quot;GET&quot;&amp;&amp;r)&#123;var z=s.getElementsByTagName(&quot;head&quot;)[0]||s.documentElement,C=s.createElement(&quot;script&quot;);C.src=e.url;if(e.scriptCharset)C.charset=e.scriptCharset;if(!j)&#123;var B=
+              false;C.onload=C.onreadystatechange=function()&#123;if(!B&amp;&amp;(!this.readyState||this.readyState===&quot;loaded&quot;||this.readyState===&quot;complete&quot;))&#123;B=true;b();d();C.onload=C.onreadystatechange=null;z&amp;&amp;C.parentNode&amp;&amp;z.removeChild(C)&#125;&#125;&#125;z.insertBefore(C,z.firstChild);return w&#125;var E=false,x=e.xhr();if(x)&#123;e.username?x.open(n,e.url,e.async,e.username,e.password):x.open(n,e.url,e.async);try&#123;if(e.data||a&amp;&amp;a.contentType)x.setRequestHeader(&quot;Content-Type&quot;,e.contentType);if(e.ifModified)&#123;c.lastModified[e.url]&amp;&amp;x.setRequestHeader(&quot;If-Modified-Since&quot;,
+              c.lastModified[e.url]);c.etag[e.url]&amp;&amp;x.setRequestHeader(&quot;If-None-Match&quot;,c.etag[e.url])&#125;r||x.setRequestHeader(&quot;X-Requested-With&quot;,&quot;XMLHttpRequest&quot;);x.setRequestHeader(&quot;Accept&quot;,e.dataType&amp;&amp;e.accepts[e.dataType]?e.accepts[e.dataType]+&quot;, */*&quot;:e.accepts._default)&#125;catch(ga)&#123;&#125;if(e.beforeSend&amp;&amp;e.beforeSend.call(k,x,e)===false)&#123;e.global&amp;&amp;!--c.active&amp;&amp;c.event.trigger(&quot;ajaxStop&quot;);x.abort();return false&#125;e.global&amp;&amp;f(&quot;ajaxSend&quot;,[x,e]);var g=x.onreadystatechange=function(q)&#123;if(!x||x.readyState===0||q===&quot;abort&quot;)&#123;E||
+          d();E=true;if(x)x.onreadystatechange=c.noop&#125;else if(!E&amp;&amp;x&amp;&amp;(x.readyState===4||q===&quot;timeout&quot;))&#123;E=true;x.onreadystatechange=c.noop;i=q===&quot;timeout&quot;?&quot;timeout&quot;:!c.httpSuccess(x)?&quot;error&quot;:e.ifModified&amp;&amp;c.httpNotModified(x,e.url)?&quot;notmodified&quot;:&quot;success&quot;;var p;if(i===&quot;success&quot;)try&#123;o=c.httpData(x,e.dataType,e)&#125;catch(v)&#123;i=&quot;parsererror&quot;;p=v&#125;if(i===&quot;success&quot;||i===&quot;notmodified&quot;)j||b();else c.handleError(e,x,i,p);d();q===&quot;timeout&quot;&amp;&amp;x.abort();if(e.async)x=null&#125;&#125;;try&#123;var h=x.abort;x.abort=function()&#123;x&amp;&amp;h.call(x);
+              g(&quot;abort&quot;)&#125;&#125;catch(l)&#123;&#125;e.async&amp;&amp;e.timeout&gt;0&amp;&amp;setTimeout(function()&#123;x&amp;&amp;!E&amp;&amp;g(&quot;timeout&quot;)&#125;,e.timeout);try&#123;x.send(n===&quot;POST&quot;||n===&quot;PUT&quot;||n===&quot;DELETE&quot;?e.data:null)&#125;catch(m)&#123;c.handleError(e,x,null,m);d()&#125;e.async||g();return x&#125;&#125;,handleError:function(a,b,d,f)&#123;if(a.error)a.error.call(a.context||a,b,d,f);if(a.global)(a.context?c(a.context):c.event).trigger(&quot;ajaxError&quot;,[b,a,f])&#125;,active:0,httpSuccess:function(a)&#123;try&#123;return!a.status&amp;&amp;location.protocol===&quot;file:&quot;||a.status&gt;=200&amp;&amp;a.status&lt;300||a.status===304||a.status===
+              1223||a.status===0&#125;catch(b)&#123;&#125;return false&#125;,httpNotModified:function(a,b)&#123;var d=a.getResponseHeader(&quot;Last-Modified&quot;),f=a.getResponseHeader(&quot;Etag&quot;);if(d)c.lastModified[b]=d;if(f)c.etag[b]=f;return a.status===304||a.status===0&#125;,httpData:function(a,b,d)&#123;var f=a.getResponseHeader(&quot;content-type&quot;)||&quot;&quot;,e=b===&quot;xml&quot;||!b&amp;&amp;f.indexOf(&quot;xml&quot;)&gt;=0;a=e?a.responseXML:a.responseText;e&amp;&amp;a.documentElement.nodeName===&quot;parsererror&quot;&amp;&amp;c.error(&quot;parsererror&quot;);if(d&amp;&amp;d.dataFilter)a=d.dataFilter(a,b);if(typeof a===&quot;string&quot;)if(b===
+              &quot;json&quot;||!b&amp;&amp;f.indexOf(&quot;json&quot;)&gt;=0)a=c.parseJSON(a);else if(b===&quot;script&quot;||!b&amp;&amp;f.indexOf(&quot;javascript&quot;)&gt;=0)c.globalEval(a);return a&#125;,param:function(a,b)&#123;function d(i,o)&#123;if(c.isArray(o))c.each(o,function(k,n)&#123;b||/\[\]$/.test(i)?f(i,n):d(i+&quot;[&quot;+(typeof n===&quot;object&quot;||c.isArray(n)?k:&quot;&quot;)+&quot;]&quot;,n)&#125;);else!b&amp;&amp;o!=null&amp;&amp;typeof o===&quot;object&quot;?c.each(o,function(k,n)&#123;d(i+&quot;[&quot;+k+&quot;]&quot;,n)&#125;):f(i,o)&#125;function f(i,o)&#123;o=c.isFunction(o)?o():o;e[e.length]=encodeURIComponent(i)+&quot;=&quot;+encodeURIComponent(o)&#125;var e=[];if(b===w)b=c.ajaxSettings.traditional;
+              if(c.isArray(a)||a.jquery)c.each(a,function()&#123;f(this.name,this.value)&#125;);else for(var j in a)d(j,a[j]);return e.join(&quot;&amp;&quot;).replace(yb,&quot;+&quot;)&#125;&#125;);var la=&#123;&#125;,Ab=/toggle|show|hide/,Bb=/^([+-]=)?([\d+-.]+)(.*)$/,W,va=[[&quot;height&quot;,&quot;marginTop&quot;,&quot;marginBottom&quot;,&quot;paddingTop&quot;,&quot;paddingBottom&quot;],[&quot;width&quot;,&quot;marginLeft&quot;,&quot;marginRight&quot;,&quot;paddingLeft&quot;,&quot;paddingRight&quot;],[&quot;opacity&quot;]];c.fn.extend(&#123;show:function(a,b)&#123;if(a||a===0)return this.animate(K(&quot;show&quot;,3),a,b);else&#123;a=0;for(b=this.length;a&lt;b;a++)&#123;var d=c.data(this[a],&quot;olddisplay&quot;);
+              this[a].style.display=d||&quot;&quot;;if(c.css(this[a],&quot;display&quot;)===&quot;none&quot;)&#123;d=this[a].nodeName;var f;if(la[d])f=la[d];else&#123;var e=c(&quot;&lt;&quot;+d+&quot; /&gt;&quot;).appendTo(&quot;body&quot;);f=e.css(&quot;display&quot;);if(f===&quot;none&quot;)f=&quot;block&quot;;e.remove();la[d]=f&#125;c.data(this[a],&quot;olddisplay&quot;,f)&#125;&#125;a=0;for(b=this.length;a&lt;b;a++)this[a].style.display=c.data(this[a],&quot;olddisplay&quot;)||&quot;&quot;;return this&#125;&#125;,hide:function(a,b)&#123;if(a||a===0)return this.animate(K(&quot;hide&quot;,3),a,b);else&#123;a=0;for(b=this.length;a&lt;b;a++)&#123;var d=c.data(this[a],&quot;olddisplay&quot;);!d&amp;&amp;d!==&quot;none&quot;&amp;&amp;c.data(this[a],
+              &quot;olddisplay&quot;,c.css(this[a],&quot;display&quot;))&#125;a=0;for(b=this.length;a&lt;b;a++)this[a].style.display=&quot;none&quot;;return this&#125;&#125;,_toggle:c.fn.toggle,toggle:function(a,b)&#123;var d=typeof a===&quot;boolean&quot;;if(c.isFunction(a)&amp;&amp;c.isFunction(b))this._toggle.apply(this,arguments);else a==null||d?this.each(function()&#123;var f=d?a:c(this).is(&quot;:hidden&quot;);c(this)[f?&quot;show&quot;:&quot;hide&quot;]()&#125;):this.animate(K(&quot;toggle&quot;,3),a,b);return this&#125;,fadeTo:function(a,b,d)&#123;return this.filter(&quot;:hidden&quot;).css(&quot;opacity&quot;,0).show().end().animate(&#123;opacity:b&#125;,a,d)&#125;,
+          animate:function(a,b,d,f)&#123;var e=c.speed(b,d,f);if(c.isEmptyObject(a))return this.each(e.complete);return this[e.queue===false?&quot;each&quot;:&quot;queue&quot;](function()&#123;var j=c.extend(&#123;&#125;,e),i,o=this.nodeType===1&amp;&amp;c(this).is(&quot;:hidden&quot;),k=this;for(i in a)&#123;var n=i.replace(ia,ja);if(i!==n)&#123;a[n]=a[i];delete a[i];i=n&#125;if(a[i]===&quot;hide&quot;&amp;&amp;o||a[i]===&quot;show&quot;&amp;&amp;!o)return j.complete.call(this);if((i===&quot;height&quot;||i===&quot;width&quot;)&amp;&amp;this.style)&#123;j.display=c.css(this,&quot;display&quot;);j.overflow=this.style.overflow&#125;if(c.isArray(a[i]))&#123;(j.specialEasing=
+              j.specialEasing||&#123;&#125;)[i]=a[i][1];a[i]=a[i][0]&#125;&#125;if(j.overflow!=null)this.style.overflow=&quot;hidden&quot;;j.curAnim=c.extend(&#123;&#125;,a);c.each(a,function(r,u)&#123;var z=new c.fx(k,j,r);if(Ab.test(u))z[u===&quot;toggle&quot;?o?&quot;show&quot;:&quot;hide&quot;:u](a);else&#123;var C=Bb.exec(u),B=z.cur(true)||0;if(C)&#123;u=parseFloat(C[2]);var E=C[3]||&quot;px&quot;;if(E!==&quot;px&quot;)&#123;k.style[r]=(u||1)+E;B=(u||1)/z.cur(true)*B;k.style[r]=B+E&#125;if(C[1])u=(C[1]===&quot;-=&quot;?-1:1)*u+B;z.custom(B,u,E)&#125;else z.custom(B,u,&quot;&quot;)&#125;&#125;);return true&#125;)&#125;,stop:function(a,b)&#123;var d=c.timers;a&amp;&amp;this.queue([]);
+              this.each(function()&#123;for(var f=d.length-1;f&gt;=0;f--)if(d[f].elem===this)&#123;b&amp;&amp;d[f](true);d.splice(f,1)&#125;&#125;);b||this.dequeue();return this&#125;&#125;);c.each(&#123;slideDown:K(&quot;show&quot;,1),slideUp:K(&quot;hide&quot;,1),slideToggle:K(&quot;toggle&quot;,1),fadeIn:&#123;opacity:&quot;show&quot;&#125;,fadeOut:&#123;opacity:&quot;hide&quot;&#125;&#125;,function(a,b)&#123;c.fn[a]=function(d,f)&#123;return this.animate(b,d,f)&#125;&#125;);c.extend(&#123;speed:function(a,b,d)&#123;var f=a&amp;&amp;typeof a===&quot;object&quot;?a:&#123;complete:d||!d&amp;&amp;b||c.isFunction(a)&amp;&amp;a,duration:a,easing:d&amp;&amp;b||b&amp;&amp;!c.isFunction(b)&amp;&amp;b&#125;;f.duration=c.fx.off?0:typeof f.duration===
+          &quot;number&quot;?f.duration:c.fx.speeds[f.duration]||c.fx.speeds._default;f.old=f.complete;f.complete=function()&#123;f.queue!==false&amp;&amp;c(this).dequeue();c.isFunction(f.old)&amp;&amp;f.old.call(this)&#125;;return f&#125;,easing:&#123;linear:function(a,b,d,f)&#123;return d+f*a&#125;,swing:function(a,b,d,f)&#123;return(-Math.cos(a*Math.PI)/2+0.5)*f+d&#125;&#125;,timers:[],fx:function(a,b,d)&#123;this.options=b;this.elem=a;this.prop=d;if(!b.orig)b.orig=&#123;&#125;&#125;&#125;);c.fx.prototype=&#123;update:function()&#123;this.options.step&amp;&amp;this.options.step.call(this.elem,this.now,this);(c.fx.step[this.prop]||
+              c.fx.step._default)(this);if((this.prop===&quot;height&quot;||this.prop===&quot;width&quot;)&amp;&amp;this.elem.style)this.elem.style.display=&quot;block&quot;&#125;,cur:function(a)&#123;if(this.elem[this.prop]!=null&amp;&amp;(!this.elem.style||this.elem.style[this.prop]==null))return this.elem[this.prop];return(a=parseFloat(c.css(this.elem,this.prop,a)))&amp;&amp;a&gt;-10000?a:parseFloat(c.curCSS(this.elem,this.prop))||0&#125;,custom:function(a,b,d)&#123;function f(j)&#123;return e.step(j)&#125;this.startTime=J();this.start=a;this.end=b;this.unit=d||this.unit||&quot;px&quot;;this.now=this.start;
+              this.pos=this.state=0;var e=this;f.elem=this.elem;if(f()&amp;&amp;c.timers.push(f)&amp;&amp;!W)W=setInterval(c.fx.tick,13)&#125;,show:function()&#123;this.options.orig[this.prop]=c.style(this.elem,this.prop);this.options.show=true;this.custom(this.prop===&quot;width&quot;||this.prop===&quot;height&quot;?1:0,this.cur());c(this.elem).show()&#125;,hide:function()&#123;this.options.orig[this.prop]=c.style(this.elem,this.prop);this.options.hide=true;this.custom(this.cur(),0)&#125;,step:function(a)&#123;var b=J(),d=true;if(a||b&gt;=this.options.duration+this.startTime)&#123;this.now=
+              this.end;this.pos=this.state=1;this.update();this.options.curAnim[this.prop]=true;for(var f in this.options.curAnim)if(this.options.curAnim[f]!==true)d=false;if(d)&#123;if(this.options.display!=null)&#123;this.elem.style.overflow=this.options.overflow;a=c.data(this.elem,&quot;olddisplay&quot;);this.elem.style.display=a?a:this.options.display;if(c.css(this.elem,&quot;display&quot;)===&quot;none&quot;)this.elem.style.display=&quot;block&quot;&#125;this.options.hide&amp;&amp;c(this.elem).hide();if(this.options.hide||this.options.show)for(var e in this.options.curAnim)c.style(this.elem,
+              e,this.options.orig[e]);this.options.complete.call(this.elem)&#125;return false&#125;else&#123;e=b-this.startTime;this.state=e/this.options.duration;a=this.options.easing||(c.easing.swing?&quot;swing&quot;:&quot;linear&quot;);this.pos=c.easing[this.options.specialEasing&amp;&amp;this.options.specialEasing[this.prop]||a](this.state,e,0,1,this.options.duration);this.now=this.start+(this.end-this.start)*this.pos;this.update()&#125;return true&#125;&#125;;c.extend(c.fx,&#123;tick:function()&#123;for(var a=c.timers,b=0;b&lt;a.length;b++)a[b]()||a.splice(b--,1);a.length||
+          c.fx.stop()&#125;,stop:function()&#123;clearInterval(W);W=null&#125;,speeds:&#123;slow:600,fast:200,_default:400&#125;,step:&#123;opacity:function(a)&#123;c.style(a.elem,&quot;opacity&quot;,a.now)&#125;,_default:function(a)&#123;if(a.elem.style&amp;&amp;a.elem.style[a.prop]!=null)a.elem.style[a.prop]=(a.prop===&quot;width&quot;||a.prop===&quot;height&quot;?Math.max(0,a.now):a.now)+a.unit;else a.elem[a.prop]=a.now&#125;&#125;&#125;);if(c.expr&amp;&amp;c.expr.filters)c.expr.filters.animated=function(a)&#123;return c.grep(c.timers,function(b)&#123;return a===b.elem&#125;).length&#125;;c.fn.offset=&quot;getBoundingClientRect&quot;in s.documentElement?
+          function(a)&#123;var b=this[0];if(a)return this.each(function(e)&#123;c.offset.setOffset(this,a,e)&#125;);if(!b||!b.ownerDocument)return null;if(b===b.ownerDocument.body)return c.offset.bodyOffset(b);var d=b.getBoundingClientRect(),f=b.ownerDocument;b=f.body;f=f.documentElement;return&#123;top:d.top+(self.pageYOffset||c.support.boxModel&amp;&amp;f.scrollTop||b.scrollTop)-(f.clientTop||b.clientTop||0),left:d.left+(self.pageXOffset||c.support.boxModel&amp;&amp;f.scrollLeft||b.scrollLeft)-(f.clientLeft||b.clientLeft||0)&#125;&#125;:function(a)&#123;var b=
+              this[0];if(a)return this.each(function(r)&#123;c.offset.setOffset(this,a,r)&#125;);if(!b||!b.ownerDocument)return null;if(b===b.ownerDocument.body)return c.offset.bodyOffset(b);c.offset.initialize();var d=b.offsetParent,f=b,e=b.ownerDocument,j,i=e.documentElement,o=e.body;f=(e=e.defaultView)?e.getComputedStyle(b,null):b.currentStyle;for(var k=b.offsetTop,n=b.offsetLeft;(b=b.parentNode)&amp;&amp;b!==o&amp;&amp;b!==i;)&#123;if(c.offset.supportsFixedPosition&amp;&amp;f.position===&quot;fixed&quot;)break;j=e?e.getComputedStyle(b,null):b.currentStyle;
+              k-=b.scrollTop;n-=b.scrollLeft;if(b===d)&#123;k+=b.offsetTop;n+=b.offsetLeft;if(c.offset.doesNotAddBorder&amp;&amp;!(c.offset.doesAddBorderForTableAndCells&amp;&amp;/^t(able|d|h)$/i.test(b.nodeName)))&#123;k+=parseFloat(j.borderTopWidth)||0;n+=parseFloat(j.borderLeftWidth)||0&#125;f=d;d=b.offsetParent&#125;if(c.offset.subtractsBorderForOverflowNotVisible&amp;&amp;j.overflow!==&quot;visible&quot;)&#123;k+=parseFloat(j.borderTopWidth)||0;n+=parseFloat(j.borderLeftWidth)||0&#125;f=j&#125;if(f.position===&quot;relative&quot;||f.position===&quot;static&quot;)&#123;k+=o.offsetTop;n+=o.offsetLeft&#125;if(c.offset.supportsFixedPosition&amp;&amp;
+              f.position===&quot;fixed&quot;)&#123;k+=Math.max(i.scrollTop,o.scrollTop);n+=Math.max(i.scrollLeft,o.scrollLeft)&#125;return&#123;top:k,left:n&#125;&#125;;c.offset=&#123;initialize:function()&#123;var a=s.body,b=s.createElement(&quot;div&quot;),d,f,e,j=parseFloat(c.curCSS(a,&quot;marginTop&quot;,true))||0;c.extend(b.style,&#123;position:&quot;absolute&quot;,top:0,left:0,margin:0,border:0,width:&quot;1px&quot;,height:&quot;1px&quot;,visibility:&quot;hidden&quot;&#125;);b.innerHTML=&quot;&lt;div style=&#39;position:absolute;top:0;left:0;margin:0;border:5px solid #000;padding:0;width:1px;height:1px;&#39;&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;table style=&#39;position:absolute;top:0;left:0;margin:0;border:5px solid #000;padding:0;width:1px;height:1px;&#39; cellpadding=&#39;0&#39; cellspacing=&#39;0&#39;&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&quot;;
+              a.insertBefore(b,a.firstChild);d=b.firstChild;f=d.firstChild;e=d.nextSibling.firstChild.firstChild;this.doesNotAddBorder=f.offsetTop!==5;this.doesAddBorderForTableAndCells=e.offsetTop===5;f.style.position=&quot;fixed&quot;;f.style.top=&quot;20px&quot;;this.supportsFixedPosition=f.offsetTop===20||f.offsetTop===15;f.style.position=f.style.top=&quot;&quot;;d.style.overflow=&quot;hidden&quot;;d.style.position=&quot;relative&quot;;this.subtractsBorderForOverflowNotVisible=f.offsetTop===-5;this.doesNotIncludeMarginInBodyOffset=a.offsetTop!==j;a.removeChild(b);
+              c.offset.initialize=c.noop&#125;,bodyOffset:function(a)&#123;var b=a.offsetTop,d=a.offsetLeft;c.offset.initialize();if(c.offset.doesNotIncludeMarginInBodyOffset)&#123;b+=parseFloat(c.curCSS(a,&quot;marginTop&quot;,true))||0;d+=parseFloat(c.curCSS(a,&quot;marginLeft&quot;,true))||0&#125;return&#123;top:b,left:d&#125;&#125;,setOffset:function(a,b,d)&#123;if(/static/.test(c.curCSS(a,&quot;position&quot;)))a.style.position=&quot;relative&quot;;var f=c(a),e=f.offset(),j=parseInt(c.curCSS(a,&quot;top&quot;,true),10)||0,i=parseInt(c.curCSS(a,&quot;left&quot;,true),10)||0;if(c.isFunction(b))b=b.call(a,
+              d,e);d=&#123;top:b.top-e.top+j,left:b.left-e.left+i&#125;;&quot;using&quot;in b?b.using.call(a,d):f.css(d)&#125;&#125;;c.fn.extend(&#123;position:function()&#123;if(!this[0])return null;var a=this[0],b=this.offsetParent(),d=this.offset(),f=/^body|html$/i.test(b[0].nodeName)?&#123;top:0,left:0&#125;:b.offset();d.top-=parseFloat(c.curCSS(a,&quot;marginTop&quot;,true))||0;d.left-=parseFloat(c.curCSS(a,&quot;marginLeft&quot;,true))||0;f.top+=parseFloat(c.curCSS(b[0],&quot;borderTopWidth&quot;,true))||0;f.left+=parseFloat(c.curCSS(b[0],&quot;borderLeftWidth&quot;,true))||0;return&#123;top:d.top-
+                  f.top,left:d.left-f.left&#125;&#125;,offsetParent:function()&#123;return this.map(function()&#123;for(var a=this.offsetParent||s.body;a&amp;&amp;!/^body|html$/i.test(a.nodeName)&amp;&amp;c.css(a,&quot;position&quot;)===&quot;static&quot;;)a=a.offsetParent;return a&#125;)&#125;&#125;);c.each([&quot;Left&quot;,&quot;Top&quot;],function(a,b)&#123;var d=&quot;scroll&quot;+b;c.fn[d]=function(f)&#123;var e=this[0],j;if(!e)return null;if(f!==w)return this.each(function()&#123;if(j=wa(this))j.scrollTo(!a?f:c(j).scrollLeft(),a?f:c(j).scrollTop());else this[d]=f&#125;);else return(j=wa(e))?&quot;pageXOffset&quot;in j?j[a?&quot;pageYOffset&quot;:
+          &quot;pageXOffset&quot;]:c.support.boxModel&amp;&amp;j.document.documentElement[d]||j.document.body[d]:e[d]&#125;&#125;);c.each([&quot;Height&quot;,&quot;Width&quot;],function(a,b)&#123;var d=b.toLowerCase();c.fn[&quot;inner&quot;+b]=function()&#123;return this[0]?c.css(this[0],d,false,&quot;padding&quot;):null&#125;;c.fn[&quot;outer&quot;+b]=function(f)&#123;return this[0]?c.css(this[0],d,false,f?&quot;margin&quot;:&quot;border&quot;):null&#125;;c.fn[d]=function(f)&#123;var e=this[0];if(!e)return f==null?null:this;if(c.isFunction(f))return this.each(function(j)&#123;var i=c(this);i[d](f.call(this,j,i[d]()))&#125;);return&quot;scrollTo&quot;in
+      e&amp;&amp;e.document?e.document.compatMode===&quot;CSS1Compat&quot;&amp;&amp;e.document.documentElement[&quot;client&quot;+b]||e.document.body[&quot;client&quot;+b]:e.nodeType===9?Math.max(e.documentElement[&quot;client&quot;+b],e.body[&quot;scroll&quot;+b],e.documentElement[&quot;scroll&quot;+b],e.body[&quot;offset&quot;+b],e.documentElement[&quot;offset&quot;+b]):f===w?c.css(e,d):this.css(d,typeof f===&quot;string&quot;?f:f+&quot;px&quot;)&#125;&#125;);A.jQuery=A.$=c&#125;)(window);
+</code></pre>
+<p>  </script></p>
+  <script>
+      function b(){
+          h = $(window).height();
+          t = $(document).scrollTop();
+          if(t > h){
+              $('#gotop').show();
+          }else{
+              $('#gotop').hide();
+          }
+      }
+      $(document).ready(function(e) {
+          b();
+          $('#gotop').click(function(){
+              $(document).scrollTop(0);
+          })
+      });
+
+      $(window).scroll(function(e){
+          b();
+      })
+
+  </script>
+  <script>
+      Particle3D=function(material){
+          THREE.Particle.call(this,material);
+          this.velocity=new THREE.Vector3(4,-4,1);//閫熷害;
+          //this.velocity.rotateX(2);//鏃嬭浆;
+          this.gravity=new THREE.Vector3(0,0,0);//鍔犻€熷害;
+          this.drag=1;//閫熷害鐩镐箻绯绘暟;
+      };
+      //Particle:绮掑瓙;
+      //prototype:鍘熷舰;
+      Particle3D.prototype=new THREE.Particle();
+      Particle3D.prototype.constructor=Particle3D;//鏋勯€犲嚱鏁�
+      Particle3D.prototype.updatePhysics=function(){
+          this.velocity.multiplyScalar(this.drag);//鐭㈤噺鐩镐箻鍑芥暟
+          this.velocity.addSelf(this.gravity);//鐭㈤噺鐩稿姞鍑芥暟
+          this.position.addSelf(this.velocity);//鐭㈤噺鐩稿姞鍑芥暟
+      }
+      var TO_RADIANS=Math.PI/180;//瑙掑害鍚戝姬搴﹁浆鎹㈢郴鏁�*
+      THREE.Vector3.prototype.rotateY=function(angle){
+          //缁昚杞撮『鏃堕拡鏃嬭浆angle;
+          cosRY=Math.cos(angle*TO_RADIANS);
+          sinRY=Math.sin(angle*TO_RADIANS);
+          var tempz=this.z;
+          var tempx=this.x;
+          this.x=(tempx*cosRY)+(tempz*sinRY);
+          this.z=(tempx*-sinRY)+(tempz*cosRY);
+      }
+      THREE.Vector3.prototype.rotateX=function(angle){
+          //缁昘杞撮『鏃堕拡鏃嬭浆angle;
+          cosRY=Math.cos(angle*TO_RADIANS);
+          sinRY=Math.sin(angle*TO_RADIANS);
+          var tempz=this.z;;
+          var tempy=this.y;
+          this.y=(tempy*cosRY)+(tempz*sinRY);
+          this.z=(tempy*-sinRY)+(tempz*cosRY);
+      }
+      THREE.Vector3.prototype.rotateZ=function(angle){
+          //缁昛杞撮『鏃堕拡鏃嬭浆angle;
+          cosRY=Math.cos(angle*TO_RADIANS);
+          sinRY=Math.sin(angle*TO_RADIANS);
+          var tempx=this.x;;
+          var tempy=this.y;
+          this.y=(tempy*cosRY)+(tempx*sinRY);
+          this.x=(tempy*-sinRY)+(tempx*cosRY);
+      }
+      function randomRange(min,max){
+          return((Math.random()*(max-min))+ min);
+      }
+      var SCREEN_WIDTH = window.innerWidth;//
+      var SCREEN_HEIGHT = window.innerHeight;
+      var container;
+      var particle;//绮掑瓙
+      var camera;
+      var scene;
+      var renderer;
+      var starSnow = 1;
+      var particles = [];
+      var particleImage = new Image();
+      //THREE.ImageUtils.loadTexture( "img/ParticleSmoke.png" );
+      particleImage.src = 'http://www.lmlblog.com/blog/12/images/xue.png';
+      function init() {
+          //alert("message3");
+          container = document.createElement('div');//container锛氱敾甯冨疄渚�;
+          document.body.appendChild(container);
+          camera = new THREE.PerspectiveCamera( 60, SCREEN_WIDTH / SCREEN_HEIGHT, 1, 10000 );
+          camera.position.z = 1000;
+          //camera.position.y = 50;
+          scene = new THREE.Scene();
+          scene.add(camera);
+          renderer = new THREE.CanvasRenderer();
+          renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+          var material = new THREE.ParticleBasicMaterial( { map: new THREE.Texture(particleImage) } );
+          //alert("message2");
+          for (var i = 0; i < 500; i++) {
+              //alert("message");
+              particle = new Particle3D( material);
+              particle.position.x = Math.random() * 2000-1000;
+              particle.position.z = Math.random() * 2000-1000;
+              particle.position.y = Math.random() * 2000-1000;
+              //particle.position.y = Math.random() * (1600-particle.position.z)-1000;
+              particle.scale.x = particle.scale.y =  1;
+              scene.add( particle );
+
+              particles.push(particle);
+          }
+          container.appendChild( renderer.domElement );
+          //document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+          document.addEventListener( 'touchstart', onDocumentTouchStart, false );
+          document.addEventListener( 'touchmove', onDocumentTouchMove, false );
+          document.addEventListener( 'touchend', onDocumentTouchEnd, false );
+          setInterval( loop, 1000 / 60 );
+
+      }
+      var touchStartX;
+      var touchFlag = 0;//鍌ㄥ瓨褰撳墠鏄惁婊戝姩鐨勭姸鎬�;
+      var touchSensitive = 80;//妫€娴嬫粦鍔ㄧ殑鐏垫晱搴�;
+      //var touchStartY;
+      //var touchEndX;
+      //var touchEndY;
+      function onDocumentTouchStart( event ) {
+          if ( event.touches.length == 1 ) {
+
+              event.preventDefault();//鍙栨秷榛樿鍏宠仈鍔ㄤ綔;
+              touchStartX = 0;
+              touchStartX = event.touches[ 0 ].pageX ;
+              //touchStartY = event.touches[ 0 ].pageY ;
+          }
+      }
+      function onDocumentTouchMove( event ) {
+
+          if ( event.touches.length == 1 ) {
+              event.preventDefault();
+              var direction = event.touches[ 0 ].pageX - touchStartX;
+              if (Math.abs(direction) > touchSensitive) {
+                  if (direction>0) {touchFlag = 1;}
+                  else if (direction<0) {touchFlag = -1;};
+                  //changeAndBack(touchFlag);
+              }
+          }
+      }
+      function onDocumentTouchEnd (event) {
+          // if ( event.touches.length == 0 ) {
+          //     event.preventDefault();
+          //     touchEndX = event.touches[ 0 ].pageX ;
+          //     touchEndY = event.touches[ 0 ].pageY ;
+
+          // }杩欓噷瀛樺湪闂
+          var direction = event.changedTouches[ 0 ].pageX - touchStartX;
+
+          changeAndBack(touchFlag);
+      }
+
+      function changeAndBack (touchFlag) {
+          var speedX = 25*touchFlag;
+          touchFlag = 0;
+          for (var i = 0; i < particles.length; i++) {
+              particles[i].velocity=new THREE.Vector3(speedX,-10,0);
+          }
+          var timeOut = setTimeout(";", 800);
+          clearTimeout(timeOut);
+
+          var clearI = setInterval(function () {
+              if (touchFlag) {
+                  clearInterval(clearI);
+                  return;
+              };
+              speedX*=0.8;
+
+              if (Math.abs(speedX)<=1.5) {
+                  speedX=0;
+                  clearInterval(clearI);
+              };
+
+              for (var i = 0; i < particles.length; i++) {
+                  particles[i].velocity=new THREE.Vector3(speedX,-10,0);
+              }
+          },100);</li>
+</ul>
+<pre><code>    &#125;
+    function loop() &#123;
+        for(var i = 0; i&lt;particles.length; i++)&#123;
+            var particle = particles[i];
+            particle.updatePhysics();
+
+            with(particle.position)
+            &#123;
+                if((y&lt;-1000)&amp;&amp;starSnow) &#123;y+=2000;&#125;
+
+                if(x&gt;1000) x-=2000;
+                else if(x&lt;-1000) x+=2000;
+                if(z&gt;1000) z-=2000;
+                else if(z&lt;-1000) z+=2000;
+            &#125;
+        &#125;
+
+        camera.lookAt(scene.position);
+
+        renderer.render( scene, camera );
+    &#125;
+&lt;/script&gt;
+&lt;![endif]--&gt;
+</code></pre>
+</head>
+<body style="background-color: #00aced">
+<header> <img src="http://www.lmlblog.com/winter/templets/xq/images/logo.png" alt="看雪个人空间" width="170" height="60">
+    <h1><a href="#">欢迎来到我的博客</a></h1>
+    <p>看雪,是一种唯美的心境。这个冬季，放下疲惫的自己，一起看雪吧</p>
+</header>
+<div class="b_nav"></div>
+<div id="nav">
+    <ul>
+        <li><a href="#">网站首页</a></li>
+        <li><a href="#" target="_blank" title="个人博客模板">个人博客模板</a></li>
+        <li><a href="#" target="_blank" title="图书推荐">图书推荐</a></li>
+        <li><a href="#" target="_blank" title="网站建设">网站建设</a></li>
+        <li><a href="#" target="_blank" title="HTML5 / CSS3">HTML5 / CSS3</a></li>
+        <li><a href="#" target="_blank" title="技术探讨">技术探讨</a></li>
+        <li><a href="#" target="_blank" title="慢生活">慢生活</a></li>
+        <li><a href="#" target="_blank" title="碎言碎语">碎言碎语</a></li>
+    </ul>
+    <!--获取当前页导航 高亮显示标题-->
+</div>
+<!--header end-->
+<div id="mainbody">
+    <div class="info">
+        <figure> <img src="images/art1.jpg"  alt="看雪，是一种唯美的心境">
+            <figcaption><strong>看雪，是一种唯美的心境</strong> 　　喜欢雪，没有理由，只是爱它的轻盈，却不张扬;痴迷于它的典雅，却不做作。纯纯的颜色，洁白如晶，如天使，似鹅毛，飘飘洒洒，漫天飞舞。它虽没有华丽的外套，白色却是最好的衣冠;它虽称不上雍容华贵，素雅却是最佳的装扮。带着它的雅致，迈着绝美的舞姿，随着冬的到来而翩翩起舞，洋洋洒洒，一泻千里。 </figcaption>
+        </figure>
+        <div class="card">
+            <h1>About me</h1>
+            <p>网名：潇雨轩然</p>
+            <p>职业：学生</p>
+            <p>电话：************</p>
+            <p>Email：********@gmail.com</p>
+            <ul class="linkmore">
+                <li><a href="#" class="talk" title="给我留言"></a></li>
+                <li><a href="#" class="address" title="联系地址"></a></li>
+                <li><a href="#" class="email" title="给我写信"></a></li>
+                <li><a href="#" class="photos" title="生活照片"></a></li>
+                <li><a href="#" class="heart" title="关注我"></a></li>
+            </ul>
+        </div>
+    </div>
+    <!--info end-->
+    <div class="blank"></div>
+    <div class="blogs">
+        <ul class="bloglist">
+            <li>
+                <div class="arrow_box">
+                    <div class="ti"></div>
+                    <!--三角形-->
+                    <div class="ci"></div>
+                    <!--圆形-->
+                    <h2 class="title"><a href="http://www.lmlblog.com/blog/12/1.html" target="_blank">雪，温暖了整个冬天。</a></h2>
+                    <ul class="textinfo">
+                        <a target="_blank" href="http://www.lmlblog.com/blog/12/1.html"><img src="images/11.jpg"></a>
+                        <p> 　　冬天总是不如夏春秋一般柔软多情，既然来了，就让人记得刻苦铭心。人生如此般，雪一般的岁月，苦中作乐，暂不说这是那些文人雅客笔下描写的那样如诗如画，却也是每一个人的雪景中总有一处属于自己建立起的一片天地。如痴如醉的自己，看不清别人，也看不清自己，倒也是一种境界，让人有点糊涂，有点执迷。 </p>
+                    </ul>
+                    <ul class="details">
+                        <li class="likes"><a href="#">喜欢 10</a></li>
+                        <li class="comments"><a href="#">评论 34</a></li>
+                        <li class="icon-time"><a href="#">时间 2016-12-1</a></li>
+                    </ul>
+                </div>
+                <!--arrow_box end-->
+            </li>
+            <li>
+                <div class="arrow_box">
+                    <div class="ti"></div>
+                    <!--三角形-->
+                    <div class="ci"></div>
+                    <!--圆形-->
+                    <h2 class="title"><a href="http://www.lmlblog.com/wo/" target="_blank">说好陪我看第一场雪。雪下了，你在哪？</a></h2>
+                    <ul class="textinfo">
+                        <a href="#"><img src="images/s5.jpg"></a>
+                        <p> 　　1、雪很美， 当它落下来的那一刻，就注定要化成水。2、世界上没有不融化的雪，也没有永远不变的爱情，人心都是会变的。3、纯洁的雪，洗濯了肮脏的世界，邂逅的只是安静的大地。4、冬天下雪的时候他会背我走 可是我们分手了。5、冬天的早晨， 晴朗的阳光， 洁净安宁的雪， 一切美的就像我喜欢的她。6、当赤道留住雪花。眼泪融掉细沙，你肯珍惜我吗?</p>
+                    </ul>
+                    <ul class="details">
+                        <li class="likes"><a href="#">喜欢 102</a></li>
+                        <li class="comments"><a href="#">评论 58</a></li>
+                        <li class="icon-time"><a href="#">时间 2016-12-2</a></li>
+                    </ul>
+                </div>
+                <!--arrow_box end-->
+            </li>
+            <li>
+                <div class="arrow_box">
+                    <div class="ti"></div>
+                    <!--三角形-->
+                    <div class="ci"></div>
+                    <!--圆形-->
+                    <h2 class="title"><a href="http://www.lmlblog.com/wo/" target="_blank">风劲吹，雪漫舞</a></h2>
+                    <ul class="textinfo">
+                        <a href="#"><img src="images/s3.jpg"></a>
+                        <p> 　　雪花漫天卷地落下来，犹如鹅毛一般，纷纷扬扬。轻轻地轻轻地落在房顶上，落在草地上，落在山峰上。一会儿，大地一片雪白，好象整个世界都是银白色的，闪闪发光。雪落在地上，那么纯洁，那么晶莹，真使人不忍心踩上去...</p>
+                    </ul>
+                    <ul class="details">
+                        <li class="likes"><a href="#">喜欢 15</a></li>
+                        <li class="comments"><a href="#">评论 2</a></li>
+                        <li class="icon-time"><a href="#">时间 2016-12-3</a></li>
+                    </ul>
+                </div>
+                <!--arrow_box end-->
+            </li>
+            <li>
+                <div class="arrow_box">
+                    <div class="ti"></div>
+                    <!--三角形-->
+                    <div class="ci"></div>
+                    <!--圆形-->
+                    <h2 class="title"><a href="http://www.lmlblog.com/wo/" target="_blank">北京下雪了</a></h2>
+                    <ul class="textinfo">
+                        <a href="#"><img src="images/s4.jpg"></a>
+                        <p> 　　雪中的北京，好美，下雪天，是不是应该得到一个大大的拥抱，一杯喜欢的咖啡，牵手去踩踩雪，听着咯吱咯吱的声音。每年下雪的时候，都是我最想家的时候，以前北京下雪总是没有大连下的那么痛快，所以最冷的时候最怀念家乡的大学和温暖的被窝，原来寒冷真的会加重思乡之情……小伙伴们，你们还好吗?!</p>
+                    </ul>
+                    <ul class="details">
+                        <li class="likes"><a href="#">喜欢 102</a></li>
+                        <li class="comments"><a href="#">评论 58</a></li>
+                        <li class="icon-time"><a href="#">时间 2016-12-4</a></li>
+                    </ul>
+                </div>
+                <!--arrow_box end-->
+            </li>
+            <li>
+                <div class="arrow_box">
+                    <div class="ti"></div>
+                    <!--三角形-->
+                    <div class="ci"></div>
+                    <!--圆形-->
+                    <h2 class="title"><a href="http://www.lmlblog.com/wo/" target="_blank">看雪赏雪心情说说</a></h2>
+                    <ul class="textinfo">
+                        <a href="#"><img src="images/s1.jpg"></a>
+                        <p> 　　踏上由雪铺砌的小路，独自漫步，踩上去听那咯吱咯吱的乐声，真比那天籁之音还要醉人，难怪有诗这样写到“此曲只应天上有，人间哪得几回闻。”你瞧，远出那被雪覆盖的枯枝，似开出了一朵朵白色的小花，真有点“忽如一夜春风来，千树万树梨花开”的味道，却又好似玉雕的一般，晶莹剔透。还有那房屋上，也都披上了厚厚的雪戎装。</p>
+                    </ul>
+                    <ul class="details">
+                        <li class="likes"><a href="#">喜欢 15</a></li>
+                        <li class="comments"><a href="#">评论 2</a></li>
+                        <li class="icon-time"><a href="#">时间 2016-12-5</a></li>
+                    </ul>
+                </div>
+                <!--arrow_box end-->
+            </li>
+            <li>
+                <div class="arrow_box">
+                    <div class="ti"></div>
+                    <!--三角形-->
+                    <div class="ci"></div>
+                    <!--圆形-->
+                    <h2 class="title"><a href="http://www.lmlblog.com/wo/" target="_blank">因为爱你，更是因为懂你</a></h2>
+                    <ul class="textinfo">
+                        <a href="#"><img src="images/12.jpg"></a>
+                        <p> 　　外边仍然飘着转身急逝的雪花，多想在看看落满操场的雪花，多想和你踏着，听着雪碎的声音，如今只剩下惨淡的雪还在下，只能听见自己心碎的声音还在颤抖。望着你离开的背影，我告诉自己要坚强，不哭，是因为爱你，更是因为懂你。 </p>
+                    </ul>
+                    <ul class="details">
+                        <li class="likes"><a href="#">喜欢 15</a></li>
+                        <li class="comments"><a href="#">评论 2</a></li>
+                        <li class="icon-time"><a href="#">时间 2016-12-6</a></li>
+                    </ul>
+                </div>
+                <!--arrow_box end-->
+            </li>
+            <li>
+                <div class="arrow_box">
+                    <div class="ti"></div>
+                    <!--三角形-->
+                    <div class="ci"></div>
+                    <!--圆形-->
+                    <h2 class="title"><a href="http://www.lmlblog.com/wo/" target="_blank">长大后看雪，看的是心境</a></h2>
+                    <ul class="textinfo">
+                        <a href="#"><img src="images/art2.jpg"></a>
+                        <p> 　　许多人看雪会看出许多往事，像小时候看雪，看的就是纯净，长大后看雪，看的是心境。不同的人生阶段看到的雪花固然不同，有看出惊艳的，有看出伤感的，有看出华丽的，有看出苍白的，不论看到了什么样的心境，雪还是雪，只是落在谁的心上，就堆积成什么样的形状。我到真心认为，雪就是雪，季节的使者，有它的时经典散文摘抄:候，证明这个季节是狂欢的，没它的时候，这个季节会显得格外冷清。</p>
+                    </ul>
+                    <ul class="details">
+                        <li class="likes"><a href="#">喜欢 15</a></li>
+                        <li class="comments"><a href="#">评论 2</a></li>
+                        <li class="icon-time"><a href="#">时间 2016-12-7</a></li>
+                    </ul>
+                </div>
+                <!--arrow_box end-->
+            </li>
+            <li>
+                <div class="arrow_box">
+                    <div class="ti"></div>
+                    <!--三角形-->
+                    <div class="ci"></div>
+                    <!--圆形-->
+                    <h2 class="title"><a href="http://www.lmlblog.com/wo/" target="_blank">雪景清纯美女图片下载</a></h2>
+                    <ul class="textinfo">
+                        <a href="#"><img src="images/13.jpg"></a>
+                        <p> 　雪,带着那冬季的清寒悄然飘落,雪花是多么美好,它纯净了整个世界,纯净了我们的心灵中的每一个角落。一起徒步看雪景也许最美的不是天长地久,而是和你一起坐在长椅上,看远处的雪景,天空很冷,我们却很幸福!</p>
+                    </ul>
+                    <ul class="details">
+                        <li class="likes"><a href="#">喜欢 15</a></li>
+                        <li class="comments"><a href="#">评论 2</a></li>
+                        <li class="icon-time"><a href="#">时间 2016-12-8</a></li>
+                    </ul>
+                </div>
+                <!--arrow_box end-->
+            </li>
+            <div class="post-nav-right"><p><a target="_blank" href="#" >点击阅读更多</a></p></div>
+        </ul>
+        <!--bloglist end-->
+        <aside>
+            <div class="search">
+                <form class="searchform" method="get" action="#">
+                    <input type="text" name="s" value="Search" onFocus="this.value=''" onBlur="this.value='Search'">
+                </form>
+            </div>
+            <div class="viny">
+                <dl>
+                    <dt class="art"><img src="images/13.jpg" alt="歌曲专辑"></dt>
+                    <dd class="icon-song"><span></span>我很快乐</dd>
+                    <dd class="icon-artist"><span></span>歌手：刘惜君</dd>
+                    <dd class="icon-album"><span></span>专辑：《我很快乐》</dd>
+                    <dd class="icon-like"><span></span><a href="#">喜欢</a></dd>
+                    <dd class="music">
+                        <audio src="music/陈致逸,HOYO-MiX%20-%20Clear%20Sky%20Over%20Liyue%20璃月的晴空.mp3" controls autoplay></audio>
+                    </dd>
+                    <!--也可以添加loop属性 音频加载到末尾时，会重新播放-->
+                </dl>
+            </div>
+            <div class="tuijian">
+                <h2>推荐文章</h2>
+                <ol>
+                    <li><span><strong>1</strong></span><a target="_blank" href="#">*****************</a></li>
+                    <li><span><strong>2</strong></span><a target="_blank" href="#">*****************</a></li>
+                    <li><span><strong>3</strong></span><a target="_blank" href="#">*****************</a></li>
+                    <li><span><strong>4</strong></span><a target="_blank" href="#">*****************</a></li>
+                    <li><span><strong>5</strong></span><a target="_blank" href="#">*****************</a></li>
+                    <li><span><strong>6</strong></span><a target="_blank" href="#">*****************</a></li>
+                    <li><span><strong>7</strong></span><a target="_blank" href="#">*****************</a></li>
+                    <li><span><strong>8</strong></span><a target="_blank" href="#">*****************</a></li>
+                    <li><span><strong>9</strong></span><a target="_blank" href="#">*****************</a></li>
+                </ol>
+            </div>
+            <div class="toppic">
+                <h2>图文推荐</h2>
+                <ul>
+                    <li><a href="#"><img src="images/k01.jpg">唯美雪景意境图片,唯美雪景意境图片壁纸！
+                        <p>点击阅读更多...</p>
+                    </a></li>
+                    <li><a href="#"><img src="images/10.jpg">浪漫唯美雪景图片_下雪浪漫唯美图片下载
+                        <p>点击阅读更多...</p>
+                    </a></li>
+                    <li><a href="#"><img src="images/k03.jpg">唯美人物雪景图片:冬天要是有雪才完美。
+                        <p>点击阅读更多...</p>
+                    </a></li>
+                    <li><a href="#"><img src="images/12.jpg">最美冬天雪景图片大全。
+                        <p>点击阅读更多...</p>
+                    </a></li>
+                    <li><a href="#"><img src="images/13.jpg">世上所谓幸福，就是一个笨蛋遇到一个傻瓜。
+                        <p>点击阅读更多...</p>
+                    </a></li>
+                </ul>
+            </div>
+            <div class="clicks">
+                <h2>热门点击</h2>
+                <ol>
+                    <li><span><a href="#">慢生活</a></span><a target="_blank" rel="noopener" href="http://www.lmlblog.com/wo/share/">有一种思念，是淡淡的幸福,一个心情一行文字</a></li>
+                    <li><span><a href="#">爱情美文</a></span><a target="_blank" rel="noopener" href="http://www.lmlblog.com/wo/share/">励志人生-要做一个潇洒的女人</a></li>
+                    <li><span><a href="#">慢生活</a></span><a target="_blank" rel="noopener" href="http://www.lmlblog.com/wo/share/">女孩都有浪漫的小情怀——浪漫的求婚词</a></li>
+                    <li><span><a href="#">博客模板</a></span><a target="_blank" rel="noopener" href="http://www.lmlblog.com/wo/share/">Green绿色小清新的夏天-个人博客模板</a></li>
+                    <li><span><a href="#">女生个人博客</a></span><a target="_blank" rel="noopener" href="http://www.lmlblog.com/wo/share/">女生清新个人博客网站模板</a></li>
+                    <li><span><a href="#">Wedding</a></span><a target="_blank" rel="noopener" href="http://www.lmlblog.com/wo/share/">Wedding-婚礼主题、情人节网站模板</a></li>
+                    <li><span><a href="#">三栏布局</a></span><a target="_blank" rel="noopener" href="http://www.lmlblog.com/wo/share/">Column 三栏布局 个人网站模板</a></li>
+                    <li><span><a href="#">个人网站模板</a></span><a target="_blank" rel="noopener" href="http://www.lmlblog.com/wo/share/">时间煮雨-个人网站模板</a></li>
+                    <li><span><a href="#">古典风格</a></span><a target="_blank" rel="noopener" href="http://www.lmlblog.com/wo/share/">花气袭人是酒香—个人网站模板</a></li>
+                </ol>
+            </div>
+            <div class="visitors">
+                <h2>最新评论</h2>
+                <dl>
+                    <dt><img src="images/s8.jpg" alt="看雪个人博客模板">
+                    <dt>
+                    <dd>DanceSmile
+                        <time>38分钟前</time>
+                    </dd>
+                    <dd>在 <a target="_blank" rel="noopener" href="http://www.yangqq.com/jstt/bj/2013-07-28/530.html" class="title">如果要学习web前端开发，需要学习什么？ </a>中评论：</dd>
+                    <dd>文章非常详细，我很喜欢.前端的工程师很少，我记得几年前yahoo花高薪招聘前端也招不到</dd>
+                </dl>
+                <dl>
+                    <dt><img src="images/s7.jpg" alt="看雪个人博客模板">
+                    <dt>
+                    <dd>yisa
+                        <time>2小时前</time>
+                    </dd>
+                    <dd>在 <a target="_blank" rel="noopener" href="http://www.lmlblog.com/blog/7/" class="title">>青春往事个人博客模板 - lmlblog.com</a>中评论：</dd>
+                    <dd>我要下载个人博客模板</dd>
+                </dl>
+                <dl>
+                    <dt><img src="images/s6.jpg" alt="看雪个人博客模板">
+                    <dt>
+                    <dd>个人博客
+                        <time>12月7日</time>
+                    </dd>
+                    <dd>在 <a target="_blank" rel="noopener" href="http://www.lmlblog.com/wo/" class="title">如果个人博客网站再没有价值，你还会坚持吗？ </a>中评论：</dd>
+                    <dd>博客色彩丰富，很是好看</dd>
+                </dl>
+                <dl>
+                    <dt><img src="images/s2.jpg" alt="看雪个人博客模板">
+                    <dt>
+                    <dd>小林博客
+                        <time>12月7日</time>
+                    </dd>
+                    <dd>在 <a target="_blank" rel="noopener" href="http://www.lmlblog.com/wo/" class="title">如果个人博客网站再没有价值，你还会坚持吗？ </a>中评论：</dd>
+                    <dd>博客色彩丰富，很是好看</dd>
+                </dl>
+                <dl>
+                    <dt><img src="images/s5.jpg" alt="看雪个人博客模板">
+                    <dt>
+                    <dd>MAOLAI博客
+                        <time>12月7日</time>
+                    </dd>
+                    <dd>在 <a target="_blank" rel="noopener" href="http://www.lmlblog.com/wo/" class="title">如果个人博客网站再没有价值，你还会坚持吗？ </a>中评论：</dd>
+                    <dd>博客色彩丰富，很是好看</dd>
+                </dl>
+            </div>
+            <div class="flickr">
+                <h2>最近访客</h2>
+
+<pre><code>        &lt;/div&gt;
+    &lt;/aside&gt;
+&lt;/div&gt;
+&lt;!--blogs end--&gt;
+</code></pre>
+</div>
+<!--mainbody end-->
+<footer>
+    <br>
+    <br>
+    <br>
+    <!--<div class="footer-bottom">-->
+    <!--&lt;!&ndash;<p>Copyright 2016 时间：大约在冬季 Design by <a target="_blank" rel="noopener" href="http://www.lmlblog.com">MAOLAI博客</a>  模板下载地址：更新中...</p>&ndash;&gt;-->
+    <!--&lt;!&ndash;<p>本网页为静态页面，如喜欢可用自己熟悉的程序套用，如dedecms</p>&ndash;&gt;-->
+    <!--</div>-->
+</footer>
+<!-- jQuery仿腾讯回顶部和建议 代码开始 -->
+<div id="tbox"> <a id="togbook" href="#"></a> <a id="gotop" href="javascript:void(0)"></a> </div>
+<!-- 代码结束 -->
+<script src="http://www.lmlblog.com/winter/templets/xq/js/snowy.js"></script>
+<script src="js/Snow.js"></script>
+<style type="text/css">
+    .snow-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:100001;}
+</style>
+<div class="snow-container"></div>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?c737dbf9f7869288ee612a6620a3916a";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xiaoyuxuanran.github.io/2021/08/06/hello-world/" data-id="ckwkpt5ui0008jgrug0562xu5" data-title="" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/11/29/shu-ju-jie-gou-zui-xiao-sheng-cheng-shu/">数据结构最小生成树</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/06/hello-world/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 xiaoran<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
