@@ -6,14 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="数据结构最小生成树, 潇雨轩然的博客">
-    <meta name="description" content="#include &amp;lt;stdio.h&gt;
-#define size 101
-#define inf 32767
-typedef struct
-&amp;#123;
-    int n,e;
-    int edge[size][size];
-&amp;#">
+    <meta name="description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -341,107 +334,7 @@ typedef struct
         <hr>
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#include &lt;stdio.h></span>
-<span class="token comment">#define size 101</span>
-<span class="token comment">#define inf 32767</span>
-typedef struct
-<span class="token punctuation">&#123;</span>
-    int n,e<span class="token punctuation">;</span>
-    int edge<span class="token punctuation">[</span>size<span class="token punctuation">]</span><span class="token punctuation">[</span>size<span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>mg<span class="token punctuation">;</span>
-
-void init_mg<span class="token punctuation">(</span>mg <span class="token operator">&amp;</span>g<span class="token punctuation">)</span>
-<span class="token punctuation">&#123;</span>
-    g.n<span class="token operator">=</span>g.e<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span>int i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> size<span class="token punctuation">;</span> i++<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span>int j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> size<span class="token punctuation">;</span> j++<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            g.edge<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">=</span>inf<span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-void input<span class="token punctuation">(</span>mg <span class="token operator">&amp;</span>g<span class="token punctuation">)</span>
-<span class="token punctuation">&#123;</span>
-    freopen<span class="token punctuation">(</span><span class="token string">"in.txt"</span>,<span class="token string">"r"</span>,stdin<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    scanf<span class="token punctuation">(</span><span class="token string">"%d%d"</span>,<span class="token operator">&amp;</span>g.n,g.e<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span>int i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span><span class="token operator">=</span> g.e <span class="token punctuation">;</span> i++<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        int v1,v2,w<span class="token punctuation">;</span>
-        scanf<span class="token punctuation">(</span><span class="token string">"%d%d%d"</span>,<span class="token operator">&amp;</span>v1,<span class="token operator">&amp;</span>v2,w<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        g.edge<span class="token punctuation">[</span>v1<span class="token punctuation">]</span><span class="token punctuation">[</span>v2<span class="token punctuation">]</span><span class="token operator">=</span>g.edge<span class="token punctuation">[</span>v2<span class="token punctuation">]</span><span class="token punctuation">[</span>v1<span class="token punctuation">]</span><span class="token operator">=</span>w<span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-    fclose<span class="token punctuation">(</span>stdin<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-typedef struct <span class="token punctuation">&#123;</span>
-    int vs,ve,w<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>eg<span class="token punctuation">;</span>
-void sort<span class="token punctuation">(</span>eg g<span class="token punctuation">[</span><span class="token punctuation">]</span>,int e<span class="token punctuation">)</span>
-<span class="token punctuation">&#123;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span>int i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> e<span class="token punctuation">;</span> i++<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span>int j <span class="token operator">=</span> i+1<span class="token punctuation">;</span> j <span class="token operator">&lt;</span><span class="token operator">=</span> e<span class="token punctuation">;</span> j++<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            if<span class="token punctuation">(</span>g<span class="token punctuation">[</span>i<span class="token punctuation">]</span>.w<span class="token operator">></span>g<span class="token punctuation">[</span>j<span class="token punctuation">]</span>.w<span class="token punctuation">)</span>
-            <span class="token punctuation">&#123;</span>
-                eg <span class="token assign-left variable">t</span><span class="token operator">=</span>g<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-                g<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span>g<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
-                g<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">=</span>t<span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span>
-        <span class="token punctuation">&#125;</span>
-
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-void kruskal<span class="token punctuation">(</span>mg g<span class="token punctuation">)</span>
-<span class="token punctuation">&#123;</span>
-    eg eg<span class="token punctuation">[</span>size<span class="token punctuation">]</span><span class="token punctuation">;</span>
-    int <span class="token assign-left variable">ei</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
-    for<span class="token punctuation">(</span>int <span class="token assign-left variable">i</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span><span class="token operator">=</span>g.n<span class="token punctuation">;</span>i++<span class="token punctuation">)</span>
-        for<span class="token punctuation">(</span>int <span class="token assign-left variable">j</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>j<span class="token operator">&lt;</span>i<span class="token punctuation">;</span>j++<span class="token punctuation">)</span>
-            if<span class="token punctuation">(</span>g.edge<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">&lt;</span>inf<span class="token punctuation">)</span>
-            <span class="token punctuation">&#123;</span>
-                ei++<span class="token punctuation">;</span>
-                eg<span class="token punctuation">[</span>ei<span class="token punctuation">]</span>.vs<span class="token operator">=</span>i<span class="token punctuation">;</span>
-                eg<span class="token punctuation">[</span>ei<span class="token punctuation">]</span>.ve<span class="token operator">=</span>j<span class="token punctuation">;</span>
-                eg<span class="token punctuation">[</span>ei<span class="token punctuation">]</span>.w<span class="token operator">=</span>g.edge<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span>
-            sort<span class="token punctuation">(</span>eg,ei<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    int sn<span class="token punctuation">[</span>size<span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token number">0</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
-    for<span class="token punctuation">(</span>int <span class="token assign-left variable">i</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>g.n<span class="token punctuation">;</span>i++<span class="token punctuation">)</span>
-        sn<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span>i<span class="token punctuation">;</span>
-    int <span class="token assign-left variable">k</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token assign-left variable">ei</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
-    while<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-    <span class="token punctuation">&#123;</span>
-        int vs,ve,w,sn1,sn2<span class="token punctuation">;</span>
-        <span class="token assign-left variable">vs</span><span class="token operator">=</span>eg<span class="token punctuation">[</span>ei<span class="token punctuation">]</span>.vs<span class="token punctuation">;</span>
-        <span class="token assign-left variable">ve</span><span class="token operator">=</span>eg<span class="token punctuation">[</span>ei<span class="token punctuation">]</span>.ve<span class="token punctuation">;</span>
-        <span class="token assign-left variable">w</span><span class="token operator">=</span>eg<span class="token punctuation">[</span>ei<span class="token punctuation">]</span>.w<span class="token punctuation">;</span>
-        <span class="token assign-left variable">sn1</span><span class="token operator">=</span>sn<span class="token punctuation">[</span>vs<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token assign-left variable">sn2</span><span class="token operator">=</span>sn<span class="token punctuation">[</span>ve<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        if<span class="token punctuation">(</span>sn1<span class="token operator">!=</span>sn2<span class="token punctuation">)</span>
-        <span class="token punctuation">&#123;</span>
-            printf<span class="token punctuation">(</span><span class="token string">"(%d,%d)(%d),"</span>,vs,ve,w<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            k++<span class="token punctuation">;</span>
-            if<span class="token punctuation">(</span>k<span class="token operator">==</span>g.n-1<span class="token punctuation">)</span> <span class="token builtin class-name">break</span><span class="token punctuation">;</span>
-            for<span class="token punctuation">(</span>int <span class="token assign-left variable">i</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span><span class="token operator">=</span>g.n<span class="token punctuation">;</span>i++<span class="token punctuation">)</span>
-            <span class="token punctuation">&#123;</span>
-                if<span class="token punctuation">(</span>sn<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">==</span>sn2<span class="token punctuation">)</span> sn<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span>sn1<span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span>
-        <span class="token punctuation">&#125;</span>
-        ei++<span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-int <span class="token function-name function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#123;</span>
-    mg g<span class="token punctuation">;</span>
-    init_mg<span class="token punctuation">(</span>g<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    input<span class="token punctuation">(</span>g<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    kruskal<span class="token punctuation">(</span>g<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token builtin class-name">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-
-
-
-
-
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include &lt;stdio.h&gt;</span></span><br><span class="line"><span class="comment">#define size 101</span></span><br><span class="line"><span class="comment">#define inf 32767</span></span><br><span class="line">typedef struct</span><br><span class="line">&#123;</span><br><span class="line">    int n,e;</span><br><span class="line">    int edge[size][size];</span><br><span class="line">&#125;mg;</span><br><span class="line"></span><br><span class="line">void init_mg(mg &amp;g)</span><br><span class="line">&#123;</span><br><span class="line">    g.n=g.e=0;</span><br><span class="line">    <span class="keyword">for</span> (int i = 1; i &lt; size; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (int j = 0; j &lt; size; j++) &#123;</span><br><span class="line">            g.edge[i][j]=inf;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">void input(mg &amp;g)</span><br><span class="line">&#123;</span><br><span class="line">    freopen(<span class="string">&quot;in.txt&quot;</span>,<span class="string">&quot;r&quot;</span>,stdin);</span><br><span class="line">    scanf(<span class="string">&quot;%d%d&quot;</span>,&amp;g.n,g.e);</span><br><span class="line">    <span class="keyword">for</span> (int i = 1; i &lt;= g.e ; i++) &#123;</span><br><span class="line">        int v1,v2,w;</span><br><span class="line">        scanf(<span class="string">&quot;%d%d%d&quot;</span>,&amp;v1,&amp;v2,w);</span><br><span class="line">        g.edge[v1][v2]=g.edge[v2][v1]=w;</span><br><span class="line">    &#125;</span><br><span class="line">    fclose(stdin);</span><br><span class="line">&#125;</span><br><span class="line">typedef struct &#123;</span><br><span class="line">    int vs,ve,w;</span><br><span class="line">&#125;eg;</span><br><span class="line">void sort(eg g[],int e)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span> (int i = 1; i &lt; e; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (int j = i+1; j &lt;= e; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(g[i].w&gt;g[j].w)</span><br><span class="line">            &#123;</span><br><span class="line">                eg t=g[i];</span><br><span class="line">                g[i]=g[j];</span><br><span class="line">                g[j]=t;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">void kruskal(mg g)</span><br><span class="line">&#123;</span><br><span class="line">    eg eg[size];</span><br><span class="line">    int ei=0;</span><br><span class="line">    <span class="keyword">for</span>(int i=1;i&lt;=g.n;i++)</span><br><span class="line">        <span class="keyword">for</span>(int j=1;j&lt;i;j++)</span><br><span class="line">            <span class="keyword">if</span>(g.edge[i][j]&lt;inf)</span><br><span class="line">            &#123;</span><br><span class="line">                ei++;</span><br><span class="line">                eg[ei].vs=i;</span><br><span class="line">                eg[ei].ve=j;</span><br><span class="line">                eg[ei].w=g.edge[i][j];</span><br><span class="line">            &#125;</span><br><span class="line">            sort(eg,ei);</span><br><span class="line">    int sn[size]=&#123;0&#125;;</span><br><span class="line">    <span class="keyword">for</span>(int i=1;i&lt;g.n;i++)</span><br><span class="line">        sn[i]=i;</span><br><span class="line">    int k=0;</span><br><span class="line">    ei=1;</span><br><span class="line">    <span class="keyword">while</span>(1)</span><br><span class="line">    &#123;</span><br><span class="line">        int vs,ve,w,sn1,sn2;</span><br><span class="line">        vs=eg[ei].vs;</span><br><span class="line">        ve=eg[ei].ve;</span><br><span class="line">        w=eg[ei].w;</span><br><span class="line">        sn1=sn[vs];</span><br><span class="line">        sn2=sn[ve];</span><br><span class="line">        <span class="keyword">if</span>(sn1!=sn2)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;(%d,%d)(%d),&quot;</span>,vs,ve,w);</span><br><span class="line">            k++;</span><br><span class="line">            <span class="keyword">if</span>(k==g.n-1) <span class="built_in">break</span>;</span><br><span class="line">            <span class="keyword">for</span>(int i=1;i&lt;=g.n;i++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(sn[i]==sn2) sn[i]=sn1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        ei++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int <span class="function"><span class="title">main</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">    mg g;</span><br><span class="line">    init_mg(g);</span><br><span class="line">    input(g);</span><br><span class="line">    kruskal(g);</span><br><span class="line">    <span class="built_in">return</span> 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
             </div>
             <hr/>
@@ -519,14 +412,7 @@ int <span class="token function-name function">main</span><span class="token pun
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">#include &lt;stdio.h>
-#define size 101
-#define inf 32767
-typedef struct
-&#123;
-    int n,e;
-    int edge[size][size];
-&#</div>
+                    <div class="summary">123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2021-11-30
