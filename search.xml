@@ -1,27 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>数据结构最小生成树</title>
-    <url>/2021/11/30/shu-ju-jie-gou-zui-xiao-sheng-cheng-shu/</url>
-    <content><![CDATA[<p>``<br>#include &lt;stdio.h&gt;<br>#define size 101<br>#define inf 32767</p>
-<span id="more"></span>
-<p>typedef struct<br>{<br>    int n,e;<br>    int edge[size][size];<br>}mg;</p>
-<p>void init_mg(mg &amp;g)<br>{<br>    g.n=g.e=0;<br>    for (int i = 1; i &lt; size; i++) {<br>        for (int j = 0; j &lt; size; j++) {<br>            g.edge[i][j]=inf;<br>        }</p>
-<pre><code>&#125;
-</code></pre>
-<p>}<br>void input(mg &amp;g)<br>{<br>    freopen(“in.txt”,”r”,stdin);<br>    scanf(“%d%d”,&amp;g.n,&amp;g.e);<br>    for (int i = 1; i &lt;= g.e ; i++) {<br>        int v1,v2,w;<br>        scanf(“%d%d%d”,&amp;v1,&amp;v2,&amp;w);<br>        g.edge[v1][v2]=g.edge[v2][v1]=w;<br>    }<br>    fclose(stdin);<br>}<br>typedef struct {<br>    int vs,ve,w;<br>}eg;<br>void sort(eg g[],int e)<br>{<br>    for (int i = 1; i &lt; e; i++) {<br>        for (int j = i+1; j &lt;= e; j++) {<br>            if(g[i].w&gt;g[j].w)<br>            {<br>                eg t=g[i];<br>                g[i]=g[j];<br>                g[j]=t;<br>            }<br>        }</p>
-<pre><code>&#125;
-</code></pre>
-<p>}<br>void kruskal(mg g)<br>{<br>    eg eg[size];<br>    int ei=0;<br>    for(int i=1;i&lt;=g.n;i++)<br>        for(int j=1;j&lt;i;j++)<br>            if(g.edge[i][j]&lt;inf)<br>            {<br>                ei++;<br>                eg[ei].vs=i;<br>                eg[ei].ve=j;<br>                eg[ei].w=g.edge[i][j];<br>            }<br>            sort(eg,ei);<br>    int sn[size]={0};<br>    for(int i=1;i&lt;g.n;i++)<br>        sn[i]=i;<br>    int k=0;<br>    ei=1;<br>    while(1)<br>    {<br>        int vs,ve,w,sn1,sn2;<br>        vs=eg[ei].vs;<br>        ve=eg[ei].ve;<br>        w=eg[ei].w;<br>        sn1=sn[vs];<br>        sn2=sn[ve];<br>        if(sn1!=sn2)<br>        {<br>            printf(“(%d,%d)(%d),”,vs,ve,w);<br>            k++;<br>            if(k==g.n-1) break;<br>            for(int i=1;i&lt;=g.n;i++)<br>            {<br>                if(sn[i]==sn2) sn[i]=sn1;<br>            }<br>        }<br>        ei++;<br>    }<br>}<br>int main()<br>{<br>    mg g;<br>    init_mg(g);<br>    input(g);<br>    kruskal(g);<br>    return 0;<br>}<br>``</p>
-]]></content>
-      <categories>
-        <category>Markdown</category>
-      </categories>
-      <tags>
-        <tag>Typora</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>数据结构图的迪克斯查尔、曼彻斯特、普利姆等算法</title>
     <url>/2021/11/30/11-yue-30-ri-shi-yan-ke-nei-rong/</url>
     <content><![CDATA[<p>``<br>#include &lt;stdio.h&gt;</p>
@@ -40,6 +19,27 @@
       </categories>
       <tags>
         <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据结构最小生成树</title>
+    <url>/2021/11/30/shu-ju-jie-gou-zui-xiao-sheng-cheng-shu/</url>
+    <content><![CDATA[<p>``<br>#include &lt;stdio.h&gt;<br>#define size 101<br>#define inf 32767</p>
+<span id="more"></span>
+<p>typedef struct<br>{<br>    int n,e;<br>    int edge[size][size];<br>}mg;</p>
+<p>void init_mg(mg &amp;g)<br>{<br>    g.n=g.e=0;<br>    for (int i = 1; i &lt; size; i++) {<br>        for (int j = 0; j &lt; size; j++) {<br>            g.edge[i][j]=inf;<br>        }</p>
+<pre><code>&#125;
+</code></pre>
+<p>}<br>void input(mg &amp;g)<br>{<br>    freopen(“in.txt”,”r”,stdin);<br>    scanf(“%d%d”,&amp;g.n,&amp;g.e);<br>    for (int i = 1; i &lt;= g.e ; i++) {<br>        int v1,v2,w;<br>        scanf(“%d%d%d”,&amp;v1,&amp;v2,&amp;w);<br>        g.edge[v1][v2]=g.edge[v2][v1]=w;<br>    }<br>    fclose(stdin);<br>}<br>typedef struct {<br>    int vs,ve,w;<br>}eg;<br>void sort(eg g[],int e)<br>{<br>    for (int i = 1; i &lt; e; i++) {<br>        for (int j = i+1; j &lt;= e; j++) {<br>            if(g[i].w&gt;g[j].w)<br>            {<br>                eg t=g[i];<br>                g[i]=g[j];<br>                g[j]=t;<br>            }<br>        }</p>
+<pre><code>&#125;
+</code></pre>
+<p>}<br>void kruskal(mg g)<br>{<br>    eg eg[size];<br>    int ei=0;<br>    for(int i=1;i&lt;=g.n;i++)<br>        for(int j=1;j&lt;i;j++)<br>            if(g.edge[i][j]&lt;inf)<br>            {<br>                ei++;<br>                eg[ei].vs=i;<br>                eg[ei].ve=j;<br>                eg[ei].w=g.edge[i][j];<br>            }<br>            sort(eg,ei);<br>    int sn[size]={0};<br>    for(int i=1;i&lt;g.n;i++)<br>        sn[i]=i;<br>    int k=0;<br>    ei=1;<br>    while(1)<br>    {<br>        int vs,ve,w,sn1,sn2;<br>        vs=eg[ei].vs;<br>        ve=eg[ei].ve;<br>        w=eg[ei].w;<br>        sn1=sn[vs];<br>        sn2=sn[ve];<br>        if(sn1!=sn2)<br>        {<br>            printf(“(%d,%d)(%d),”,vs,ve,w);<br>            k++;<br>            if(k==g.n-1) break;<br>            for(int i=1;i&lt;=g.n;i++)<br>            {<br>                if(sn[i]==sn2) sn[i]=sn1;<br>            }<br>        }<br>        ei++;<br>    }<br>}<br>int main()<br>{<br>    mg g;<br>    init_mg(g);<br>    input(g);<br>    kruskal(g);<br>    return 0;<br>}<br>``</p>
+]]></content>
+      <categories>
+        <category>Markdown</category>
+      </categories>
+      <tags>
+        <tag>Typora</tag>
       </tags>
   </entry>
 </search>
