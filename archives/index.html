@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   
   <title>归档 | 潇雨轩然のblog</title>
+
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
 <meta property="og:title" content="潇雨轩然のblog">
@@ -19,6 +20,7 @@
   
     <link rel="icon" href="/favicon.png">
   
+
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
@@ -33,6 +35,26 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" rel="stylesheet" type="text/css">
 <meta name="generator" content="Hexo 6.3.0"></head>
 
+<!-- 一言API -->
+<!-- 现代写法，推荐 -->
+<!-- 兼容低版本浏览器 (包括 IE)，可移除 -->
+<script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+<!--End-->
+<script>
+  fetch('https://v1.hitokoto.cn')
+          .then(function (res){
+            return res.json();
+          })
+          .then(function (data) {
+            var hitokoto = document.getElementById('hitokoto');
+            hitokoto.innerText = data.hitokoto + '——【' + data.from + '】';
+          })
+          .catch(function (err) {
+            console.error(err);
+          })
+</script>
+
 <body>
   <div id="container">
     <div id="wrap">
@@ -40,6 +62,7 @@
         <div class="widget-wrap mobile-header">
   <h3 class="widget-title"></h3>
   <div class="widget">
+
     <img class="avatar" src="/images/photo.jpg">
     <h2 class="author">潇雨轩然</h2>
     <h3 class="description"></h3>
@@ -48,6 +71,7 @@
       <a href="/categories"><div><strong>0</strong><br>分类</div></a>
       <a href="/tags"><div><strong>2</strong><br>标签</div></a>
     </div>
+
     <ul class="blog-link">
      
           <a href="/" title="Home">
@@ -64,6 +88,14 @@
         
           <a href="/tags" title="Tags">
             <li>标签</li>
+          </a>
+        
+          <a href="欢迎访问" title="About">
+            <li>关于</li>
+          </a>
+        
+          <a href="/seach" title="search">
+            <li>搜索</li>
           </a>
         
     </ul>
@@ -157,6 +189,14 @@
             <li>标签</li>
           </a>
         
+          <a href="欢迎访问" title="About">
+            <li>关于</li>
+          </a>
+        
+          <a href="/seach" title="search">
+            <li>搜索</li>
+          </a>
+        
     </ul>
   </div>
 </div>
@@ -167,6 +207,7 @@
   <div class="widget">
     <img class="avatar" src="/images/photo.jpg">
     <h2 class="author">潇雨轩然</h2>
+    <h3 id="hitokoto" style="font-family: 华文行楷">正在加载一言...</h3>
     <h3 class="description"></h3>
     <div class="count-box">
       <a href="/archives"><div><strong>2</strong><br>文章</div></a>
@@ -187,8 +228,8 @@
     <div class="friend-link">
       <h2>友情链接</h2>
       
-        <a class="hvr-bounce-in" href="http://blog.shanamaid.top/" target="_blank" title="ShanaMaid">
-          ShanaMaid
+        <a class="hvr-bounce-in" href="http://blog.shanamaid.top/" target="_blank" title="主题作者">
+          主题作者
         </a>
       
     </div>
@@ -197,6 +238,10 @@
 
   
 </aside>
+        
+        <!-- 雪花特效3 -->
+        
+          <script type="text/javascript" src="/js/snow3.js"></script>
         
       </div>
       <footer id="footer">
@@ -290,5 +335,5 @@ new WOW().init();
 
 
   </div>
-</body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
