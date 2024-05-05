@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>ESP32层级目录 | 潇雨轩然のblog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="请输入密码查看.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ESP32层级目录">
+<meta property="og:url" content="http://example.com/2024/01/11/cmake%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="潇雨轩然のblog">
+<meta property="og:description" content="请输入密码查看.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-01-11T11:27:17.711Z">
+<meta property="article:modified_time" content="2024-05-05T02:25:32.866Z">
+<meta property="article:author" content="潇雨轩然">
+<meta property="article:tag" content="ESP32">
+<meta property="article:tag" content="cmake">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="潇雨轩然のblog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/plugin/bganimation/bg.css">
+
+  
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" rel="stylesheet" type="text/css">
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<!-- 一言API -->
+<!-- 现代写法，推荐 -->
+<!-- 兼容低版本浏览器 (包括 IE)，可移除 -->
+<script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+<!--End-->
+<script>
+  fetch('https://v1.hitokoto.cn')
+          .then(function (res){
+            return res.json();
+          })
+          .then(function (data) {
+            var hitokoto = document.getElementById('hitokoto');
+            hitokoto.innerText = data.hitokoto + '——【' + data.from + '】';
+          })
+          .catch(function (err) {
+            console.error(err);
+          })
+
+</script>
+
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div class="outer">
+        <div class="widget-wrap mobile-header">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+
+    <img class="avatar" src="/images/photo.jpg">
+    <h2 class="author">潇雨轩然</h2>
+    <h3 class="description"></h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>4</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>0</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>4</strong><br>标签</div></a>
+    </div>
+
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+          <a href="/about" title="About">
+            <li>关于</li>
+          </a>
+        
+          <a href="/seach" title="search">
+            <li>搜索</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+        <section id="main"><article id="post-cmake学习笔记" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2024/01/11/cmake%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time class="post-time" datetime="2024-01-11T11:27:17.711Z" itemprop="datePublished">
+    <span class="post-month">1月</span><br/>
+    <span class="post-day">11</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ESP32层级目录
+    </h1>
+  
+
+        <div>
+          
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="8123159d9da828124cabf5269b29e71e891f0819f0d2733e22c5c2ff5736cb98">4c6678199657225e2250ab5ce2e783af7c0e7d512483e353534bc32183fe914299d683975a36589bda6ddef56dbe7258a62c1826eeaac0a1c5be3c7925cc1461055296802137356df00c3e459e6ccbd54400b19f2aa6afb11cf0c7fed026c9e7de5d0698673da66a35b01b12bf870605ba793be3e9c9b323815c622bf1d56de3123fa3c117ec6fc5ac7073f944df40d430b5ee57a5490e7d06965df4f641c9eb02f6275e118ff16dbba8a332554c4bf7b937a5195f65881d7686f05a1541c175ddc8809141fdaecea7e97d133a32afbc21961940fc0e800c9743ef6db0f5ba3cb3d2ebe26b4db90c809791e269f7ed82ec9ae3da9c7b771d91efadd7d798ec1753fce1b1c087a680ac115dcc1839e0d874af1d3db8ba2ad6d8ac39d3eccc59d82f733fcfea201323de280fc64c208cb54cd12f7b446d3d74b76dcfde0d25bd88eb9cdd45b67b8bacc91c822fabb396b7637bbbc5ae828bf0481cc1d55d99a3c8cf717101c7478d55f67552ab1f041f18970bbaedce239bf3aafa1df5281d9cae2d803a5c5597474c268b49308e962afa7e4ef685025aeab5c8d67afb803c71fb40e2e8f6670377ace852cacf081f90fb02cbd8e2b636e83045e03064c38302d2df10a8c995e50ba33d38d8d102b6e31cc79a762b7c3e888704583dcdc0ef7b6f749bd28455c9f3e545de73a8134607e0a2b9a1a44b4f816044d3f4c714044ebb8994fd61771e4f36b5d395a41fbf41d626695f49c7689d0c82247d74522a7b9730a55dfe74eb2de205cd810a6f75fdf2ec3fc56620d6c778414162016d1387cd4a31eef984675397bfbaea97df994724f1641ae39580924c1be52625ef239d7c727ee5563066a4c138b1e035b5738cf15c27749bf6efafe8df6f277d8bc84b9d26698783d0f068a119c8bf99e96d370c94d1bac40fca97e74805bb2bd84b1200f2780c4d82017bcc34eb5a87a0ef3f06b96a7b8b2248f413ec5b340b7213282d1c6535246a2bb12444957d6e1825705247963c85773153774e1c3b0501eaecdd56dab9c72bbdf0d929d191d78bc864822046e96ca08d3c7581b6b47baa8029344c5ba45cd9de6ea0a21ac29c31c30e3ea7bcef58e96cea6319c03dc99b249041d507a1dc813bfbcaa4b1d05edee08ef486f80572139559d8efa413cec3be4e93bfd3c16168b8f303db6ae35f4ed7a2cb5351484b6665c3647abb44e32ee1b592047784f88accbeda0c769770beb6d05183d32fea02dfdf9b17e6d9997d45aec98748e8855d8d67a7aba5bdfadf5e36ea445e3d4f30f26ca84720c764f5eab23812108ecf299666b3326d912565a39f050b7bf322f276eb499933c03eeddf8eddc1f575ddd44ba7ff4bfde2498f72c31ee1c3e33c8bb1dc71eec720a1419a92381269de3be6a9c694e46eb8831fa3802a6ad20a68a59c133e5040656205a30d17d31081d300b0b461bc0bb0a920e3e66b71e811ebede351dbf0ff00198a718a8a8a2fd9235cafc8de03e8554472da3919faa651cb6e1d3331a0a73d0d7441ed6b00890731ef25887aa649d97292d290533f27e193df6eee828f9b5dd4c85e5426be9cb83c53d0f51c34a7c30d4d8b23e029fd14e9fa5d6185ad9197a8fc3331221e4cc4ee223d00db69a08548a1f6b1ebef3ee69b7f9cea821edd761406220117aa8ae2dbf18d8e80ecdb04f9affc47dd603a4a457eb14ad6fc6a729f1b99287c67fc4ca5fa8a7c83a0dbce94374509261ea5083d6629daf19171ff6c9f68bed830f8d20d2502a346e70a0d6bb94be42a39fd9b4a1b757143dde26f0608eb68716ccb45189f5c54739216e761ce6c1036deba0ba8db75d244a4b5f6c4b60a68f29f1e0c526e3576fce23b58d793122a1aa48e605d6cdc526b13f7d76393b87b4068b737851d666f44e38b698f8e6525012aff9457276fe52f71a0691627e4df915aec6e970844b66920e350468c7c8461a915c1da010a52607d6386ad116e6fc5c915b4345d3285245684caa2617cfb09d3ced88ec6188afa5b89fae8dfe97975001aa4ce9196c053a17dfd59760a688fe8581e8aeffb347633e8f638d281873fc2cebca5daf4fe3fe92f6a4d225c186819fcf224c8bcdd9f99c44ab59ad8c22d65a4a12a36805e51e39c2c6342af14f1b83c23a49bb0b0c25f949d44c06eb27c65a4be32a83b87f4ba78676df943abf2d02759db6351d77b5c48e9084b70c3e639dcdee9d6109464a0afab0e8fb5300eef95b35c11c70892fe6c46dbf2814dcaca557f49f7f285915be8e4be2b67226214ded1618825781feb88bd21b13775ecc370bb5bbe6544410e75a2a9077cadd1bc7a4075a8102af60b592dbfd79b9f0a70383977be81284fac32470e6c8fb6cb224c0876878c95895176f89847e2ea4e541ffa69146a0c33d253fe56b359aed593fdcd6868a914defd8fee13ce59c41a1d169c8ebdf8ab3f0d1ccf2494af72483d61e5b6e73b9e1e255b7fd4fab9b856e157bad83c1a6c65a3b4e20d367c9eb35b08e1d25a7e45091c341cce6a89d873d379c74869f6a88d55c1f0a1b33539ee0d93329ee3af8f6042745ca7d05deb7a5eec6a35d60a54a8e27b53d15901840c9e7da802af4ce1cde101a24de655a742f485768647ec0c01c504d6e6a53479348369e6b6c29c8ad1df66380ba9f7c49d55d636827c1677ffc2f0e8dccecdaef1e542e4adbe165a10576c8b520c9816474ecf464823508c58c8567184ea4c42fca1dbf1a4e77e14c150dd3c93076f284613de41e97eef0d74894e16d1b9258bec48f37629246f34aeffc1badee712c7bb29e4407b430a8dd9619c547373c0220aaabdc6c73c3032b1308473fc59f3b55ac43027d13a41b7079f1cb5594902e72b042e6037bfe7771dd2c7cba88d8d07bb0e9b32b42ecd7c0e8077362ce74fa8bfe5ccf8398ef0acef5a30e32c488461e26f04adfa202935802786183cfd225627bfb33d556b41196fdfc87a78d6da62ddf1ff8110003505f194cdbb9046ab07944d3112075bf07a7da0f1d9c8efb99939c00959ab9fb964965f2fc97404c698562b35a1cd99871341829cf8a56d1f3aed2ab8e75607e507e2f54f82da8b36119c2dcf3e4426d1d569678e2a7e868a52ccbcee5f4e73012735054f109c509af27acf688ff3711c764c0f49cae80cf27fc076eb426e8839bf4acd1615e3e4fac070ae7bf3d90f81e461fb64e62b72e03c6b56bd38c714e3240a9b207f2a5b6709ce3435920e697340e4eed81caf900617f4e4dfa490b110559c12182592f8362444a58b7898307795eb91033d27a74f3e87a003892d578e631228018444dd8cb38a9fe55a8963d1186f5f3d26be426c06ca70c718ddf3c687052b7ba22218cec5b615d03f3d22f5f2358e335847f705e20bddef8bfd6a24f354baf98fc62d0dc4ccee6198c12d191cf3529f5c1671a71f14ad2b926b79629e7503ccc288df5bf989e078f00ef5ba65c8d38563f1d412b06afb9ff9ade5da0cedf68f90cd7062ae163e5f7bc2aea3dfac8809793682ff795d17e78fadbf52edc0e5958811034fb0e8edbadd241f3d8029c61a1102cdc1cb95a6c7c9528e5a83addca18d2be490f7791b4ef3e7adfe4a96d27ff72f4babe9cf6d1d2155aa6386202e81a536e90161cc997bc4e59b0e5c8e27dd909d196a17de304b1a4e245d5cdd9d3d414cd613fb08645e1a1c5a1876763f643a995b09b3bc35022d44d2acfb474e9487e3a3eeccfd23f0078f7e1c284f01c511808f8746e276b2e013259db47c29e99a839f2eb4d48656b9a31501cc7f32d6d78d81bc3eb5798010a755f5e0e48e0dd3ff6b7c3530a016de6210cd1b4f632773e658b3b2cdf73fdacb611eea6323c326b2b78d63c9cad21169a959a0506c629200fe256412db2c9c452a4cb9456c5506d94b8247802650cd109d7c19fddd0c12f6ffcfe82ac1527ca4c3d6b3c505769e84f33c9e5027dbdd1e47e7017deb1a5e0ba5ecb799a514f6d48a8ea479f3dfa0d461973dfda09f65b238febb1e20f8ba32e455be9f17a68e7a0ba0c3d110849cad09546da584511cdda352c06fb483fa6107ffdcdf061a538641d725b0de62f5fbd216544d52762a16ada668a3dbc299b919bf476831ec539e65ec9e3c73309acbfddaca861aba86369a87896632617202a3daa24168f572fc21e43cd1a87bb54ff01909f4214309ec28291ecd7b1ef00c813d740a5c6a09491dab8ac3df54bc1a9e07fa692e49f06c4a59b8f4fabd61a44c63202b61b8622753854a094d63bd56ccf310cd2f6fa6d94014568b0f030f63b224d1691446497bff3cc931aeece52a4efa63c8c96970432354178e30058ccec25c08f67f0d4adbc819e48a3b864aedd6bbe5b988da0d88e6fe19a5ff128bf0383764c38916b6ec57a51d10497efcbafd5f59d632d40bffbff8532be56ca15695ef6c85add29da8bb5e83cfffa4338b263d4f197c30873a1b7b50d76b6a985ff83da76761e0bd188cf3dca480665f7375a8cf0d4c000131f62477719a93591a18f0222ddabb02b8876e1b0ef85cec0c4ac6d30b73d4b2deda0b800e06d37b7c03fdac90f964ae7c08595a4fdb515dc958e7d1b329aeb50d99708772fa0157a9ca9655360bc09b2fc017fabe1ee779ecdc6ffa173bdb8b59b016c04fd566c9f3a92f823b88a271bc4e72fb239bdd8afcb775c322a68850d274c85f7a82e9e6e7375d61b308f084daa488bd1909db655d8097e81c320f38f66a00baa3d1a4ea515e7b5b75d8438ceb1446f9fabaf2d07d9b765d520d18f0be10424c40706b2237ca28b33f9a89a6938c0ea9f5d5f7827885703e7f1cc346d7ee2c1dac20111240983956077da0369edca667324753e4b5cb934b0fdedf25989fd817770715c5473e5af1091597fd69795834be3aaaf0b869f6d3f26dd54afa3fbd762145c1c73c6ee9b5b91dde1a329525d17479244a14b420affbe54d4d108d2782a7b2ce6d27b3a046a666b96a3693b9f11581541d18e489f4e9ab568e4a7b1bb4df68f7a6392d0a0cdc9e259c18cf5b93dc7328e25b798fc16e35135197d47060105315ddafe275871070216bd7d804fb013abb33941fa42308c214a6daa323ff89c1a1b38757e6643c1fe8384778e5cec5473d52db9dbdb606133f2e57c7cee9f6d879eb7f628fbe34101dfcdf4265aec3a72d72dd3124ac9cc6401db4c7fd716808f08a071432578c6258fc6bcd5c5cbec388603d5f91df68b3cabfcf4e6f267c014c45208e142ebdd11cb99dbabcd963ac968455c8d1c7796c1e5433cf2ddbcbc0b69117e0cf77cf21aeb1ac42b398d590a53a56ea8380760c3db64f6dc065fefde62df9b2920112bd0618454dcc2ea8235c76acec6d2dd541054572cb4c336f63300eab7fb37a07275ec7e974f4eb74e5c482ceb62b94b75d9971621c99d224b7d03e8db4323ab7fad6102b0bf91f72985815137e23920e438c1ce3f5b85b3cceb8bd87c26f362ddc7cf1db24a3d08d26e0d2ec99acfe5c8306ab926e08e26fe740de3f4f07b5b55bb16d6c9ac9dc7fb4a958d89567bdd128da88cf6229fb26c34e1a8f64f46a3919f4aaf857be4f28b2abac412f4b7c012a3a9afbef7f3ad6c9468873f2231c0833423eb80e5f6d28df8ade765388642b071650b376f532d18862833254aa419030cb6adaca04c198b33533bc42ea07b416cdc8869f7b33a013776b57c64fadcaf3d412715cb51840f9a084af66aae103b95a405bd7ff67e4dddf1a6351734bb873be315131906adef39d32c6839f43acf4e20593fcd259e39090cab2b6a31c05591ca7ad1fd6c352f6f533029197b4c5045d0f19c388c92c497c3ac3e0b6b1b61ae8e96aabe9e03b7383b28d61c05472b0a47a91c850ec0eaa959cd1ecd908da81cf4a28b21c45e4af06c1b234b95142c7545279a4c92139b4fd0512fd2bca1621ba1563c8c13dbb8ee0f61684b6c21c77b93f45c01dd2683b23f47d3b8c47e0859f5531b79121b0338bcebc0dfb9a3536fb85a1bb9db440d116712201336b17293972132dc53cf2eec8f478a8fa8a5e4f655de1fbf0f534a8bef0fba83c4b754ed992f406ea88584d76a1f25bb71f4ddd3cb01776e95d8c036bc31ce91c77ad</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-xray">
+      <input class="hbe hbe-input-field hbe-input-field-xray" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-xray" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-xray">您好, 这里需要密码.</span>
+      </label>
+      <svg class="hbe hbe-graphic hbe-graphic-xray" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+        <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"></path>
+        <path d="M0,2.5c0,0,298.666,0,399.333,0C448.336,2.5,513.994,13,597,13c77.327,0,135-10.5,200.999-10.5c95.996,0,402.001,0,402.001,0"></path>
+      </svg>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/01/11/cmake%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clvswuy6100011wm5ejnr04rp" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ESP32/" rel="tag">ESP32</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cmake/" rel="tag">cmake</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2024/01/05/%E5%AE%89%E4%BF%A1%E5%8F%AF/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Ai-M61-32S入门-点灯</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <h1 class="blog-title">潇雨轩然のblog</h1>
+    <h2 class="blog-subtitle"></h2>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+          <a href="/about" title="About">
+            <li>关于</li>
+          </a>
+        
+          <a href="/seach" title="search">
+            <li>搜索</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="/images/photo.jpg">
+    <h2 class="author">潇雨轩然</h2>
+    <h3 id="hitokoto" style="font-family: 华文行楷">正在加载一言...</h3>
+    <h3 class="description"></h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>4</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>0</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>4</strong><br>标签</div></a>
+    </div>
+
+
+
+    <div class="social-link">
+      
+        <a class="hvr-bounce-in" href="https://github.com/xiaoyuxuanran" target="_blank" title="Github">
+          Github
+        </a>
+      
+    </div>
+
+    <div class="friend-link">
+      <h2>友情链接</h2>
+      
+        <a class="hvr-bounce-in" href="http://blog.shanamaid.top/" target="_blank" title="主题作者">
+          主题作者
+        </a>
+      
+    </div>
+
+  </div>
+</div>
+
+  
+</aside>
+        
+        <!-- 雪花特效3 -->
+        
+          <script type="text/javascript" src="/js/snow3.js"></script>
+        
+
+
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy;2023 - 2024 潇雨轩然<br>
+      由<a href="http://hexo.io/" target="_blank">Hexo</a>强力驱动 | 
+      主题-<a target="_blank" rel="noopener" href="https://github.com/ShanaMaid/hexo-theme-shana">Shana</a>
+      
+    </div>
+    
+  </div>
+</footer>
+    </div>
+    
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//apps.bdimg.com/libs/wow/0.1.6/wow.min.js"></script>
+<script>
+new WOW().init();
+</script>   
+
+
+  
+<link rel="stylesheet" href="/plugin/fancybox/jquery.fancybox.css">
+
+  
+<script src="/plugin/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+  
+<link rel="stylesheet" href="/plugin/galmenu/GalMenu.css">
+
+  
+<script src="/plugin/galmenu/GalMenu.js"></script>
+
+  <div class="GalMenu GalDropDown">
+      <div class="circle" id="gal">
+        <div class="ring">
+          
+            <a href="/" title="" class="menuItem">首页</a>
+          
+            <a href="/tags" title="" class="menuItem">标签</a>
+          
+            <a href="/categories" title="" class="menuItem">分类</a>
+          
+            <a href="/archives" title="" class="menuItem">归档</a>
+          
+            <a target="_blank" rel="noopener" href="http://www.baidu.com" title="" class="menuItem">百度</a>
+          
+            <a href="/xxxxxxx" title="" class="menuItem">xxxx</a>
+          
+        </div>
+        
+          <audio id="audio" src="#"></audio>
+        
+      </div> 
+</div>
+<div id="overlay" style="opacity: 1; cursor: pointer;"></div>
+  <script type="text/javascript">var items = document.querySelectorAll('.menuItem');
+    for (var i = 0,
+    l = items.length; i < l; i++) {
+      items[i].style.left = (50 - 35 * Math.cos( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%";
+      items[i].style.top = (50 + 35 * Math.sin( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%"
+    }</script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('body').GalMenu({
+      'menu': 'GalDropDown'
+    })
+  });
+</script>
+
+  <section class="hidden-xs"> 
+  <ul class="cb-slideshow"> 
+    <li><span>苟利</span></li> 
+    <li><span>国家</span></li> 
+    <li><span>生死以</span></li> 
+    <li><span>岂能</span></li> 
+    <li><span>祸福</span></li> 
+    <li><span>趋避之</span></li> 
+  </ul>
+</section>
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
